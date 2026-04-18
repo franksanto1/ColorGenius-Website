@@ -1,74 +1,168 @@
-# ColorGenius Website
+# Versani Website
 
-Professional website for ColorGenius AI color analysis app.
+The public marketing and admin site for **Versani** — an AI-powered hair color
+consultation platform built exclusively for professional colorists.
 
-## Tech Stack
+> **Beauty Meets Intelligence.**
 
-- **Next.js 14** - React framework with App Router
-- **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first styling
+This repo is the brochure + commerce + admin site. The production app
+(consultation, formula lab, Ask Versani) lives in a separate codebase
+(`salon-muse-pro`) and shares auth + billing with this site via Supabase.
 
-## Getting Started
+---
+
+## Tech stack
+
+- **Next.js 15.1** (App Router, server components by default)
+- **React 19**
+- **TypeScript 5.7** (strict)
+- **Tailwind CSS 3.4** with oklch design tokens mirrored from the app
+- **Motion** (Framer Motion) for entrance animations
+- **clsx** + **tailwind-merge** for className composition
+- Fonts: **Cormorant Garamond** (editorial serif) + **Inter** (sans),
+  loaded via `next/font/google`
+
+---
+
+## Getting started
 
 ```bash
-# Install dependencies
 npm install
-
-# Run development server
+cp .env.local.example .env.local   # fill in values
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site.
+Open [http://localhost:3000](http://localhost:3000).
 
-## Project Structure
+Available scripts:
+
+| Command             | Description                          |
+| ------------------- | ------------------------------------ |
+| `npm run dev`       | Start dev server                     |
+| `npm run build`     | Production build                     |
+| `npm start`         | Start production server              |
+| `npm run lint`      | Lint via `next lint`                 |
+| `npm run type-check`| Type-check with `tsc --noEmit`       |
+
+---
+
+## Project structure
 
 ```
 app/
-├── layout.tsx       # Root layout with metadata
-├── page.tsx         # Home page
-└── globals.css      # Global styles
+├── layout.tsx              # Root layout, metadata, fonts, JSON-LD
+├── page.tsx                # Homepage (Hero + placeholder sections)
+├── globals.css             # Tailwind directives + oklch design tokens
+├── manifest.ts             # PWA manifest
+├── robots.ts               # robots.txt generator
+├── sitemap.ts              # Dynamic sitemap
+├── opengraph-image.tsx     # Dynamic OG image (Edge runtime)
+└── admin/
+    ├── layout.tsx          # Placeholder admin layout (feature-flagged)
+    └── page.tsx            # Admin dashboard stub
+
+components/
+├── VersaniWordmark.tsx     # Gold serif wordmark
+├── cn.ts                   # Re-export of the cn() utility
+├── nav/
+│   ├── SiteNav.tsx         # Top navigation
+│   └── SiteFooter.tsx      # Luxury footer
+├── sections/
+│   └── Hero.tsx            # Homepage hero
+└── ui/
+    └── Button.tsx          # Gold solid / outline / ghost variants
+
+lib/
+├── cn.ts                   # clsx + tailwind-merge utility
+├── supabase.ts             # Supabase client stub
+└── stripe.ts               # Stripe client stub
+
+public/
+└── versani-monogram.png    # V monogram (favicon + PWA icon)
 ```
 
-## Integration with Backend
+---
 
-Currently using mock data. To integrate with the OpenServ backend:
+## Design system
 
-1. Update `app/page.tsx` to fetch from the backend API
-2. Create an `api/` folder for API utility functions
-3. Replace mock color palettes with real API calls
+Colors, typography, and motion are mirrored from the Versani app so the
+website and product feel like a single brand:
 
-Example when backend is ready:
+- Dark oklch surfaces with a cool blue tint (`oklch(0.08 0.01 260)`).
+- Signature luxury gold (`oklch(0.76 0.15 85)` ≈ `#D4AF37`).
+- Editorial serif (Cormorant Garamond) for display text; Inter for UI.
+- Restrained, slow, confident motion (Motion, `cubic-bezier(0.2,0,0,1)`).
 
-```typescript
-const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/palettes`)
-const palettes = await response.json()
-```
+Tokens live in `app/globals.css` and map through `tailwind.config.ts` so you
+can use `bg-card`, `text-foreground`, `border-border`, `text-gold`, etc.
 
-## Building & Deployment
+---
 
-```bash
-# Build for production
-npm run build
+## Admin console
 
-# Start production server
-npm start
-```
+`/admin` is the future operator dashboard. Today it's a stub gated by a
+feature flag (`NEXT_PUBLIC_ADMIN_ENABLED=true`). When the Supabase auth
+integration lands, real guards will live in `app/admin/layout.tsx` and
+middleware. Reports will surface MRR, churn, trial conversion, and
+consultation volume.
 
-Deploy to Vercel:
+---
+
+## Connection to the Versani app
+
+- **Auth:** shared Supabase project (same user pool).
+- **Billing:** Stripe subscriptions created here; entitlements synced to
+  the app via Supabase.
+- **Branding:** design tokens in `app/globals.css` mirror the app's
+  `src/index.css`. Keep them in sync.
+
+---
+
+## Environment variables
+
+Copy `.env.local.example` to `.env.local`. Key vars:
+
+| Variable                              | Purpose                         |
+| ------------------------------------- | ------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`                | Canonical URL for meta/sitemap  |
+| `NEXT_PUBLIC_SUPABASE_URL`            | Supabase project URL            |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY`       | Supabase anon key               |
+| `SUPABASE_SERVICE_ROLE_KEY`           | Server-only admin key           |
+| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`  | Stripe publishable key          |
+| `STRIPE_SECRET_KEY`                   | Stripe secret (server only)     |
+| `STRIPE_WEBHOOK_SECRET`               | Webhook signature secret        |
+| `NEXT_PUBLIC_STRIPE_PRICE_*`          | One per tier                    |
+| `NEXT_PUBLIC_ADMIN_ENABLED`           | Temporary admin access flag     |
+
+---
+
+## Deployment
+
+Vercel is the intended host.
 
 ```bash
 npm i -g vercel
-vercel
+vercel link      # first time
+vercel env pull  # sync env vars from the dashboard
+vercel --prod
 ```
 
-## Environment Variables
+Security headers, compression, and image formats (AVIF/WebP) are
+configured in `next.config.js`.
 
-Create a `.env.local` file:
+---
 
-```
-NEXT_PUBLIC_API_URL=http://localhost:3001
-```
+## Roadmap
+
+- [ ] Pricing page with full tier comparison (Free / Pro / Studio /
+      Studio Plus / Salon per-seat).
+- [ ] Philosophy page.
+- [ ] Live Supabase + Stripe wiring.
+- [ ] Admin dashboard (real metrics).
+- [ ] Case studies and editorial content.
+
+---
 
 ## License
 
-Copyright © 2026 ColorGenius. All rights reserved.
+Copyright © Versani. All rights reserved.

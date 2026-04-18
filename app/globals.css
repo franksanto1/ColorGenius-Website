@@ -2,20 +2,128 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================
+   VERSANI DESIGN SYSTEM — oklch tokens
+   Mirrored from the Versani app design system
+   ============================================ */
+
+:root {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --background: oklch(0.08 0.01 260);
+  --foreground: oklch(0.93 0.005 260);
+  --card: oklch(0.15 0.01 260);
+  --card-foreground: oklch(0.93 0.005 260);
+  --popover: oklch(0.18 0.01 260);
+  --popover-foreground: oklch(0.93 0.005 260);
+
+  /* Brand — Luxury Gold */
+  --primary: oklch(0.76 0.15 85);
+  --primary-foreground: oklch(0.08 0.01 260);
+
+  /* Neutrals */
+  --secondary: oklch(0.18 0.01 260);
+  --secondary-foreground: oklch(0.85 0.005 260);
+  --muted: oklch(0.15 0.008 260);
+  --muted-foreground: oklch(0.65 0.007 260);
+  --accent: oklch(0.23 0.01 260);
+  --accent-foreground: oklch(0.85 0.005 260);
+
+  /* Destructive */
+  --destructive: oklch(0.72 0.13 25);
+  --destructive-foreground: oklch(0.97 0.003 260);
+
+  /* Borders & focus */
+  --border: oklch(0.30 0.01 260);
+  --input: oklch(0.30 0.01 260);
+  --ring: oklch(0.76 0.15 85);
+
+  /* Versani extended */
+  --gold: oklch(0.76 0.15 85);
+  --gold-light: oklch(0.83 0.10 85);
+  --gold-dark: oklch(0.52 0.10 83);
+  --gold-subtle: oklch(0.24 0.05 83);
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  border-color: var(--border);
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans, Inter), system-ui, -apple-system, sans-serif;
+  font-feature-settings: 'ss01', 'cv11';
+}
+
+/* Heading defaults — serif editorial feel for h1/h2 */
+h1, h2 {
+  font-family: var(--font-serif, 'Cormorant Garamond'), 'Times New Roman', serif;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--foreground);
+}
+
+h3, h4, h5, h6 {
+  font-family: var(--font-sans, Inter), system-ui, sans-serif;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+/* Selection */
+::selection {
+  background: oklch(0.80 0.06 90 / 0.2);
+  color: var(--foreground);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utility: gold radial highlight */
+.gold-radial {
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 0%,
+    oklch(0.76 0.15 85 / 0.12),
+    transparent 70%
+  );
+}
+
+.gold-radial-bottom {
+  background: radial-gradient(
+    ellipse 50% 40% at 50% 100%,
+    oklch(0.76 0.15 85 / 0.08),
+    transparent 70%
+  );
 }
