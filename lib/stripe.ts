@@ -1,57 +1,58 @@
 /**
- * Stripe client — STUB.
+ * Stripe server-side client + tier → price ID mapping.
+ * Used by Stripe checkout and webhook routes.
  *
- * Placeholder for the future Stripe integration. Not functional until
- * the real dependency is installed and keys are configured.
- *
- * Required environment variables (see .env.local.example):
- *   - STRIPE_SECRET_KEY          (server only)
- *   - NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
- *   - STRIPE_WEBHOOK_SECRET      (for /api/webhooks/stripe)
- *
- * Versani price IDs (one per tier) should be wired here once created
- * in the Stripe dashboard:
- *   - NEXT_PUBLIC_STRIPE_PRICE_PRO
- *   - NEXT_PUBLIC_STRIPE_PRICE_STUDIO
- *   - NEXT_PUBLIC_STRIPE_PRICE_STUDIO_PLUS
- *   - NEXT_PUBLIC_STRIPE_PRICE_SALON_SEAT   (per-seat metered)
- *
- * To activate:
- *   npm install stripe @stripe/stripe-js
+ * Lazy-instantiates to allow builds with empty env vars.
  */
+import Stripe from 'stripe'
 
-export type VersaniTier =
-  | 'free-trial'
-  | 'pro'
-  | 'studio'
-  | 'studio-plus'
-  | 'salon'
+let _stripe: Stripe | null = null
 
-export const TIER_PRICE_IDS: Record<
-  Exclude<VersaniTier, 'free-trial' | 'salon'>,
-  string | undefined
-> = {
-  pro: process.env.NEXT_PUBLIC_STRIPE_PRICE_PRO,
-  studio: process.env.NEXT_PUBLIC_STRIPE_PRICE_STUDIO,
-  'studio-plus': process.env.NEXT_PUBLIC_STRIPE_PRICE_STUDIO_PLUS,
-}
-
-export function readStripeEnv() {
-  const secret = process.env.STRIPE_SECRET_KEY
-  const publishable = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
-
-  if (!publishable) {
+export function getStripe(): Stripe {
+  if (_stripe) return _stripe
+  const key = process.env.STRIPE_SECRET_KEY
+  if (!key) {
     throw new Error(
-      'Stripe is not configured. Set NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY.',
+      'STRIPE_SECRET_KEY is not configured. Add it to .env.local to enable billing.'
     )
   }
-
-  return { secret, publishable, webhookSecret }
+  _stripe = new Stripe(key, {
+    apiVersion: '2026-03-25.dahlia',
+    typescript: true,
+  })
+  return _stripe
 }
 
-export function getServerStripeClient(): never {
-  throw new Error(
-    'Stripe server client not wired. Install `stripe` and replace this stub.',
-  )
+/**
+ * Proxy so existing `import { stripe }` usage continues to work.
+ * Methods are accessed lazily, so build-time evaluation is safe.
+ */
+export const stripe = new Proxy({} as Stripe, {
+  get(_target, prop) {
+    const client = getStripe()
+    const value = Reflect.get(client, prop)
+    return typeof value === 'function' ? value.bind(client) : value
+  },
+})
+
+export type Tier = 'pro' | 'studio' | 'studio-plus'
+export type Billing = 'monthly' | 'yearly'
+
+/**
+ * Map tier + billing period to Stripe price ID.
+ * Pro is monthly-only (annual discount would erode worst-case margin).
+ */
+export function getPriceId(tier: Tier, billing: Billing): string | null {
+  const map: Record<string, string | undefined> = {
+    'pro-monthly': process.env.STRIPE_PRICE_PRO_MONTHLY,
+    'studio-monthly': process.env.STRIPE_PRICE_STUDIO_MONTHLY,
+    'studio-yearly': process.env.STRIPE_PRICE_STUDIO_YEARLY,
+    'studio-plus-monthly': process.env.STRIPE_PRICE_STUDIO_PLUS_MONTHLY,
+    'studio-plus-yearly': process.env.STRIPE_PRICE_STUDIO_PLUS_YEARLY,
+  }
+  const key = `${tier}-${billing}`
+  return map[key] || null
 }
+
+export const STRIPE_PUBLISHABLE_KEY =
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || ''

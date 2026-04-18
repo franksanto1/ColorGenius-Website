@@ -1,64 +1,70 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { VersaniWordmark } from '@/components/VersaniWordmark'
+import { cn } from '@/lib/cn'
 
 export const metadata: Metadata = {
-  title: 'Admin',
+  title: 'Admin · Versani',
   robots: { index: false, follow: false },
 }
 
-/**
- * Admin layout — placeholder.
- *
- * TODO (future phase):
- *   Wire Supabase Auth here. Pattern:
- *     1. const supabase = createServerClient(...)
- *     2. const { data: { user } } = await supabase.auth.getUser()
- *     3. if (!user || !isAdmin(user)) redirect('/login?next=/admin')
- *
- *   Until auth is wired, this layout is gated by a simple
- *   environment flag so staging builds don't expose stubs.
- */
-export default function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  // Placeholder guard. Real guard will live in middleware + server
-  // component auth check once Supabase is integrated.
-  const adminEnabled = process.env.NEXT_PUBLIC_ADMIN_ENABLED === 'true'
+const navItems = [
+  { href: '/admin', label: 'Dashboard' },
+  { href: '/admin/users', label: 'Users' },
+  { href: '/admin/revenue', label: 'Revenue' },
+  { href: '/admin/partners', label: 'Partners' },
+  { href: '/admin/ambassadors', label: 'Ambassadors' },
+  { href: '/admin/reports', label: 'Reports' },
+]
 
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
+  // Middleware handles auth gating. This layout just renders the shell.
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="border-b border-[color:var(--border)]">
+    <div className="min-h-screen flex flex-col bg-background">
+      <header className="border-b border-white/[0.08] bg-background/80 backdrop-blur-md sticky top-0 z-40">
         <div className="container h-16 flex items-center justify-between">
-          <Link href="/" aria-label="Versani home">
-            <VersaniWordmark size="sm" />
-          </Link>
-          <span className="text-xs tracking-[0.2em] uppercase text-[color:var(--muted-foreground)]">
-            Admin Console
-          </span>
+          <div className="flex items-center gap-8">
+            <Link href="/" aria-label="Versani home">
+              <VersaniWordmark size="sm" />
+            </Link>
+            <span className="text-xs tracking-[0.2em] uppercase text-gold">
+              Admin Console
+            </span>
+          </div>
+          <form action="/auth/signout" method="POST">
+            <button
+              type="submit"
+              className="text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Sign out
+            </button>
+          </form>
         </div>
       </header>
 
-      <main className="container flex-1 py-16">
-        {adminEnabled ? (
-          children
-        ) : (
-          <div className="max-w-xl">
-            <h1 className="font-serif text-4xl md:text-5xl mb-4">
-              Admin access required.
-            </h1>
-            <p className="text-[color:var(--muted-foreground)]">
-              This area is not yet enabled. Set{' '}
-              <code className="text-[color:var(--gold)]">
-                NEXT_PUBLIC_ADMIN_ENABLED=true
-              </code>{' '}
-              in your environment to preview the placeholder dashboard.
-            </p>
-          </div>
-        )}
-      </main>
+      <div className="container flex-1 flex gap-8 py-8">
+        <aside className="w-56 shrink-0">
+          <nav aria-label="Admin navigation">
+            <ul className="space-y-1 sticky top-24">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      'block px-4 py-2.5 rounded-lg text-sm transition-colors',
+                      'text-muted-foreground hover:text-foreground hover:bg-white/[0.04]'
+                    )}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+
+        <main className="flex-1 min-w-0">{children}</main>
+      </div>
     </div>
   )
 }
