@@ -1,0 +1,417 @@
+'use client'
+
+import { useState } from 'react'
+import Link from 'next/link'
+import { cn } from '@/lib/cn'
+import { CapReachedModal } from '@/components/billing/CapReachedModal'
+
+/* ================================================================
+   Membership — Settings → Membership
+   Always-visible plan status, overage packs, and add-on controls.
+   Mock data only — Stripe wiring ships with the backend.
+   ================================================================ */
+
+// Mock current-user plan. Replace with real org/user data once
+// OpenServ's subscription API is live.
+const mockPlan = {
+  name: 'Pro',
+  price: 19.99,
+  cadence: 'month',
+  nextBilling: 'May 12, 2026',
+  addOnActive: false,
+  consultsUsed: 47,
+  consultsTotal: 50,
+  updatesUsed: 84,
+  updatesTotal: 120,
+  renderingsUsed: 31,
+  renderingsTotal: 40,
+  capHitCountThisQuarter: 3,
+  topUpsPurchasedThisQuarter: 3,
+  topUpSpendThisQuarter: 29.97,
+}
+
+const addOnFeatures = [
+  { label: 'Unlimited virtual try-ons' },
+  { label: 'Full performance dashboard (90-day history)' },
+  { label: 'At-risk client alerts' },
+  { label: 'Weekly performance digest email' },
+  { label: 'Academy masterclass library' },
+  { label: 'Priority web research' },
+]
+
+const topUpPacks: Array<{
+  size: 5 | 10 | 25
+  price: number
+  description: string
+  tag: 'popular' | 'best' | null
+}> = [
+  { size: 5, price: 5.99, description: '5 extra consultations', tag: null },
+  { size: 10, price: 9.99, description: '10 extra consultations', tag: 'popular' },
+  { size: 25, price: 19.99, description: '25 extra consultations', tag: 'best' },
+]
+
+const billingHistory = [
+  { date: 'Apr 12, 2026', description: 'Pro — monthly', amount: 19.99 },
+  { date: 'Apr 3, 2026', description: 'Top-Up 10', amount: 9.99 },
+  { date: 'Mar 24, 2026', description: 'Top-Up 10', amount: 9.99 },
+  { date: 'Mar 12, 2026', description: 'Pro — monthly', amount: 19.99 },
+  { date: 'Mar 8, 2026', description: 'Top-Up 10', amount: 9.99 },
+]
+
+function ProgressBar({ used, total }: { used: number; total: number }) {
+  const pct = Math.min(100, (used / total) * 100)
+  const atCap = used >= total
+  return (
+    <div className="w-full h-2 rounded-full bg-white/[0.06] overflow-hidden">
+      <div
+        className={cn(
+          'h-full rounded-full transition-all',
+          atCap ? 'bg-[color:var(--gold)]' : 'bg-[color:var(--gold)]/70',
+        )}
+        style={{ width: `${pct}%` }}
+      />
+    </div>
+  )
+}
+
+export default function MembershipPage() {
+  const [addOnActive, setAddOnActive] = useState(mockPlan.addOnActive)
+  const [loadingAction, setLoadingAction] = useState<string | null>(null)
+  const [capModalOpen, setCapModalOpen] = useState(false)
+
+  const onPendingAction = (key: string) => {
+    setLoadingAction(key)
+    // Fake delay to illustrate loading states. Real Stripe wiring lands later.
+    setTimeout(() => setLoadingAction(null), 1200)
+  }
+
+  const studioTotalIfUpgraded = 34.99 * 3 // quarter
+  const currentProSpendIncludingTopUps =
+    mockPlan.price * 3 + mockPlan.topUpSpendThisQuarter
+  const showStudioNudge = mockPlan.capHitCountThisQuarter >= 2
+
+  const consultsRemaining = Math.max(0, mockPlan.consultsTotal - mockPlan.consultsUsed)
+  const daysUntilReset = 18
+
+  return (
+    <section className="max-w-4xl">
+      <p className="text-xs uppercase tracking-[0.24em] text-gold mb-2">
+        Settings → Membership
+      </p>
+      <h1 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
+        Membership
+      </h1>
+
+      {/* Your Plan */}
+      <div className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-8 mb-6">
+        <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold mb-1.5">
+              Your plan
+            </div>
+            <div className="flex items-baseline gap-2">
+              <h2 className="font-serif text-2xl text-foreground">
+                {mockPlan.name}
+              </h2>
+              <span className="text-sm text-white/60">
+                · ${mockPlan.price.toFixed(2)}/{mockPlan.cadence}
+                {addOnActive && ' + $4.99 add-on'}
+              </span>
+            </div>
+            <div className="text-xs text-white/50 mt-1">
+              Next billing date: {mockPlan.nextBilling}
+            </div>
+          </div>
+          <div className="flex gap-2 flex-wrap">
+            <button
+              type="button"
+              onClick={() => onPendingAction('manage-billing')}
+              disabled={loadingAction === 'manage-billing'}
+              className="inline-flex items-center justify-center gap-2 h-10 px-5 rounded-full text-xs font-medium tracking-wide transition-colors bg-white/[0.04] border border-white/[0.1] text-white/80 hover:bg-white/[0.08] disabled:opacity-50"
+            >
+              {loadingAction === 'manage-billing' ? 'Opening…' : 'Manage billing'}
+            </button>
+            <Link
+              href="/pricing"
+              className="inline-flex items-center justify-center gap-2 h-10 px-5 rounded-full text-xs font-medium tracking-wide transition-colors bg-transparent border border-gold/60 text-gold hover:bg-gold hover:text-black"
+            >
+              Compare plans
+            </Link>
+          </div>
+        </div>
+
+        {/* Usage this month */}
+        <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 mb-4">
+          Usage this month
+        </div>
+        <div className="space-y-4">
+          <UsageRow
+            label="Full consultations"
+            used={mockPlan.consultsUsed}
+            total={mockPlan.consultsTotal}
+          />
+          <UsageRow
+            label="Client updates"
+            used={mockPlan.updatesUsed}
+            total={mockPlan.updatesTotal}
+          />
+          <UsageRow
+            label="AI renderings"
+            used={mockPlan.renderingsUsed}
+            total={mockPlan.renderingsTotal}
+          />
+        </div>
+
+        <p className="text-xs text-white/40 mt-4">
+          {consultsRemaining} consultations remaining. Cap resets in{' '}
+          {daysUntilReset} days.
+        </p>
+      </div>
+
+      {/* Pro Premium Add-On */}
+      {!addOnActive && (
+        <div className="rounded-2xl border border-gold/[0.22] bg-gradient-to-b from-gold/[0.06] to-gold/[0.01] p-8 mb-6">
+          <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+            <div>
+              <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold mb-1.5">
+                Pro Premium Add-On
+              </div>
+              <h2 className="font-serif text-2xl text-foreground">
+                $4.99 / month
+              </h2>
+              <p className="text-sm text-white/60 mt-2 max-w-md">
+                Stack on top of your Pro plan. Unlimited try-ons and the deeper
+                intelligence layer, without jumping to Studio.
+              </p>
+            </div>
+            <button
+              type="button"
+              disabled={loadingAction === 'add-on'}
+              onClick={() => {
+                onPendingAction('add-on')
+                setTimeout(() => setAddOnActive(true), 1200)
+              }}
+              className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full text-sm font-medium tracking-wide transition-all duration-300 ease-luxury bg-gold text-black border border-gold hover:bg-gold-light disabled:opacity-60"
+            >
+              {loadingAction === 'add-on'
+                ? 'Adding…'
+                : 'Add to my plan — $4.99/mo'}
+            </button>
+          </div>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 mt-4">
+            {addOnFeatures.map((f, i) => (
+              <li
+                key={i}
+                className="flex items-start gap-2 text-sm text-white/80"
+              >
+                <CheckIcon />
+                <span>{f.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {addOnActive && (
+        <div className="rounded-2xl border border-gold/[0.22] bg-gradient-to-b from-gold/[0.04] to-transparent p-6 mb-6 flex items-center justify-between gap-4 flex-wrap">
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold mb-1.5">
+              Pro Premium Add-On — active
+            </div>
+            <p className="text-sm text-white/70">
+              Unlimited try-ons, 90-day dashboard, and priority features on.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => setAddOnActive(false)}
+            className="inline-flex items-center justify-center gap-2 h-9 px-4 rounded-full text-xs font-medium text-white/60 hover:text-white/90 border border-white/[0.1] hover:bg-white/[0.04]"
+          >
+            Remove add-on
+          </button>
+        </div>
+      )}
+
+      {/* Need More Consultations */}
+      <div className="mb-8">
+        <div className="flex items-baseline justify-between gap-4 mb-4">
+          <h2 className="font-serif text-xl md:text-2xl text-foreground">
+            Need more consultations?
+          </h2>
+          <button
+            type="button"
+            onClick={() => setCapModalOpen(true)}
+            className="text-xs text-gold hover:underline"
+          >
+            Preview cap-reached modal
+          </button>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {topUpPacks.map((pack) => (
+            <div
+              key={pack.size}
+              className={cn(
+                'relative rounded-2xl p-5 flex flex-col',
+                pack.tag
+                  ? 'bg-gradient-to-b from-gold/[0.08] to-gold/[0.01] border border-gold/[0.3]'
+                  : 'bg-white/[0.04] border border-white/[0.08]',
+              )}
+            >
+              {pack.tag === 'popular' && (
+                <div className="absolute -top-2.5 left-5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] bg-gold text-black">
+                  Popular
+                </div>
+              )}
+              {pack.tag === 'best' && (
+                <div className="absolute -top-2.5 left-5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] bg-gold text-black">
+                  Best Value
+                </div>
+              )}
+              <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold mb-1.5">
+                Top-Up {pack.size}
+              </div>
+              <div className="flex items-baseline gap-1.5 mb-2">
+                <span className="font-serif text-2xl text-foreground">
+                  ${pack.price.toFixed(2)}
+                </span>
+              </div>
+              <p className="text-xs text-white/55 mb-4">{pack.description}</p>
+              <button
+                type="button"
+                disabled={loadingAction === `top-up-${pack.size}`}
+                onClick={() => onPendingAction(`top-up-${pack.size}`)}
+                className="inline-flex items-center justify-center gap-2 h-10 px-5 rounded-full text-xs font-medium transition-colors bg-transparent text-gold border border-gold hover:bg-gold hover:text-black disabled:opacity-60 mt-auto"
+              >
+                {loadingAction === `top-up-${pack.size}` ? 'Adding…' : 'Add'}
+              </button>
+            </div>
+          ))}
+        </div>
+        <p className="text-xs text-white/40 mt-4">
+          Consultations never expire. Use them when you need them.
+        </p>
+      </div>
+
+      {/* Studio Upgrade nudge (shown conditionally) */}
+      {showStudioNudge && (
+        <div className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-8 mb-6">
+          <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold mb-1.5">
+            Consider Studio
+          </div>
+          <h2 className="font-serif text-xl md:text-2xl text-foreground mb-3">
+            The math has shifted
+          </h2>
+          <p className="text-sm text-white/70 leading-relaxed mb-4">
+            This quarter you&apos;ve added {mockPlan.topUpsPurchasedThisQuarter}{' '}
+            packs for $
+            {mockPlan.topUpSpendThisQuarter.toFixed(2)} on top of Pro. Moving to
+            Studio would have been about $
+            {(studioTotalIfUpgraded - currentProSpendIncludingTopUps).toFixed(2)}{' '}
+            more over the same period — with 80 consultations baseline and the
+            Studio-exclusive intelligence features.
+          </p>
+          <Link
+            href="/pricing"
+            className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full text-sm font-medium tracking-wide bg-gold text-black border border-gold hover:bg-gold-light"
+          >
+            Compare plans
+          </Link>
+        </div>
+      )}
+
+      {/* Billing history */}
+      <div className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-8">
+        <h2 className="font-serif text-xl text-foreground mb-4">
+          Billing history
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm">
+            <thead>
+              <tr className="text-[10px] uppercase tracking-[0.18em] text-white/50 border-b border-white/[0.06]">
+                <th className="pb-3 font-bold">Date</th>
+                <th className="pb-3 font-bold">Description</th>
+                <th className="pb-3 font-bold text-right">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              {billingHistory.map((row, i) => (
+                <tr
+                  key={i}
+                  className={cn(
+                    'text-white/80',
+                    i < billingHistory.length - 1 &&
+                      'border-b border-white/[0.04]',
+                  )}
+                >
+                  <td className="py-3 text-white/55">{row.date}</td>
+                  <td className="py-3">{row.description}</td>
+                  <td className="py-3 text-right tabular-nums">
+                    ${row.amount.toFixed(2)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <CapReachedModal
+        open={capModalOpen}
+        onClose={() => setCapModalOpen(false)}
+        currentPlan={mockPlan.name}
+        consultsUsed={mockPlan.consultsTotal}
+        consultsTotal={mockPlan.consultsTotal}
+        daysUntilReset={daysUntilReset}
+        onPurchaseTopUp={(size) => {
+          onPendingAction(`modal-top-up-${size}`)
+          setCapModalOpen(false)
+        }}
+        onUpgrade={() => {
+          onPendingAction('modal-upgrade')
+          setCapModalOpen(false)
+        }}
+      />
+    </section>
+  )
+}
+
+function UsageRow({
+  label,
+  used,
+  total,
+}: {
+  label: string
+  used: number
+  total: number
+}) {
+  return (
+    <div>
+      <div className="flex items-baseline justify-between mb-1.5">
+        <span className="text-sm text-white/80">{label}</span>
+        <span className="text-xs text-white/50 tabular-nums">
+          {used} / {total}
+        </span>
+      </div>
+      <ProgressBar used={used} total={total} />
+    </div>
+  )
+}
+
+function CheckIcon() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="mt-0.5 shrink-0 text-[color:var(--gold)]"
+      aria-hidden="true"
+    >
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+  )
+}

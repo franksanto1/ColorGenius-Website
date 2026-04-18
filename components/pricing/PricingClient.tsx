@@ -37,6 +37,18 @@ interface Tier {
   features: TierFeature[]
 }
 
+const proPremiumAddOn = {
+  price: 4.99,
+  features: [
+    { label: 'Unlimited virtual try-ons', detail: 'overrides the 25/mo cap on base Pro' },
+    { label: 'Full performance dashboard', detail: '90-day history — not just 30 days' },
+    { label: 'At-risk client alerts', detail: 'surface clients who haven\u2019t booked recently' },
+    { label: 'Weekly performance digest email', detail: 'a Sunday-morning read on your week' },
+    { label: 'Academy masterclass library', detail: 'access the full library' },
+    { label: 'Priority web research', detail: 'faster fallback when Versani needs the web' },
+  ],
+}
+
 const tiers: Tier[] = [
   {
     id: 'trial',
@@ -49,13 +61,12 @@ const tiers: Tier[] = [
     ctaHref: '/auth?mode=signup',
     features: [
       { label: 'Your actual product lines used in every formula', included: true },
-      { label: 'Full Studio access for 14 days', included: 'consultations + client updates + full feature set' },
-      { label: 'Unlimited virtual try-ons', included: true },
-      { label: 'Unlimited post-treatment scoring', included: true },
-      { label: 'Voice formula narration', included: true },
+      { label: 'Full Studio access — Days 1–7', included: 'everything unlocked, no limits' },
+      { label: 'Limited access — Days 8–14', included: 'AI renderings and voice narration pause; consultations and chat stay on' },
+      { label: 'Unlimited Ask Versani throughout', included: true },
       { label: 'Unlimited clients', included: true },
       { label: 'Web research fallback', included: true },
-      { label: 'After 14 days', included: 'Read-only — data preserved' },
+      { label: 'Day 14', included: 'Upgrade anytime to keep your momentum, or account enters read-only' },
     ],
   },
   {
@@ -69,20 +80,20 @@ const tiers: Tier[] = [
     ctaHref: '/auth?mode=signup',
     features: [
       { label: 'Your actual product lines used in every formula', included: true },
-      { label: '65 full consultations per month', included: 'new client or major change — formula + photo analysis + AI rendering' },
-      { label: '150 client updates per month', included: 'quick formula tweaks for returning clients' },
-      { label: '30 virtual try-ons per month', included: 'real-time color previews on your client\u2019s photo' },
-      { label: '50 AI final-look renderings per month', included: 'photorealistic preview of finished color' },
-      { label: '65 post-treatment AI scores', included: 'score every service to feed your dashboard' },
-      { label: '50 voice formula narrations', included: true },
+      { label: '50 full consultations per month', included: 'new client or major change — formula + photo analysis + AI rendering' },
+      { label: '120 client updates per month', included: 'quick formula tweaks for returning clients' },
+      { label: '25 virtual try-ons per month', included: 'real-time color previews on your client\u2019s photo' },
+      { label: '40 AI final-look renderings per month', included: 'photorealistic preview of finished color' },
+      { label: '50 post-treatment AI scores', included: 'score every service to feed your dashboard' },
+      { label: '40 voice formula narrations', included: true },
       { label: 'Unlimited Ask Versani (quick questions)', included: true },
       { label: 'Basic performance dashboard', included: 'last 30 days, score trend & service breakdown' },
       { label: 'Export client reports as PDF', included: true },
       { label: 'Unlimited client profiles', included: true },
       { label: 'Formula history & reports', included: true },
       { label: 'Web research fallback', included: true },
-      { label: 'AI pattern insights & benchmarks', included: false },
-      { label: 'Weekly performance digest', included: false },
+      { label: 'Top-up consultation packs available', included: 'add 5, 10, or 25 more anytime — never expire' },
+      { label: 'Industry benchmarks & CSV export', included: false },
       { label: 'Shared team database', included: false },
     ],
   },
@@ -97,19 +108,17 @@ const tiers: Tier[] = [
     featured: true,
     features: [
       { label: 'Everything in Pro, plus the full intelligence layer:', included: true },
-      { label: '100 full consultations per month', included: 'more headroom for busy weeks' },
-      { label: '200 client updates per month', included: 'generous cap for established books' },
-      { label: '100 AI final-look renderings per month', included: true },
-      { label: '100 voice formula narrations', included: true },
-      { label: '150 post-treatment AI scores', included: true },
+      { label: '80 full consultations per month', included: 'more headroom for busy weeks' },
+      { label: '160 client updates per month', included: 'generous cap for established books' },
+      { label: '80 AI final-look renderings per month', included: true },
+      { label: '80 voice formula narrations', included: true },
+      { label: '120 post-treatment AI scores', included: true },
       { label: 'Unlimited virtual try-ons', included: true },
       { label: 'Unlimited Ask Versani', included: true },
-      { label: 'Full performance dashboard', included: 'pattern insights, full history, CSV export' },
-      { label: 'Industry benchmarks', included: 'compare your scores to top-tier stylists' },
-      { label: 'At-risk client alerts', included: 'surface clients who haven\u2019t booked recently' },
-      { label: 'Weekly performance digest email', included: true },
-      { label: 'Academy masterclass library', included: true },
-      { label: 'Priority web research', included: true },
+      { label: 'Full performance dashboard', included: 'pattern insights, full history' },
+      { label: 'Everything in Pro Premium Add-On', included: 'at-risk alerts, digests, Academy, priority research' },
+      { label: 'Industry benchmarks', included: 'Studio-exclusive — compare your scores to top-tier stylists' },
+      { label: 'CSV export', included: 'Studio-exclusive — bring your data anywhere' },
       { label: 'Shared team database', included: false },
     ],
   },
@@ -123,11 +132,11 @@ const tiers: Tier[] = [
     ctaHref: '/auth?mode=signup',
     features: [
       { label: 'Everything in Studio, scaled for specialists:', included: true },
-      { label: '150 full consultations per month', included: 'built for high new-client volume' },
-      { label: '250 client updates per month', included: true },
-      { label: '150 AI final-look renderings per month', included: true },
-      { label: '200 voice formula narrations', included: true },
-      { label: '200 post-treatment AI scores', included: true },
+      { label: '120 full consultations per month', included: 'built for high new-client volume' },
+      { label: '220 client updates per month', included: true },
+      { label: '120 AI final-look renderings per month', included: true },
+      { label: '160 voice formula narrations', included: true },
+      { label: '160 post-treatment AI scores', included: true },
       { label: 'Priority AI processing', included: 'your consultations run first at peak times' },
       { label: 'Advanced correction tooling', included: 'deeper support for color correction cases' },
       { label: 'Custom formula templates', included: 'save your signature formulas for one-tap reuse' },
@@ -168,8 +177,8 @@ const salonBreakpoints = {
   optionA: [
     { min: 1, max: 4, perSeat: 29.99 },
     { min: 5, max: 9, perSeat: 28.99 },
-    { min: 10, max: 24, perSeat: 28.99 },
-    { min: 25, max: 50, perSeat: 27.99 },
+    { min: 10, max: 24, perSeat: 27.99 },
+    { min: 25, max: 50, perSeat: 26.99 },
   ],
   optionB: [
     { min: 1, max: 4, perSeat: 42.99 },
@@ -196,8 +205,17 @@ const salonExamples = [3, 5, 10, 25]
    Root client component
    ================================================================ */
 
+export const overagePacks = [
+  { size: 5, price: 5.99, label: 'Top-Up 5', description: '5 extra consultations', tag: null as null | 'popular' | 'best' },
+  { size: 10, price: 9.99, label: 'Top-Up 10', description: '10 extra consultations', tag: 'popular' as const },
+  { size: 25, price: 19.99, label: 'Top-Up 25', description: '25 extra consultations', tag: 'best' as const },
+]
+
+export const proAddOn = proPremiumAddOn
+
 export function PricingClient() {
   const [billing, setBilling] = useState<Billing>('monthly')
+  const [proAddOnEnabled, setProAddOnEnabled] = useState<boolean>(false)
 
   const formatPrice = (tier: Tier) => {
     if (tier.priceMonthly === 0) return 'Free'
@@ -340,6 +358,11 @@ export function PricingClient() {
                   Monthly only · annual billing starts at Studio
                 </p>
               )}
+              {tier.id === 'pro' && proAddOnEnabled && (
+                <p className="text-xs text-[color:var(--gold)] mt-1 font-medium">
+                  ${(19.99 + proPremiumAddOn.price).toFixed(2)}/month with Premium Add-On
+                </p>
+              )}
             </div>
 
             <Link
@@ -353,6 +376,60 @@ export function PricingClient() {
             >
               {tier.ctaLabel}
             </Link>
+
+            {tier.id === 'pro' && (
+              <div className="mb-5 rounded-xl p-3 bg-[color:var(--gold)]/[0.05] border border-[color:var(--gold)]/[0.22]">
+                <label className="flex items-start gap-3 cursor-pointer select-none">
+                  <button
+                    type="button"
+                    onClick={() => setProAddOnEnabled((v) => !v)}
+                    aria-pressed={proAddOnEnabled}
+                    aria-label="Toggle Pro Premium Add-On"
+                    className={cn(
+                      'relative mt-0.5 shrink-0 w-9 h-5 rounded-full transition-colors',
+                      proAddOnEnabled
+                        ? 'bg-[color:var(--gold)]'
+                        : 'bg-white/[0.12]',
+                    )}
+                  >
+                    <span
+                      className={cn(
+                        'absolute top-0.5 w-4 h-4 rounded-full bg-white transition-transform',
+                        proAddOnEnabled
+                          ? 'translate-x-[18px]'
+                          : 'translate-x-0.5',
+                      )}
+                    />
+                  </button>
+                  <span
+                    onClick={() => setProAddOnEnabled((v) => !v)}
+                    className="text-xs leading-snug text-white/80"
+                  >
+                    <span className="font-semibold text-[color:var(--gold)]">
+                      + Pro Premium Add-On $4.99/mo
+                    </span>
+                    <span className="block text-[11px] text-white/50 mt-0.5">
+                      Adds unlimited try-ons, 90-day dashboard, alerts & more
+                    </span>
+                  </span>
+                </label>
+                {proAddOnEnabled && (
+                  <ul className="mt-3 space-y-2 text-xs">
+                    {proPremiumAddOn.features.map((f, k) => (
+                      <li key={k} className="flex items-start gap-2 text-white/80">
+                        <CheckIcon />
+                        <span>
+                          {f.label}
+                          <span className="block text-[11px] text-white/45 mt-0.5">
+                            {f.detail}
+                          </span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
 
             <ul className="space-y-3 text-sm">
               {tier.features.map((feature, j) => (
@@ -385,6 +462,59 @@ export function PricingClient() {
         ))}
       </div>
     </>
+  )
+}
+
+/* ================================================================
+   Overage Packs — always-visible top-up cards
+   ================================================================ */
+
+export function OveragePacks() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {overagePacks.map((pack) => (
+        <div
+          key={pack.size}
+          className={cn(
+            'relative rounded-2xl p-6 flex flex-col',
+            pack.tag
+              ? 'bg-gradient-to-b from-[color:var(--gold)]/[0.08] to-[color:var(--gold)]/[0.01] border border-[color:var(--gold)]/[0.35]'
+              : 'bg-white/[0.04] border border-white/[0.08]',
+          )}
+        >
+          {pack.tag === 'popular' && (
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] whitespace-nowrap bg-[color:var(--gold)] text-black">
+              Popular
+            </div>
+          )}
+          {pack.tag === 'best' && (
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] whitespace-nowrap bg-[color:var(--gold)] text-black">
+              Best Value
+            </div>
+          )}
+          <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--gold)] mb-2">
+            {pack.label}
+          </div>
+          <div className="flex items-baseline gap-1.5 mb-2">
+            <span className="font-serif text-3xl tracking-tight text-[color:var(--foreground)]">
+              ${pack.price.toFixed(2)}
+            </span>
+          </div>
+          <p className="text-sm text-white/60 leading-relaxed mb-4">
+            {pack.description}. Never expires.
+          </p>
+          <Link
+            href="/auth?mode=signup"
+            className={cn(
+              'inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full text-sm font-medium tracking-wide transition-all duration-300 ease-luxury w-full mt-auto',
+              'bg-transparent text-[color:var(--gold)] border border-[color:var(--gold)] hover:bg-[color:var(--gold)] hover:text-black',
+            )}
+          >
+            Add to plan
+          </Link>
+        </div>
+      ))}
+    </div>
   )
 }
 
