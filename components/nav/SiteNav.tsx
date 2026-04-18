@@ -7,10 +7,10 @@ import { LinkButton } from '@/components/ui/Button'
 import { cn } from '@/lib/cn'
 
 const navLinks = [
-  { href: '/#features', label: 'Platform' },
-  { href: '/#pricing', label: 'Pricing' },
-  { href: '/#philosophy', label: 'Philosophy' },
-  { href: '/#contact', label: 'Contact' },
+  { href: '/philosophy', label: 'Philosophy' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/academy', label: 'Academy' },
+  { href: '/partners', label: 'Partners' },
 ]
 
 export function SiteNav() {

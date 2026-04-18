@@ -5,27 +5,26 @@ const columns = [
   {
     title: 'Platform',
     links: [
-      { href: '/#features', label: 'Consultation' },
-      { href: '/#features', label: 'Formula Lab' },
-      { href: '/#features', label: 'Ask Versani' },
-      { href: '/#pricing', label: 'Pricing' },
+      { href: '/pricing', label: 'Pricing' },
+      { href: '/philosophy', label: 'Philosophy' },
+      { href: '/academy', label: 'Academy' },
     ],
   },
   {
-    title: 'Studio',
+    title: 'Partnerships',
     links: [
-      { href: '/#pricing', label: 'For Colorists' },
-      { href: '/#pricing', label: 'For Studios' },
-      { href: '/#pricing', label: 'For Salons' },
+      { href: '/partners', label: 'For Brands' },
+      { href: '/ambassadors', label: 'For Ambassadors' },
+      { href: '/schools', label: 'For Schools' },
     ],
   },
   {
     title: 'Company',
     links: [
-      { href: '/#philosophy', label: 'Philosophy' },
-      { href: '/#contact', label: 'Contact' },
+      { href: '/contact', label: 'Contact' },
       { href: '/privacy', label: 'Privacy' },
       { href: '/terms', label: 'Terms' },
+      { href: '/cookies', label: 'Cookies' },
     ],
   },
 ]
