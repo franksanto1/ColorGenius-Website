@@ -86,7 +86,7 @@ const tiers: Tier[] = [
       { label: '40 AI final-look renderings per month', included: 'photorealistic preview of finished color' },
       { label: '50 post-treatment AI scores', included: 'score every service to feed your dashboard' },
       { label: '40 voice formula narrations', included: true },
-      { label: 'Unlimited Ask Versani (quick questions)', included: true },
+      { label: '75 Ask Versani messages per month', included: 'quick questions — chat with the AI for knowledge and technique. Top-up packs available if you need more.' },
       { label: 'Basic performance dashboard', included: 'last 30 days, score trend & service breakdown' },
       { label: 'Export client reports as PDF', included: true },
       { label: 'Unlimited client profiles', included: true },
@@ -114,7 +114,7 @@ const tiers: Tier[] = [
       { label: '80 voice formula narrations', included: true },
       { label: '120 post-treatment AI scores', included: true },
       { label: 'Unlimited virtual try-ons', included: true },
-      { label: 'Unlimited Ask Versani', included: true },
+      { label: '125 Ask Versani messages per month', included: 'quick questions — more headroom than Pro. Top-up packs available.' },
       { label: 'Full performance dashboard', included: 'pattern insights, full history' },
       { label: 'Everything in Pro Premium Add-On', included: 'at-risk alerts, digests, Academy, priority research' },
       { label: 'Industry benchmarks', included: 'Studio-exclusive — compare your scores to top-tier stylists' },
@@ -137,6 +137,7 @@ const tiers: Tier[] = [
       { label: '120 AI final-look renderings per month', included: true },
       { label: '160 voice formula narrations', included: true },
       { label: '160 post-treatment AI scores', included: true },
+      { label: '200 Ask Versani messages per month', included: 'the most generous cap — for specialists who query often. Top-up packs available.' },
       { label: 'Priority AI processing', included: 'your consultations run first at peak times' },
       { label: 'Advanced correction tooling', included: 'deeper support for color correction cases' },
       { label: 'Custom formula templates', included: 'save your signature formulas for one-tap reuse' },
@@ -209,6 +210,33 @@ export const overagePacks = [
   { size: 5, price: 5.99, label: 'Top-Up 5', description: '5 extra consultations', tag: null as null | 'popular' | 'best' },
   { size: 10, price: 9.99, label: 'Top-Up 10', description: '10 extra consultations', tag: 'popular' as const },
   { size: 25, price: 19.99, label: 'Top-Up 25', description: '25 extra consultations', tag: 'best' as const },
+]
+
+export const askVersaniPacks = [
+  {
+    id: 'ask-25',
+    size: 25,
+    price: 1.99,
+    label: 'Top-Up 25 Ask',
+    description: '25 extra Ask Versani messages. Never expires.',
+    badge: null as string | null,
+  },
+  {
+    id: 'ask-50',
+    size: 50,
+    price: 2.99,
+    label: 'Top-Up 50 Ask',
+    description: '50 extra Ask Versani messages. Never expires.',
+    badge: 'POPULAR',
+  },
+  {
+    id: 'ask-100',
+    size: 100,
+    price: 4.99,
+    label: 'Top-Up 100 Ask',
+    description: '100 extra Ask Versani messages. Never expires.',
+    badge: 'BEST VALUE',
+  },
 ]
 
 export const proAddOn = proPremiumAddOn
@@ -469,27 +497,196 @@ export function PricingClient() {
    Overage Packs — always-visible top-up cards
    ================================================================ */
 
+/**
+ * Compact tile used inside the TopUpPacks grid.
+ * Designed for 2-column mobile / 3-column desktop layouts — no vertical wasted space.
+ */
+function TopUpTile({
+  label,
+  price,
+  description,
+  badge,
+  unit,
+}: {
+  label: string
+  price: number
+  description: string
+  badge?: string | null
+  unit: string
+}) {
+  return (
+    <Link
+      href="/auth?mode=signup"
+      className={cn(
+        'group relative rounded-2xl p-4 md:p-5 flex flex-col justify-between min-h-[150px]',
+        'transition-all duration-300 ease-luxury',
+        'hover:border-[color:var(--gold)]/[0.55]',
+        badge
+          ? 'bg-gradient-to-b from-[color:var(--gold)]/[0.08] to-[color:var(--gold)]/[0.01] border border-[color:var(--gold)]/[0.35]'
+          : 'bg-white/[0.04] border border-white/[0.08]',
+      )}
+    >
+      {badge && (
+        <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-[0.18em] whitespace-nowrap bg-[color:var(--gold)] text-black">
+          {badge}
+        </div>
+      )}
+      <div>
+        <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--gold)] mb-1.5">
+          {label}
+        </div>
+        <div className="flex items-baseline gap-1 mb-1">
+          <span className="font-serif text-2xl md:text-3xl tracking-tight text-[color:var(--foreground)]">
+            ${price.toFixed(2)}
+          </span>
+        </div>
+        <p className="text-xs text-white/55 leading-snug">{description}</p>
+      </div>
+      <div className="mt-3 text-[11px] font-medium text-[color:var(--gold)] group-hover:text-[color:var(--foreground)] transition-colors">
+        Add {unit} →
+      </div>
+    </Link>
+  )
+}
+
+/**
+ * Legacy OveragePacks — kept for backwards compatibility if referenced elsewhere.
+ * New default is <TopUpPacks /> (segmented tabs + compact tile grid).
+ */
 export function OveragePacks() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
       {overagePacks.map((pack) => (
-        <div
+        <TopUpTile
           key={pack.size}
+          label={pack.label}
+          price={pack.price}
+          description={pack.description}
+          badge={
+            pack.tag === 'popular' ? 'Popular' : pack.tag === 'best' ? 'Best Value' : null
+          }
+          unit="consults"
+        />
+      ))}
+    </div>
+  )
+}
+
+/**
+ * TopUpPacks — unified mobile-first top-up surface.
+ *
+ * Replaces two separate stacked sections with one compact tabbed grid.
+ * Users switch between Consultation packs and Ask Versani packs without
+ * scrolling — everything stays in the viewport.
+ */
+export function TopUpPacks() {
+  const [active, setActive] = useState<'consults' | 'ask'>('consults')
+
+  const consultPacks = overagePacks.map((p) => ({
+    id: `c-${p.size}`,
+    label: p.label,
+    price: p.price,
+    description: `${p.size} extra consultations. Never expires.`,
+    badge:
+      p.tag === 'popular' ? 'Popular' : p.tag === 'best' ? 'Best Value' : null,
+  }))
+
+  const askPacks = askVersaniPacks.map((p) => ({
+    id: p.id,
+    label: p.label,
+    price: p.price,
+    description: p.description,
+    badge:
+      p.badge === 'POPULAR'
+        ? 'Popular'
+        : p.badge === 'BEST VALUE'
+          ? 'Best Value'
+          : null,
+  }))
+
+  const current = active === 'consults' ? consultPacks : askPacks
+  const unit = active === 'consults' ? 'consults' : 'messages'
+
+  return (
+    <div>
+      {/* Segmented control — tab switcher */}
+      <div
+        role="tablist"
+        aria-label="Top-up type"
+        className="inline-flex items-center p-1 rounded-full bg-white/[0.04] border border-white/[0.08] mb-6 md:mb-8"
+      >
+        <button
+          role="tab"
+          aria-selected={active === 'consults'}
+          onClick={() => setActive('consults')}
+          className={cn(
+            'px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium tracking-wide transition-all',
+            active === 'consults'
+              ? 'bg-[color:var(--gold)] text-black'
+              : 'text-white/60 hover:text-white/80',
+          )}
+        >
+          Consultations
+        </button>
+        <button
+          role="tab"
+          aria-selected={active === 'ask'}
+          onClick={() => setActive('ask')}
+          className={cn(
+            'px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium tracking-wide transition-all',
+            active === 'ask'
+              ? 'bg-[color:var(--gold)] text-black'
+              : 'text-white/60 hover:text-white/80',
+          )}
+        >
+          Ask Versani
+        </button>
+      </div>
+
+      {/* Responsive tile grid: 2-col on mobile, 3-col on desktop */}
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+        {current.map((pack) => (
+          <TopUpTile
+            key={pack.id}
+            label={pack.label}
+            price={pack.price}
+            description={pack.description}
+            badge={pack.badge}
+            unit={unit}
+          />
+        ))}
+      </div>
+
+      {/* Secondary context line */}
+      <p className="mt-4 text-xs text-white/45 text-center md:text-left">
+        {active === 'consults'
+          ? 'Packs work across Pro, Studio, and Studio Plus. Consultations never expire.'
+          : 'Unblock yourself instantly. Messages never expire.'}
+      </p>
+    </div>
+  )
+}
+
+/* ================================================================
+   Ask Versani Packs — always-visible Ask Versani top-up cards
+   ================================================================ */
+
+export function AskVersaniPacks() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      {askVersaniPacks.map((pack) => (
+        <div
+          key={pack.id}
           className={cn(
             'relative rounded-2xl p-6 flex flex-col',
-            pack.tag
+            pack.badge
               ? 'bg-gradient-to-b from-[color:var(--gold)]/[0.08] to-[color:var(--gold)]/[0.01] border border-[color:var(--gold)]/[0.35]'
               : 'bg-white/[0.04] border border-white/[0.08]',
           )}
         >
-          {pack.tag === 'popular' && (
+          {pack.badge && (
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] whitespace-nowrap bg-[color:var(--gold)] text-black">
-              Popular
-            </div>
-          )}
-          {pack.tag === 'best' && (
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] whitespace-nowrap bg-[color:var(--gold)] text-black">
-              Best Value
+              {pack.badge}
             </div>
           )}
           <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--gold)] mb-2">
@@ -501,7 +698,7 @@ export function OveragePacks() {
             </span>
           </div>
           <p className="text-sm text-white/60 leading-relaxed mb-4">
-            {pack.description}. Never expires.
+            {pack.description}
           </p>
           <Link
             href="/auth?mode=signup"

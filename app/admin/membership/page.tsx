@@ -25,6 +25,8 @@ const mockPlan = {
   updatesTotal: 120,
   renderingsUsed: 31,
   renderingsTotal: 40,
+  askVersaniUsed: 35,
+  askVersaniTotal: 75,
   capHitCountThisQuarter: 3,
   topUpsPurchasedThisQuarter: 3,
   topUpSpendThisQuarter: 29.97,
@@ -48,6 +50,17 @@ const topUpPacks: Array<{
   { size: 5, price: 5.99, description: '5 extra consultations', tag: null },
   { size: 10, price: 9.99, description: '10 extra consultations', tag: 'popular' },
   { size: 25, price: 19.99, description: '25 extra consultations', tag: 'best' },
+]
+
+const askVersaniTopUpPacks: Array<{
+  size: 25 | 50 | 100
+  price: number
+  description: string
+  tag: 'popular' | 'best' | null
+}> = [
+  { size: 25, price: 1.99, description: '25 extra Ask Versani messages', tag: null },
+  { size: 50, price: 2.99, description: '50 extra Ask Versani messages', tag: 'popular' },
+  { size: 100, price: 4.99, description: '100 extra Ask Versani messages', tag: 'best' },
 ]
 
 const billingHistory = [
@@ -77,7 +90,9 @@ function ProgressBar({ used, total }: { used: number; total: number }) {
 export default function MembershipPage() {
   const [addOnActive, setAddOnActive] = useState(mockPlan.addOnActive)
   const [loadingAction, setLoadingAction] = useState<string | null>(null)
-  const [capModalOpen, setCapModalOpen] = useState(false)
+  const [capModalOpen, setCapModalOpen] = useState<
+    null | 'consultations' | 'ask-versani'
+  >(null)
 
   const onPendingAction = (key: string) => {
     setLoadingAction(key)
@@ -160,6 +175,11 @@ export default function MembershipPage() {
             used={mockPlan.renderingsUsed}
             total={mockPlan.renderingsTotal}
           />
+          <UsageRow
+            label="Ask Versani"
+            used={mockPlan.askVersaniUsed}
+            total={mockPlan.askVersaniTotal}
+          />
         </div>
 
         <p className="text-xs text-white/40 mt-4">
@@ -240,10 +260,10 @@ export default function MembershipPage() {
           </h2>
           <button
             type="button"
-            onClick={() => setCapModalOpen(true)}
+            onClick={() => setCapModalOpen('consultations')}
             className="text-xs text-gold hover:underline"
           >
-            Preview cap-reached modal
+            Preview consultation cap-reached modal
           </button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -289,6 +309,66 @@ export default function MembershipPage() {
         </div>
         <p className="text-xs text-white/40 mt-4">
           Consultations never expire. Use them when you need them.
+        </p>
+      </div>
+
+      {/* Need More Ask Versani */}
+      <div className="mb-8">
+        <div className="flex items-baseline justify-between gap-4 mb-4">
+          <h2 className="font-serif text-xl md:text-2xl text-foreground">
+            Need more Ask Versani?
+          </h2>
+          <button
+            type="button"
+            onClick={() => setCapModalOpen('ask-versani')}
+            className="text-xs text-gold hover:underline"
+          >
+            Preview Ask Versani cap-reached modal
+          </button>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          {askVersaniTopUpPacks.map((pack) => (
+            <div
+              key={pack.size}
+              className={cn(
+                'relative rounded-2xl p-5 flex flex-col',
+                pack.tag
+                  ? 'bg-gradient-to-b from-gold/[0.08] to-gold/[0.01] border border-gold/[0.3]'
+                  : 'bg-white/[0.04] border border-white/[0.08]',
+              )}
+            >
+              {pack.tag === 'popular' && (
+                <div className="absolute -top-2.5 left-5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] bg-gold text-black">
+                  Popular
+                </div>
+              )}
+              {pack.tag === 'best' && (
+                <div className="absolute -top-2.5 left-5 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-[0.18em] bg-gold text-black">
+                  Best Value
+                </div>
+              )}
+              <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold mb-1.5">
+                Top-Up {pack.size} Ask
+              </div>
+              <div className="flex items-baseline gap-1.5 mb-2">
+                <span className="font-serif text-2xl text-foreground">
+                  ${pack.price.toFixed(2)}
+                </span>
+              </div>
+              <p className="text-xs text-white/55 mb-4">{pack.description}</p>
+              <button
+                type="button"
+                disabled={loadingAction === `ask-top-up-${pack.size}`}
+                onClick={() => onPendingAction(`ask-top-up-${pack.size}`)}
+                className="inline-flex items-center justify-center gap-2 h-10 px-5 rounded-full text-xs font-medium transition-colors bg-transparent text-gold border border-gold hover:bg-gold hover:text-black disabled:opacity-60 mt-auto"
+              >
+                {loadingAction === `ask-top-up-${pack.size}` ? 'Adding…' : 'Add'}
+              </button>
+            </div>
+          ))}
+        </div>
+        <p className="text-xs text-white/40 mt-4">
+          Ask Versani messages never expire. Use them when you need them.
         </p>
       </div>
 
@@ -356,19 +436,30 @@ export default function MembershipPage() {
       </div>
 
       <CapReachedModal
-        open={capModalOpen}
-        onClose={() => setCapModalOpen(false)}
+        open={capModalOpen !== null}
+        onClose={() => setCapModalOpen(null)}
+        capType={capModalOpen ?? 'consultations'}
         currentPlan={mockPlan.name}
-        consultsUsed={mockPlan.consultsTotal}
-        consultsTotal={mockPlan.consultsTotal}
+        used={
+          capModalOpen === 'ask-versani'
+            ? mockPlan.askVersaniTotal
+            : mockPlan.consultsTotal
+        }
+        total={
+          capModalOpen === 'ask-versani'
+            ? mockPlan.askVersaniTotal
+            : mockPlan.consultsTotal
+        }
         daysUntilReset={daysUntilReset}
         onPurchaseTopUp={(size) => {
-          onPendingAction(`modal-top-up-${size}`)
-          setCapModalOpen(false)
+          const prefix =
+            capModalOpen === 'ask-versani' ? 'modal-ask-top-up' : 'modal-top-up'
+          onPendingAction(`${prefix}-${size}`)
+          setCapModalOpen(null)
         }}
         onUpgrade={() => {
           onPendingAction('modal-upgrade')
-          setCapModalOpen(false)
+          setCapModalOpen(null)
         }}
       />
     </section>

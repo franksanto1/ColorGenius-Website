@@ -6,7 +6,7 @@ import {
   PricingClient,
   SalonCalculator,
   FAQItem,
-  OveragePacks,
+  TopUpPacks,
 } from '@/components/pricing/PricingClient'
 
 export const metadata: Metadata = {
@@ -72,6 +72,7 @@ const comparisonRows = [
   { feature: 'Personal RAG data ownership', versani: 'Yes', blendsor: '—' },
   { feature: 'Your actual inventory drives every formula', versani: 'Yes', blendsor: '—' },
   { feature: 'Voice formula narration', versani: 'Yes (Studio)', blendsor: '—' },
+  { feature: 'Ask Versani messages / month', versani: '75/125/200 + top-up packs ($1.99+)', blendsor: 'Limited' },
   { feature: 'Web research fallback', versani: 'Yes', blendsor: '—' },
   { feature: 'Specialist tier for high-volume pros', versani: 'Studio Plus (120/mo)', blendsor: '—' },
   { feature: 'Multi-seat salon tier (shared DB)', versani: 'Yes', blendsor: '—' },
@@ -97,6 +98,10 @@ const faqs = [
   {
     q: 'Do my top-up consultations expire?',
     a: 'No. Consultations from top-up packs never expire and roll over indefinitely. Use them when you need them.',
+  },
+  {
+    q: 'What if I hit my Ask Versani limit?',
+    a: 'You can add Top-Up 25 ($1.99), Top-Up 50 ($2.99), or Top-Up 100 ($4.99) anytime. Ask Versani messages never expire — use them whenever you need them. If you\u2019re consistently hitting your monthly limit, upgrading a tier may be more economical. Pro includes 75/month, Studio 125/month, and Studio Plus 200/month.',
   },
   {
     q: 'Can I switch between tiers anytime?',
@@ -163,17 +168,17 @@ export default function PricingPage() {
           <PricingClient />
         </section>
 
-        {/* Overage packs — always available */}
+        {/* Top-Up Packs — unified tabbed surface (mobile-friendly) */}
         <section
-          aria-labelledby="overage-heading"
+          aria-labelledby="topup-heading"
           className="container pb-24 md:pb-28 max-w-5xl"
         >
-          <div className="text-center mb-10">
+          <div className="text-center mb-8 md:mb-10">
             <div className="text-[10px] font-bold uppercase tracking-[0.25em] mb-3 text-[color:var(--gold)]">
-              Need more consultations?
+              Need more?
             </div>
             <h2
-              id="overage-heading"
+              id="topup-heading"
               className="font-serif text-3xl md:text-4xl font-light tracking-tight"
             >
               Top up{' '}
@@ -182,15 +187,14 @@ export default function PricingPage() {
               </em>
             </h2>
             <p className="text-sm text-white/55 mt-3 max-w-lg mx-auto">
-              Consultations never expire. Add what you need when you need it.
+              Add consultations or Ask Versani messages instantly. Nothing
+              expires.
             </p>
           </div>
 
-          <OveragePacks />
-
-          <p className="text-xs text-white/40 text-center mt-8">
-            Available to all paid tiers.
-          </p>
+          <div className="flex justify-center md:justify-start mb-2">
+            <TopUpPacks />
+          </div>
         </section>
 
         {/* Upgrade reasons */}

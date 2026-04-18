@@ -6,39 +6,52 @@ import { cn } from '@/lib/cn'
 
 /* ================================================================
    CapReachedModal
-   Surfaces when a subscriber has consumed their monthly consultation
-   allotment. Offers top-up packs (no urgency, no "upgrade now" SaaS
-   energy) plus an upgrade option. Gold accents, calm factual copy.
+   Surfaces when a subscriber has consumed their monthly allotment
+   for either consultations or Ask Versani messages. Offers top-up
+   packs (no urgency, no "upgrade now" SaaS energy) plus an upgrade
+   option. Gold accents, calm factual copy.
    ================================================================ */
+
+export type CapType = 'consultations' | 'ask-versani'
 
 export interface CapReachedModalProps {
   open: boolean
   onClose: () => void
+  capType: CapType
   currentPlan: string
-  consultsUsed: number
-  consultsTotal: number
+  used: number
+  total: number
   daysUntilReset: number
-  onPurchaseTopUp: (size: 5 | 10 | 25) => void
+  onPurchaseTopUp: (size: number) => void
   onUpgrade: () => void
 }
 
-const packs: Array<{
-  size: 5 | 10 | 25
+interface Pack {
+  size: number
   price: number
   tag?: 'recommended' | 'best'
   label: string
-}> = [
+}
+
+const consultationPacks: Pack[] = [
   { size: 5, price: 5.99, label: 'Top-Up 5' },
   { size: 10, price: 9.99, tag: 'recommended', label: 'Top-Up 10' },
   { size: 25, price: 19.99, tag: 'best', label: 'Top-Up 25' },
 ]
 
+const askVersaniPacks: Pack[] = [
+  { size: 25, price: 1.99, tag: 'recommended', label: 'Top-Up 25' },
+  { size: 50, price: 2.99, label: 'Top-Up 50' },
+  { size: 100, price: 4.99, tag: 'best', label: 'Top-Up 100' },
+]
+
 export function CapReachedModal({
   open,
   onClose,
+  capType,
   currentPlan,
-  consultsUsed,
-  consultsTotal,
+  used,
+  total,
   daysUntilReset,
   onPurchaseTopUp,
   onUpgrade,
@@ -52,6 +65,38 @@ export function CapReachedModal({
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
   }, [open, onClose])
+
+  const isAsk = capType === 'ask-versani'
+  const packs = isAsk ? askVersaniPacks : consultationPacks
+  const recommended = packs.find((p) => p.tag === 'recommended') ?? packs[0]
+
+  const unit = isAsk ? 'Ask Versani messages' : 'full consultations'
+  const unitShort = isAsk ? 'messages' : 'consultations'
+  const capLabel = isAsk ? 'Ask Versani cap' : 'Monthly cap'
+
+  const title = isAsk
+    ? `You've used your ${total} Ask Versani messages this month`
+    : "You've reached your monthly consultation cap"
+
+  const usageLine = isAsk
+    ? `You've used ${used} of ${total} Ask Versani messages this cycle.`
+    : `You've used ${used} of ${total} full consultations this cycle.`
+
+  const sideline = isAsk
+    ? 'Consultations and client updates keep working.'
+    : 'Client updates and Ask Versani keep working.'
+
+  const upgradeCopy = isAsk
+    ? {
+        title: 'Upgrade to Studio',
+        detail: '125 Ask Versani messages · 80 consults · Industry benchmarks',
+        price: '$34.99/month — prorated from today',
+      }
+    : {
+        title: 'Upgrade to Studio',
+        detail: '80 consultations · Industry benchmarks · CSV export',
+        price: '$34.99/month — prorated from today',
+      }
 
   return (
     <AnimatePresence>
@@ -112,21 +157,20 @@ export function CapReachedModal({
             </button>
 
             <div className="text-[10px] font-bold uppercase tracking-[0.24em] mb-3 text-[color:var(--gold)]">
-              {currentPlan} · Monthly cap
+              {currentPlan} · {capLabel}
             </div>
             <h2
               id="cap-modal-title"
               className="font-serif text-2xl md:text-3xl font-light tracking-tight mb-3 text-[color:var(--foreground)]"
             >
-              You&apos;ve reached your monthly cap
+              {title}
             </h2>
             <p className="text-sm text-white/60 leading-relaxed mb-6">
-              You&apos;ve used {consultsUsed} of {consultsTotal} full
-              consultations this cycle. Your cap resets in{' '}
+              {usageLine} Your cap resets in{' '}
               <span className="text-white/85">
                 {daysUntilReset} {daysUntilReset === 1 ? 'day' : 'days'}
               </span>
-              . Client updates and Ask Versani keep working.
+              . {sideline}
             </p>
 
             {/* Recommended pack */}
@@ -134,25 +178,25 @@ export function CapReachedModal({
               <div className="flex items-start justify-between gap-4 mb-4">
                 <div>
                   <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-[color:var(--gold)] mb-1.5">
-                    Quick fix
+                    Quick unblock
                   </div>
                   <div className="font-serif text-xl text-[color:var(--foreground)]">
-                    Add 10 consultations
+                    Top up {recommended.size} more
                   </div>
                   <div className="text-xs text-white/55 mt-1">
                     Never expires. Rolls over indefinitely.
                   </div>
                 </div>
                 <div className="font-serif text-2xl text-[color:var(--gold)] whitespace-nowrap">
-                  $9.99
+                  ${recommended.price.toFixed(2)}
                 </div>
               </div>
               <button
                 type="button"
-                onClick={() => onPurchaseTopUp(10)}
+                onClick={() => onPurchaseTopUp(recommended.size)}
                 className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full text-sm font-medium tracking-wide transition-all duration-300 ease-luxury w-full bg-[color:var(--gold)] text-black border border-[color:var(--gold-light)] hover:bg-[color:var(--gold-light)]"
               >
-                Add 10 consultations — $9.99
+                Top up {recommended.size} more — ${recommended.price.toFixed(2)}
               </button>
             </div>
 
@@ -162,7 +206,7 @@ export function CapReachedModal({
             </div>
             <div className="grid grid-cols-2 gap-2 mb-3">
               {packs
-                .filter((p) => p.size !== 10)
+                .filter((p) => p.size !== recommended.size)
                 .map((p) => (
                   <button
                     key={p.size}
@@ -182,7 +226,7 @@ export function CapReachedModal({
                       ${p.price.toFixed(2)}
                     </div>
                     <div className="text-[11px] text-white/50 mt-0.5">
-                      {p.size} consultations
+                      {p.size} {unitShort}
                     </div>
                   </button>
                 ))}
@@ -193,18 +237,18 @@ export function CapReachedModal({
               className="w-full rounded-xl p-4 bg-white/[0.03] border border-white/[0.08] hover:border-[color:var(--gold)]/[0.35] hover:bg-white/[0.05] transition-colors text-left"
             >
               <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-[color:var(--gold)] mb-1">
-                Upgrade to Studio
+                {upgradeCopy.title}
               </div>
               <div className="text-sm text-[color:var(--foreground)]">
-                80 consultations · Industry benchmarks · CSV export
+                {upgradeCopy.detail}
               </div>
               <div className="text-[11px] text-white/50 mt-0.5">
-                $34.99/month — prorated from today
+                {upgradeCopy.price}
               </div>
             </button>
 
             <p className="mt-6 text-xs text-white/40 text-center">
-              Your cap resets in {daysUntilReset}{' '}
+              Your {unit} cap resets in {daysUntilReset}{' '}
               {daysUntilReset === 1 ? 'day' : 'days'}.
             </p>
           </motion.div>
