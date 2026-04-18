@@ -29,7 +29,17 @@ export function AuthForm() {
     setLoading(true)
     setMessage(null)
 
-    const supabase = createClient()
+    let supabase
+    try {
+      supabase = createClient()
+    } catch {
+      setMessage({
+        type: 'info',
+        text: 'Authentication is not configured in this preview. Deploy to Vercel with Supabase env vars to enable sign-in.',
+      })
+      setLoading(false)
+      return
+    }
 
     try {
       if (mode === 'signup') {
@@ -67,7 +77,18 @@ export function AuthForm() {
     setLoading(true)
     setMessage(null)
 
-    const supabase = createClient()
+    let supabase
+    try {
+      supabase = createClient()
+    } catch {
+      setMessage({
+        type: 'info',
+        text: 'Authentication is not configured in this preview. Deploy to Vercel with Supabase env vars to enable sign-in.',
+      })
+      setLoading(false)
+      return
+    }
+
     try {
       const { error } = await supabase.auth.signInWithOtp({
         email,

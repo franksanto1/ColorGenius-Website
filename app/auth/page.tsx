@@ -15,8 +15,7 @@ export default function AuthPage() {
     <main className="min-h-screen bg-background flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-md">
         <Link href="/" className="flex flex-col items-center mb-10">
-          <VersaniWordmark variant="monogram" size="md" priority />
-          <VersaniWordmark size="sm" className="mt-4" />
+          <VersaniWordmark size="md" priority />
           <span className="mt-3 text-xs text-muted-foreground tracking-[0.2em] uppercase">
             Beauty Meets Intelligence
           </span>
