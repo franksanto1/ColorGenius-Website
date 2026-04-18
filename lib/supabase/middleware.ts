@@ -8,9 +8,26 @@ import { NextResponse, type NextRequest } from 'next/server'
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
 
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  // If Supabase isn't configured (e.g. local preview), skip auth entirely.
+  // Admin routes remain inaccessible since they need a real session.
+  if (!supabaseUrl || !supabaseKey) {
+    const path = request.nextUrl.pathname
+    if (path.startsWith('/admin')) {
+      const redirectUrl = request.nextUrl.clone()
+      redirectUrl.pathname = '/auth'
+      redirectUrl.searchParams.set('next', path)
+      redirectUrl.searchParams.set('error', 'supabase_not_configured')
+      return NextResponse.redirect(redirectUrl)
+    }
+    return supabaseResponse
+  }
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
+    supabaseUrl,
+    supabaseKey,
     {
       cookies: {
         getAll() {

@@ -44,7 +44,8 @@ export function Hero() {
         </motion.div>
 
         <motion.div {...fade(0.1)} className="mt-10 md:mt-14">
-          <VersaniWordmark size="display" as="h1" />
+          <h1 className="sr-only">Versani</h1>
+          <VersaniWordmark size="display" priority />
         </motion.div>
 
         <motion.h2

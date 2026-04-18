@@ -6,12 +6,63 @@
 import { createServerClient } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 
+export function isSupabaseConfigured(): boolean {
+  return Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+  )
+}
+
 export async function createClient() {
   const cookieStore = await cookies()
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  if (!url || !key) {
+    // Return a no-op client-shaped stub so callers can check auth.getUser()
+    // and receive null without crashing the page.
+    return {
+      auth: {
+        async getUser() {
+          return { data: { user: null }, error: null }
+        },
+        async signOut() {
+          return { error: null }
+        },
+        async exchangeCodeForSession() {
+          return { error: new Error('Supabase not configured') }
+        },
+      },
+      from() {
+        return {
+          select() {
+            return {
+              eq() {
+                return {
+                  async single() {
+                    return { data: null, error: null }
+                  },
+                }
+              },
+              async order() {
+                return { data: [], error: null }
+              },
+              async limit() {
+                return { data: [], error: null }
+              },
+            }
+          },
+          update() {
+            return { eq: async () => ({ data: null, error: null }) }
+          },
+          insert: async () => ({ data: null, error: null }),
+        }
+      },
+    } as never
+  }
 
   return createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL || '',
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '',
+    url,
+    key,
     {
       cookies: {
         getAll() {

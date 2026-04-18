@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Suspense } from 'react'
 import { AuthForm } from './AuthForm'
+import { VersaniWordmark } from '@/components/VersaniWordmark'
 
 export const metadata: Metadata = {
   title: 'Sign In · Versani',
@@ -13,9 +14,10 @@ export default function AuthPage() {
   return (
     <main className="min-h-screen bg-background flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-md">
-        <Link href="/" className="block mb-10 text-center">
-          <span className="font-serif text-4xl text-gold tracking-wider">VERSANI</span>
-          <span className="block mt-2 text-xs text-muted-foreground tracking-[0.2em] uppercase">
+        <Link href="/" className="flex flex-col items-center mb-10">
+          <VersaniWordmark variant="monogram" size="md" priority />
+          <VersaniWordmark size="sm" className="mt-4" />
+          <span className="mt-3 text-xs text-muted-foreground tracking-[0.2em] uppercase">
             Beauty Meets Intelligence
           </span>
         </Link>
