@@ -27,19 +27,19 @@ const platformFeatures = [
 const segments = [
   {
     title: 'Solo colorists',
-    body: 'Pro tier. 65 full consultations per month, unlimited refreshes. Enough runway for a busy chair and the tools that matter most.',
+    body: 'Pro tier. 50 full consultations per month plus client-update cap, top-up packs that never expire. Enough runway for a busy chair and the tools that matter most.',
     href: '/pricing',
     cta: 'See Pro tier',
   },
   {
     title: 'Full-time professionals',
-    body: 'Studio tier. 100 full consultations, unlimited virtual try-ons, the full performance dashboard — industry benchmarks included.',
+    body: 'Studio tier. 80 full consultations, unlimited virtual try-ons, the full performance dashboard — industry benchmarks included.',
     href: '/pricing',
     cta: 'See Studio tier',
   },
   {
     title: 'Color specialists',
-    body: 'Studio Plus. 150 consultations, priority AI, advanced correction tooling, custom formula templates, branded reports.',
+    body: 'Studio Plus. 120 consultations, priority AI, advanced correction tooling, custom formula templates, branded reports.',
     href: '/pricing',
     cta: 'See Studio Plus',
   },

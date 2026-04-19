@@ -155,10 +155,10 @@ const tiers: Tier[] = [
     priceYearly: null,
     priceLabel: 'Per-seat',
     ctaLabel: 'Request Salon Pricing',
-    ctaHref: '/auth?mode=signup',
+    ctaHref: 'mailto:frank@versani.ai?subject=Salon%20Versani%20pricing%20inquiry',
     features: [
       { label: 'Two options — Option A or Option B:', included: true },
-      { label: 'Option A — 50 full consults per seat', included: 'from $28/seat · maintenance-heavy salons' },
+      { label: 'Option A — 50 full consults per seat', included: 'from $27/seat · maintenance-heavy salons' },
       { label: 'Option B — 100 full consults per seat', included: 'from $38/seat · high-volume salons' },
       { label: 'Full Studio feature experience for every seat', included: 'no dilution — every stylist gets the complete tool' },
       { label: 'Your salon\u2019s product lines used in every formula', included: true },
@@ -171,6 +171,25 @@ const tiers: Tier[] = [
       { label: 'Volume discounts (3 / 5 / 10 / 25+ seats)', included: true },
     ],
   },
+  {
+    id: 'custom',
+    name: 'Custom',
+    tagline: 'For 50+ seats, multi-location salon groups, beauty schools, and color education brands.',
+    priceMonthly: null,
+    priceYearly: null,
+    priceLabel: 'By conversation',
+    ctaLabel: "Let\u2019s talk",
+    ctaHref: 'mailto:frank@versani.ai?subject=Custom%20%2F%20Multi-location%20Versani%20pricing%20inquiry',
+    features: [
+      { label: 'Custom volume economics', included: 'per-seat rate continues to decrease above 50 seats' },
+      { label: 'Dedicated onboarding', included: 'we migrate your team and train every stylist' },
+      { label: 'Direct access to the founder', included: 'account management from Frank himself' },
+      { label: 'Shared database across all locations', included: true },
+      { label: 'Multi-location team dashboards', included: true },
+      { label: 'Custom contract terms', included: true },
+      { label: 'Priority support', included: true },
+    ],
+  },
 ]
 
 /* ── Salon per-seat pricing tiers ── */
@@ -178,8 +197,8 @@ const salonBreakpoints = {
   optionA: [
     { min: 1, max: 4, perSeat: 29.99 },
     { min: 5, max: 9, perSeat: 28.99 },
-    { min: 10, max: 24, perSeat: 27.99 },
-    { min: 25, max: 50, perSeat: 26.99 },
+    { min: 10, max: 40, perSeat: 27.99 },
+    { min: 41, max: 50, perSeat: 26.99 },
   ],
   optionB: [
     { min: 1, max: 4, perSeat: 42.99 },

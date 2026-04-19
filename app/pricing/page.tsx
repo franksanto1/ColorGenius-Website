@@ -296,8 +296,10 @@ export default function PricingPage() {
             <SalonCalculator />
 
             <p className="text-xs text-white/40 mt-8">
-              50+ seats? Enterprise pricing available — talk to us. · Beauty
-              schools: see dedicated{' '}
+              50+ seats, multi-location groups, or beauty education brands? See
+              our{' '}
+              <span className="text-[color:var(--gold)]">Custom</span> tier
+              above — let&rsquo;s talk. · Beauty schools: see dedicated{' '}
               <Link
                 href="/schools"
                 className="text-[color:var(--gold)] hover:underline"
