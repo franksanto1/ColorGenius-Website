@@ -388,17 +388,15 @@ export function PricingClient() {
             <ul className="space-y-3 text-sm">
               {tier.features.map((feature, j) => (
                 <li key={j} className="flex items-start gap-2.5">
-                  {feature.included === true ? (
-                    <CheckIcon />
-                  ) : feature.included === false ? (
+                  {feature.included === false ? (
                     <XIcon />
                   ) : (
-                    <DotIcon />
+                    <CheckIcon />
                   )}
                   <span
                     className={cn(
                       feature.included === false
-                        ? 'text-white/30 line-through'
+                        ? 'text-white/30 line-through decoration-white/30'
                         : 'text-white/80',
                     )}
                   >
