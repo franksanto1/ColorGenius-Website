@@ -12,12 +12,12 @@ import {
 export const metadata: Metadata = {
   title: 'Pricing — Five tiers, zero compromise',
   description:
-    'Pricing that respects your craft. Five Versani tiers — Free Trial, Pro, Studio, Studio Plus, and Salon — with per-seat salon pricing, top-up consultation packs that never expire, and a 14-day trial with 7 days of unlimited access.',
+    'Pricing that respects your craft. Five Versani tiers — Free Trial, Pro, Studio, Salon, and Custom — with per-seat salon pricing, top-up consultation packs that never expire, and a 7-day full-access trial.',
   alternates: { canonical: '/pricing' },
   openGraph: {
     title: 'Versani Pricing — Five tiers, zero compromise',
     description:
-      'Five tiers designed around how professionals actually work. 14-day trial with 7 days of unlimited access. Top up anytime — consultations never expire.',
+      'Five tiers designed around how professionals actually work. 7-day full-access trial. Top up anytime — consultations never expire.',
     url: '/pricing',
     type: 'website',
   },
@@ -31,49 +31,51 @@ export const metadata: Metadata = {
 
 const upgradeHighlights = [
   {
-    title: '60% more full consultations (50 → 80)',
-    body: 'Real headroom for heavy new-client weeks. Client updates rise with you.',
+    title: 'More full consultations (50 → 70)',
+    body: 'Real headroom for heavy new-client weeks. Client updates rise with you (120 → 160).',
   },
   {
-    title: 'Industry benchmarks (Studio-exclusive)',
-    body: 'See how your scores stack against top-tier colorists. Not available at any other tier.',
+    title: 'AI client insights (Studio exclusive)',
+    body: 'Individual client pattern analysis — "Sarah\u2019s retention improved 34%". Not available on Pro.',
   },
   {
-    title: 'CSV export (Studio-exclusive)',
-    body: 'Bring your data anywhere — your scoring trends, formulas, and client patterns.',
+    title: 'Revenue-per-client tracking (Studio exclusive)',
+    body: 'Know your top 10% by lifetime value. Plus scheduling AI that prompts rebook outreach.',
   },
   {
-    title: 'Unlimited virtual try-ons',
-    body: 'Show every client their future color — no counting, no add-on needed.',
+    title: 'Unlimited virtual try-ons (50 → ∞)',
+    body: 'Show every client their future color — fair-use threshold ~100/month.',
   },
   {
-    title: 'Everything the Pro Premium Add-On unlocks',
-    body: 'Full 90-day dashboard, at-risk client alerts, weekly digest, Academy library, priority research — all included.',
+    title: 'Correction workflow UI + client-facing reports',
+    body: 'Structured multi-step interface for correction cases, plus branded PDFs with your logo.',
   },
   {
     title: 'More of everything else',
-    body: 'Renderings, voice narration, post-treatment scoring all scale up with Studio.',
+    body: 'Post-treatment scoring (80 → 140), voice narrations (50 → 90), and Ask Versani messages (75 → 150).',
   },
 ]
 
 const comparisonRows = [
-  { feature: 'Free-trial length', versani: '14-day (full 7 days + reduced 7 days)', blendsor: '7 days' },
+  { feature: 'Free-trial length', versani: '7-day full access', blendsor: '7 days' },
   { feature: 'Pro tier full consultations / month', versani: '50 (full AI flow) + overage packs', blendsor: '50 formulas only' },
   { feature: 'Overage packs available', versani: 'Top-ups never expire', blendsor: '—' },
-  { feature: 'Client updates for returning clients', versani: '120–220 / month by tier', blendsor: 'Count against cap' },
-  { feature: 'Pro tier price', versani: '$19.99', blendsor: '€19 (~$21)' },
-  { feature: 'Optional Premium add-on (Pro)', versani: '$4.99/mo', blendsor: '—' },
+  { feature: 'Client updates for returning clients', versani: '120 Pro / 160 Studio', blendsor: 'Count against cap' },
+  { feature: 'Pro tier price', versani: '$24.99/mo or $249.90/yr', blendsor: '€19 (~$21)' },
+  { feature: 'Studio tier price', versani: '$39.99/mo or $399.90/yr', blendsor: '—' },
   { feature: 'Unlimited client profiles (Pro)', versani: 'Yes', blendsor: 'Capped at 100' },
-  { feature: 'Virtual try-ons (Pro)', versani: '25/mo (unlimited with $4.99 add-on)', blendsor: '20 / month' },
-  { feature: 'Virtual try-ons (Studio)', versani: 'Unlimited', blendsor: 'Capped' },
+  { feature: 'Virtual try-ons (Pro)', versani: '50 / month', blendsor: '20 / month' },
+  { feature: 'Virtual try-ons (Studio)', versani: 'Unlimited (fair-use ~100/mo)', blendsor: 'Capped' },
   { feature: 'AI preview rendering', versani: 'Bundled with consult', blendsor: '—' },
-  { feature: 'Post-treatment AI scoring', versani: '50 Pro / 120 Studio / 160 Studio Plus', blendsor: '—' },
-  { feature: 'Performance dashboard & trends', versani: 'Yes (Studio — 90-day add-on on Pro)', blendsor: '—' },
+  { feature: 'Post-treatment AI scoring', versani: '80 Pro / 140 Studio', blendsor: '—' },
+  { feature: 'Full 90-day performance dashboard', versani: 'Included on Pro and Studio', blendsor: '—' },
+  { feature: 'AI client insights', versani: 'Studio-exclusive', blendsor: '—' },
+  { feature: 'Revenue-per-client tracking', versani: 'Studio-exclusive', blendsor: '—' },
+  { feature: 'Correction workflow UI', versani: 'Studio-exclusive', blendsor: '—' },
   { feature: 'Personal RAG data ownership', versani: 'Yes', blendsor: '—' },
   { feature: 'Your actual inventory drives every formula', versani: 'Yes', blendsor: '—' },
-  { feature: 'Voice formula narration', versani: 'Yes (Studio)', blendsor: '—' },
-  { feature: 'Ask Versani messages / month', versani: '75/125/200 + top-up packs ($1.99+)', blendsor: 'Limited' },
-  { feature: 'Specialist tier for high-volume pros', versani: 'Studio Plus (120/mo)', blendsor: '—' },
+  { feature: 'Voice formula narration', versani: '50 Pro / 90 Studio', blendsor: '—' },
+  { feature: 'Ask Versani messages / month', versani: '75 Pro / 150 Studio + top-up packs ($1.99+)', blendsor: 'Limited' },
   { feature: 'Multi-seat salon tier (shared DB)', versani: 'Yes', blendsor: '—' },
 ]
 
@@ -87,12 +89,12 @@ const faqs = [
     a: 'You can add a top-up pack at any time — 5 consultations for $5.99, 10 for $9.99, or 25 for $19.99. Top-up consultations never expire and roll over indefinitely. You can also upgrade to Studio for more volume and exclusive features. Client updates for returning clients keep working in their own bucket.',
   },
   {
-    q: 'What is the Pro Premium Add-On?',
-    a: 'A $4.99/month option for Pro subscribers ($24.98 total). It unlocks unlimited virtual try-ons, the full 90-day performance dashboard, at-risk client alerts, the weekly performance digest email, and Versani Academy Library access. Industry benchmarks and CSV export remain Studio-exclusive — those are a real reason to upgrade.',
+    q: 'Is there an annual plan?',
+    a: 'Yes \u2014 Pro at $249.90/year or Studio at $399.90/year. Both save you 2 months compared to monthly billing, plus include priority onboarding, a starter top-up credit, and early access to new features.',
   },
   {
     q: 'How does the free trial work?',
-    a: 'Fourteen days in two phases. Days 1–7: full Studio access with no limits. Days 8–14: AI renderings and voice narration pause, but full consultations, client updates, and Ask Versani keep working. On Day 14, upgrade to any paid tier to keep your momentum, or your account enters read-only. No credit card required to start.',
+    a: 'Seven days of full Studio access with no limits. On day 7, upgrade to any paid tier to keep your momentum, or your account enters read-only mode \u2014 your data stays preserved. No credit card required to start.',
   },
   {
     q: 'Do my top-up consultations expire?',
@@ -100,7 +102,7 @@ const faqs = [
   },
   {
     q: 'What if I hit my Ask Versani limit?',
-    a: 'You can add Top-Up 25 ($1.99), Top-Up 50 ($2.99), or Top-Up 100 ($4.99) anytime. Ask Versani messages never expire — use them whenever you need them. If you\u2019re consistently hitting your monthly limit, upgrading a tier may be more economical. Pro includes 75/month, Studio 125/month, and Studio Plus 200/month.',
+    a: 'You can add Top-Up 25 ($1.99), Top-Up 50 ($2.99), or Top-Up 100 ($4.99) anytime. Ask Versani messages never expire \u2014 use them whenever you need them. If you\u2019re consistently hitting your monthly limit, upgrading a tier may be more economical. Pro includes 75/month and Studio 150/month.',
   },
   {
     q: 'Can I switch between tiers anytime?',
@@ -112,11 +114,11 @@ const faqs = [
   },
   {
     q: 'When should I upgrade from Pro to Studio?',
-    a: 'When you want the Studio-exclusives — industry benchmarks and CSV export — or when you\u2019re regularly adding top-ups to cover volume above 50 consultations. Studio also brings 80 consultations baseline, unlimited try-ons by default, and everything the Premium Add-On unlocks.',
+    a: 'When you consistently hit Pro\u2019s 50-consultation cap, want business operator tools (revenue-per-client tracking, scheduling AI, monthly business review PDFs), need the correction workflow UI, or want AI client insights (individual client pattern analysis). Studio is the tier for colorists running a business, not just doing the craft. Studio also brings 70 consultations baseline and unlimited virtual try-ons.',
   },
   {
-    q: 'When does Studio Plus make sense?',
-    a: 'When you\u2019re consistently pushing past 80 full consultations in a month. Typical for color correction specialists, celebrity colorists, and stylists with heavy new-client acquisition. Studio Plus gives you 120 full consultations, priority AI processing, advanced correction tooling, and client-facing branded reports.',
+    q: 'What about high-volume specialists and correction pros?',
+    a: 'If you\u2019re consistently pushing past Studio\u2019s caps \u2014 typical for color correction specialists and celebrity colorists \u2014 reach out about our Custom tier. We tailor volume, onboarding, and contract terms to fit your practice.',
   },
   {
     q: 'Is my data really mine?',
@@ -153,8 +155,8 @@ export default function PricingPage() {
             </h1>
             <p className="mt-7 max-w-2xl mx-auto text-base md:text-lg text-[color:var(--muted-foreground)] leading-relaxed">
               Five tiers designed around how professionals actually work. Top up
-              anytime — consultations never expire. 14-day trial with 7 days of
-              unlimited access, then billing or reduced features.
+              anytime &mdash; consultations never expire. 7-day full-access
+              trial, then billing or read-only.
             </p>
           </div>
         </section>
@@ -216,8 +218,9 @@ export default function PricingPage() {
               means…
             </h2>
             <p className="text-sm text-white/55 mt-3 max-w-lg mx-auto">
-              More volume, the exclusive intelligence features, and everything
-              the Premium Add-On unlocks.
+              More volume, plus the business operator layer &mdash; AI client
+              insights, revenue tracking, scheduling AI, and the correction
+              workflow UI.
             </p>
           </div>
 
@@ -238,36 +241,35 @@ export default function PricingPage() {
           </div>
 
           <p className="text-xs text-white/40 text-center mt-10 italic">
-            Not ready for Studio yet? Add the Pro Premium Add-On for $4.99/mo,
-            or grab a top-up pack.
+            Not ready for Studio yet? Grab a top-up pack whenever you need extra
+            capacity &mdash; consults and Ask Versani messages never expire.
           </p>
         </section>
 
-        {/* Studio Plus callout */}
+        {/* Still need more — Custom callout */}
         <section className="container pb-24 md:pb-28 max-w-4xl">
           <div className="rounded-2xl p-8 md:p-12 bg-gradient-to-b from-[color:var(--gold)]/[0.06] to-[color:var(--gold)]/[0.01] border border-[color:var(--gold)]/[0.18]">
             <div className="text-[10px] font-bold uppercase tracking-[0.25em] mb-3 text-[color:var(--gold)]">
-              When Studio isn&apos;t quite enough
+              Still need more?
             </div>
             <h2 className="font-serif text-3xl md:text-4xl font-light tracking-tight mb-5">
-              Studio{' '}
+              See the{' '}
               <em className="italic font-normal text-[color:var(--gold)]">
-                Plus
+                Custom
               </em>{' '}
-              is for the specialists
+              tier
             </h2>
             <p className="text-base text-white/75 leading-relaxed mb-4">
               Color correction pros, celebrity colorists, and high-volume
-              specialists often push past 80 full consultations in a strong
-              month. Studio Plus brings you to 120 consultations with the best
-              per-consult ratio in the lineup, plus priority AI processing,
-              advanced correction tooling, and client-facing branded reports.
+              specialists sometimes push past Studio&rsquo;s caps in a strong
+              month. For those cases we tailor volume, onboarding, and contract
+              terms to fit your practice.
             </p>
             <p className="text-base text-white/65 leading-relaxed">
               If your book skews heavily toward new clients, major changes, or
-              corrections — this is the tier that keeps up. For teams of 3+
-              stylists sharing a practice, move up to Salon for per-seat
-              economics.
+              corrections &mdash; or if you run multiple locations &mdash;
+              let&rsquo;s talk. For teams of 3+ stylists sharing a practice,
+              move to Salon for per-seat economics.
             </p>
           </div>
         </section>
@@ -398,9 +400,8 @@ export default function PricingPage() {
         <section className="container pb-24 max-w-3xl text-center">
           <p className="text-xs text-white/40 leading-relaxed">
             All prices in USD. No setup fees, no contracts. Cancel anytime. The
-            trial runs 7 days of full Studio access, then 7 days of reduced
-            features before billing or read-only. Top-up consultations never
-            expire.
+            trial runs 7 days of full Studio access, then billing or read-only.
+            Top-up consultations never expire.
           </p>
         </section>
       </main>

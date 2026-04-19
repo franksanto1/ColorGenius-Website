@@ -37,111 +37,83 @@ interface Tier {
   features: TierFeature[]
 }
 
-const proPremiumAddOn = {
-  price: 4.99,
-  features: [
-    { label: 'Unlimited virtual try-ons', detail: 'overrides the 25/mo cap on base Pro' },
-    { label: 'Full performance dashboard', detail: '90-day history — not just 30 days' },
-    { label: 'At-risk client alerts', detail: 'surface clients who haven\u2019t booked recently' },
-    { label: 'Weekly performance digest email', detail: 'a Sunday-morning read on your week' },
-    { label: 'Versani Academy Library', detail: 'access the full library of masterclasses and technique walkthroughs' },
-  ],
-}
-
 const tiers: Tier[] = [
   {
     id: 'trial',
     name: 'Free Trial',
-    tagline: 'Experience the full app for 14 days — no card required.',
+    tagline: 'Experience the full app for 7 days — no card required.',
     priceMonthly: 0,
     priceYearly: 0,
-    priceLabel: '14 days',
+    priceLabel: '7 days',
     ctaLabel: 'Start Free Trial',
     ctaHref: '/auth?mode=signup',
     features: [
       { label: 'Your actual product lines used in every formula', included: true },
-      { label: 'Full Studio access — Days 1–7', included: 'everything unlocked, no limits' },
-      { label: 'Limited access — Days 8–14', included: 'AI renderings and voice narration pause; consultations and chat stay on' },
+      { label: '7 days full access', included: 'everything unlocked, no limits' },
       { label: 'Unlimited Ask Versani throughout', included: true },
       { label: 'Unlimited clients', included: true },
-      { label: 'Day 14', included: 'Upgrade anytime to keep your momentum, or account enters read-only' },
+      { label: 'After day 7', included: 'Upgrade anytime to keep your momentum, or account enters read-only' },
     ],
   },
   {
     id: 'pro',
     name: 'Pro',
     tagline: 'For professional colorists who want every formula elevated.',
-    priceMonthly: 19.99,
-    priceYearly: null,
-    annualAvailable: false,
+    priceMonthly: 24.99,
+    priceYearly: 249.90,
+    annualAvailable: true,
     ctaLabel: 'Choose Pro',
     ctaHref: '/auth?mode=signup',
     features: [
       { label: 'Your actual product lines used in every formula', included: true },
       { label: '50 full consultations per month', included: 'new client or major change — formula + photo analysis + AI rendering' },
       { label: '120 client updates per month', included: 'quick formula tweaks for returning clients' },
-      { label: '25 virtual try-ons per month', included: 'real-time color previews on your client\u2019s photo' },
+      { label: '50 virtual try-ons per month', included: 'real-time color previews on your client\u2019s photo' },
       { label: '40 AI final-look renderings per month', included: 'photorealistic preview of finished color' },
-      { label: '50 post-treatment AI scores', included: 'score every service to feed your dashboard' },
-      { label: '40 voice formula narrations', included: true },
-      { label: '75 Ask Versani messages per month', included: 'quick questions — chat with the AI for knowledge and technique. Top-up packs available if you need more.' },
-      { label: 'Basic performance dashboard', included: 'last 30 days, score trend & service breakdown' },
+      { label: '80 post-treatment AI scores', included: 'score every service to feed your dashboard' },
+      { label: '50 voice formula narrations', included: true },
+      { label: '75 Ask Versani messages per month', included: 'top-up packs available ($1.99+, never expire)' },
+      { label: 'Full 90-day performance dashboard', included: 'pattern insights, full history' },
+      { label: 'At-risk client alerts', included: true },
+      { label: 'Weekly performance digest email', included: true },
+      { label: 'Versani Academy Library', included: true },
+      { label: 'Industry benchmarks', included: 'see how your scores stack against top-tier colorists' },
+      { label: 'Formula A/B memory', included: 'save formula variations, track performance' },
+      { label: 'Custom formula templates', included: 'save signatures for one-tap reuse' },
+      { label: 'Unlimited formula history', included: 'no expiration on your formula records' },
       { label: 'Export client reports as PDF', included: true },
       { label: 'Unlimited client profiles', included: true },
-      { label: 'Formula history & reports', included: true },
-      { label: 'Top-up consultation packs available', included: 'add 5, 10, or 25 more anytime — never expire' },
-      { label: 'Industry benchmarks & CSV export', included: false },
-      { label: 'Shared team database', included: false },
+      { label: 'AI client insights', included: false },
+      { label: 'CSV data export', included: false },
+      { label: 'Revenue-per-client tracking', included: false },
     ],
   },
   {
     id: 'studio',
     name: 'Studio',
-    tagline: 'For colorists ready to see their craft compound — patterns, trends, and industry benchmarks.',
-    priceMonthly: 34.99,
-    priceYearly: 357,
+    tagline: 'For colorists running a business — operator tools, client insights, and revenue intelligence.',
+    priceMonthly: 39.99,
+    priceYearly: 399.90,
+    annualAvailable: true,
     ctaLabel: 'Choose Studio',
     ctaHref: '/auth?mode=signup',
     featured: true,
     features: [
-      { label: 'Everything in Pro, plus the full intelligence layer:', included: true },
-      { label: '80 full consultations per month', included: 'more headroom for busy weeks' },
+      { label: 'Everything in Pro, plus the business operator tier:', included: true },
+      { label: '70 full consultations per month', included: 'more headroom for busy weeks' },
       { label: '160 client updates per month', included: 'generous cap for established books' },
-      { label: '80 AI final-look renderings per month', included: true },
-      { label: '80 voice formula narrations', included: true },
-      { label: '120 post-treatment AI scores', included: true },
-      { label: 'Unlimited virtual try-ons', included: true },
-      { label: '125 Ask Versani messages per month', included: 'quick questions — more headroom than Pro. Top-up packs available.' },
-      { label: 'Full performance dashboard', included: 'pattern insights, full history' },
-      { label: 'Everything in Pro Premium Add-On', included: 'at-risk alerts, digests, Academy, priority research' },
-      { label: 'Industry benchmarks', included: 'Studio-exclusive — compare your scores to top-tier stylists' },
-      { label: 'CSV export', included: 'Studio-exclusive — bring your data anywhere' },
-      { label: 'Shared team database', included: false },
-    ],
-  },
-  {
-    id: 'studio-plus',
-    name: 'Studio Plus',
-    tagline: 'For dedicated color specialists — colorists who focus exclusively on color services.',
-    priceMonthly: 49.99,
-    priceYearly: 499,
-    ctaLabel: 'Choose Studio Plus',
-    ctaHref: '/auth?mode=signup',
-    features: [
-      { label: 'Everything in Studio, scaled for specialists:', included: true },
-      { label: '120 full consultations per month', included: 'built for high new-client volume' },
-      { label: '220 client updates per month', included: true },
-      { label: '120 AI final-look renderings per month', included: true },
-      { label: '160 voice formula narrations', included: true },
-      { label: '160 post-treatment AI scores', included: true },
-      { label: '200 Ask Versani messages per month', included: 'the most generous cap — for specialists who query often. Top-up packs available.' },
-      { label: 'Priority AI processing', included: 'your consultations run first at peak times' },
-      { label: 'Advanced correction tooling', included: 'deeper support for color correction cases' },
-      { label: 'Custom formula templates', included: 'save your signature formulas for one-tap reuse' },
-      { label: 'Extended formula history', included: 'unlimited lookback across all your work' },
-      { label: 'Client-facing branded reports', included: 'export professional PDFs with your logo' },
-      { label: 'Dedicated email support', included: true },
-      { label: 'Shared team database', included: false },
+      { label: 'Unlimited virtual try-ons', included: 'fair-use threshold ~100/month' },
+      { label: '60 AI final-look renderings per month', included: true },
+      { label: '140 post-treatment AI scores', included: true },
+      { label: '90 voice formula narrations', included: true },
+      { label: '150 Ask Versani messages per month', included: 'top-up packs available ($1.99+, never expire)' },
+      { label: 'AI client insights', included: 'individual client pattern analysis — "Sarah\u2019s retention improved 34%"' },
+      { label: 'CSV data export', included: 'full portability of your scoring, formulas, client patterns' },
+      { label: 'Revenue-per-client tracking', included: 'know your top 10% by lifetime value' },
+      { label: 'Returning-client scheduling AI', included: 'AI predicts when clients rebook, prompts outreach' },
+      { label: 'Monthly business review PDF', included: 'auto-emailed monthly performance report' },
+      { label: 'Correction workflow UI', included: 'structured multi-step interface for correction cases' },
+      { label: 'Client-facing branded reports', included: 'professional PDFs with your logo' },
     ],
   },
   {
@@ -255,11 +227,8 @@ export const askVersaniPacks = [
   },
 ]
 
-export const proAddOn = proPremiumAddOn
-
 export function PricingClient() {
   const [billing, setBilling] = useState<Billing>('monthly')
-  const [proAddOnEnabled, setProAddOnEnabled] = useState<boolean>(false)
 
   const formatPrice = (tier: Tier) => {
     if (tier.priceMonthly === 0) return 'Free'
@@ -402,11 +371,6 @@ export function PricingClient() {
                   Monthly only · annual billing starts at Studio
                 </p>
               )}
-              {tier.id === 'pro' && proAddOnEnabled && (
-                <p className="text-xs text-[color:var(--gold)] mt-1 font-medium">
-                  ${(19.99 + proPremiumAddOn.price).toFixed(2)}/month with Premium Add-On
-                </p>
-              )}
             </div>
 
             <Link
@@ -420,60 +384,6 @@ export function PricingClient() {
             >
               {tier.ctaLabel}
             </Link>
-
-            {tier.id === 'pro' && (
-              <div className="mb-5 rounded-xl p-3 bg-[color:var(--gold)]/[0.05] border border-[color:var(--gold)]/[0.22]">
-                <label className="flex items-start gap-3 cursor-pointer select-none">
-                  <button
-                    type="button"
-                    onClick={() => setProAddOnEnabled((v) => !v)}
-                    aria-pressed={proAddOnEnabled}
-                    aria-label="Toggle Pro Premium Add-On"
-                    className={cn(
-                      'relative mt-0.5 shrink-0 w-9 h-5 rounded-full transition-colors',
-                      proAddOnEnabled
-                        ? 'bg-[color:var(--gold)]'
-                        : 'bg-white/[0.12]',
-                    )}
-                  >
-                    <span
-                      className={cn(
-                        'absolute top-0.5 w-4 h-4 rounded-full bg-white transition-transform',
-                        proAddOnEnabled
-                          ? 'translate-x-[18px]'
-                          : 'translate-x-0.5',
-                      )}
-                    />
-                  </button>
-                  <span
-                    onClick={() => setProAddOnEnabled((v) => !v)}
-                    className="text-xs leading-snug text-white/80"
-                  >
-                    <span className="font-semibold text-[color:var(--gold)]">
-                      + Pro Premium Add-On $4.99/mo
-                    </span>
-                    <span className="block text-[11px] text-white/50 mt-0.5">
-                      Adds unlimited try-ons, 90-day dashboard, alerts & more
-                    </span>
-                  </span>
-                </label>
-                {proAddOnEnabled && (
-                  <ul className="mt-3 space-y-2 text-xs">
-                    {proPremiumAddOn.features.map((f, k) => (
-                      <li key={k} className="flex items-start gap-2 text-white/80">
-                        <CheckIcon />
-                        <span>
-                          {f.label}
-                          <span className="block text-[11px] text-white/45 mt-0.5">
-                            {f.detail}
-                          </span>
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            )}
 
             <ul className="space-y-3 text-sm">
               {tier.features.map((feature, j) => (
@@ -681,7 +591,7 @@ export function TopUpPacks() {
       </div>
 
       <p className="text-xs text-white/45 text-center md:text-left">
-        Packs work across Pro, Studio, and Studio Plus. Nothing expires.
+        Packs work across all paid tiers. Nothing expires.
       </p>
     </div>
   )
