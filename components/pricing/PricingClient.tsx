@@ -712,12 +712,12 @@ export function SalonCalculator() {
 
   const optionLabel =
     option === 'optionA'
-      ? 'Option A · 50 consults per seat'
-      : 'Option B · 100 consults per seat'
+      ? 'Salon Plan A · Pro-level features per seat'
+      : 'Salon Plan B · Studio-level features per seat'
   const optionDescription =
     option === 'optionA'
-      ? 'For maintenance-heavy salons and employee stylists.'
-      : 'For high-volume salons and booth-rental teams.'
+      ? '50 consults/seat + Premium Salon Dashboard. For maintenance-heavy salons.'
+      : '70 consults/seat · unlimited try-ons · full Studio experience + Premium Salon Dashboard.'
 
   return (
     <div className="text-left">
@@ -734,7 +734,7 @@ export function SalonCalculator() {
                 : 'text-white/60 hover:text-white/90',
             )}
           >
-            Option A
+            Plan A
           </button>
           <button
             type="button"
@@ -746,7 +746,7 @@ export function SalonCalculator() {
                 : 'text-white/60 hover:text-white/90',
             )}
           >
-            Option B
+            Plan B
           </button>
         </div>
       </div>
