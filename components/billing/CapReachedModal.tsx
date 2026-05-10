@@ -83,18 +83,18 @@ export function CapReachedModal({
     : `You've used ${used} of ${total} full consultations this cycle.`
 
   const sideline = isAsk
-    ? 'Consultations and Formula Reformulations keep working.'
-    : 'Formula Reformulations and Ask & Learn keep working.'
+    ? 'Consultations, unlimited Reformulations, and unlimited Repeat Visits keep working.'
+    : 'Unlimited Reformulations, unlimited Repeat Visits, and Ask & Learn keep working.'
 
   const upgradeCopy = isAsk
     ? {
         title: 'Upgrade to Premium',
-        detail: '150 Ask & Learn messages · 70 consults · AI client insights',
+        detail: '300 Ask & Learn messages · 75 consults · unlimited client profiles · AI client insights',
         price: '$26.99/month — prorated from today',
       }
     : {
         title: 'Upgrade to Premium',
-        detail: '70 consultations · AI client insights · CSV export',
+        detail: '75 consultations · unlimited client profiles · AI client insights · CSV export',
         price: '$26.99/month — prorated from today',
       }
 

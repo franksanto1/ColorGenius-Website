@@ -31,8 +31,8 @@ export const metadata: Metadata = {
 
 const upgradeHighlights = [
   {
-    title: 'More full consultations (50 → 70)',
-    body: 'Real headroom for heavy new-client weeks. Formula Reformulations rise with you (120 → 160).',
+    title: 'More full consultations (50 → 75)',
+    body: 'Real headroom for heavy new-client weeks. Formula Reformulations are unlimited on every tier — no cap to worry about.',
   },
   {
     title: 'AI client insights (Premium exclusive)',
@@ -43,16 +43,16 @@ const upgradeHighlights = [
     body: 'Know your top 10% by lifetime value. Plus scheduling AI that prompts rebook outreach.',
   },
   {
-    title: 'Unlimited virtual try-ons (50 → ∞)',
-    body: 'Show every client their future color — fair-use threshold ~100/month.',
+    title: 'Unlimited virtual try-ons (150 → ∞)',
+    body: 'Show every client their future color — fair-use threshold ~300/month.',
   },
   {
     title: 'Correction workflow UI + client-facing reports',
     body: 'Structured multi-step interface for correction cases, plus branded PDFs with your logo.',
   },
   {
-    title: 'More of everything else',
-    body: 'Post-treatment scoring (80 → 140), voice narrations (50 → 90), and Ask & Learn messages (75 → 150).',
+    title: 'More Ask & Learn messages (200 → 300)',
+    body: 'Conversational AI for the chair-side questions that come up across busy weeks. Plus full insights from post-treatment scoring on Premium.',
   },
 ]
 
@@ -60,12 +60,12 @@ const comparisonRows = [
   { feature: 'Free-trial length', versani: '7-day full access' },
   { feature: 'Pro tier full consultations / month', versani: '50 (full AI flow) + overage packs' },
   { feature: 'Overage packs available', versani: 'Top-ups never expire' },
-  { feature: 'Formula Reformulations for returning clients', versani: '200 Pro / 250 Premium' },
+  { feature: 'Formula Reformulations for returning clients', versani: 'Unlimited on every tier (naturally bounded by your client roster)' },
   { feature: 'Pro tier price', versani: '$19.99/mo or $203.89/yr' },
   { feature: 'Premium tier price', versani: '$26.99/mo or $275.29/yr' },
-  { feature: 'Unlimited client profiles (Pro)', versani: 'Yes' },
+  { feature: 'Client profiles', versani: '300 on Pro / Unlimited on Premium' },
   { feature: 'Virtual try-ons (Pro)', versani: '50 / month' },
-  { feature: 'Virtual try-ons (Premium)', versani: 'Unlimited (fair-use ~100/mo)' },
+  { feature: 'Virtual try-ons (Premium)', versani: 'Unlimited (fair-use ~300/mo)' },
   { feature: 'AI preview rendering', versani: 'Bundled with consult' },
   { feature: 'Post-treatment AI scoring', versani: 'Pro: weekly digest · Premium: full insights' },
   { feature: 'Full 90-day performance dashboard', versani: 'Included on Pro and Premium' },
@@ -75,7 +75,7 @@ const comparisonRows = [
   { feature: 'Personal RAG data ownership', versani: 'Yes' },
   { feature: 'Your actual inventory drives every formula', versani: 'Yes' },
   { feature: 'Voice formula narration', versani: 'Pro & Premium: hands-free Voice Texting' },
-  { feature: 'Ask & Learn messages / month', versani: '250 Pro / 400 Premium + top-up packs ($1.99+)' },
+  { feature: 'Ask & Learn messages / month', versani: '200 Pro / 300 Premium + top-up packs ($1.99+)' },
   { feature: 'Multi-seat salon tier (shared DB)', versani: 'Yes' },
 ]
 
@@ -102,7 +102,7 @@ const faqs = [
   },
   {
     q: 'What if I hit my Ask & Learn limit?',
-    a: 'You can add Top-Up 25 ($1.99), Top-Up 50 ($2.99), or Top-Up 100 ($4.99) anytime. Ask & Learn messages never expire \u2014 use them whenever you need them. If you\u2019re consistently hitting your monthly limit, upgrading a tier may be more economical. Pro includes 250/month and Premium 400/month.',
+    a: 'You can add Top-Up 25 ($1.99), Top-Up 50 ($2.99), or Top-Up 100 ($4.99) anytime. Ask & Learn messages never expire \u2014 use them whenever you need them. If you\u2019re consistently hitting your monthly limit, upgrading a tier may be more economical. Pro includes 200/month and Premium 300/month.',
   },
   {
     q: 'Can I switch between tiers anytime?',
@@ -114,7 +114,7 @@ const faqs = [
   },
   {
     q: 'When should I upgrade from Pro to Premium?',
-    a: 'When you consistently hit Pro\u2019s 50-consultation cap, want business operator tools (revenue-per-client tracking, scheduling AI, monthly business review PDFs), need the correction workflow UI, or want AI client insights (individual client pattern analysis). Premium is the tier for colorists running a business, not just doing the craft. Premium also brings 70 consultations baseline and unlimited virtual try-ons.',
+    a: 'When you consistently hit Pro\u2019s 50-consultation cap, want business operator tools (revenue-per-client tracking, scheduling AI, monthly business review PDFs), need the correction workflow UI, or want AI client insights (individual client pattern analysis). Premium is the tier for colorists running a business, not just doing the craft. Premium also brings 75 consultations baseline, unlimited virtual try-ons, and unlimited client profiles.',
   },
   {
     q: 'What about high-volume specialists and correction pros?',

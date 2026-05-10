@@ -27,13 +27,13 @@ const platformFeatures = [
 const segments = [
   {
     title: 'Solo colorists',
-    body: 'Pro tier. 50 Full Consultations per month, 250 Ask & Learn messages, 80 Formula Reformulations, free unlimited Repeat Visits. Top-up packs available, never expire.',
+    body: 'Pro tier. 50 Full Consultations and 200 Ask & Learn messages per month, with unlimited Formula Reformulations and Repeat Visits. 300 client profiles. Top-up packs available, never expire.',
     href: '/pricing',
     cta: 'See Pro tier',
   },
   {
     title: 'Business operators',
-    body: 'Premium tier. 70 Full Consultations, 400 Ask & Learn messages, 140 Formula Reformulations, full performance dashboard, AI client insights, branded reports, CSV export.',
+    body: 'Premium tier. 75 Full Consultations and 300 Ask & Learn messages per month, with unlimited Reformulations, Repeat Visits, and client profiles. Full performance dashboard, AI client insights, branded reports, CSV export.',
     href: '/pricing',
     cta: 'See Premium tier',
   },
