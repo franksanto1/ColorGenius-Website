@@ -43,8 +43,8 @@ const upgradeHighlights = [
     body: 'Know your top 10% by lifetime value. Plus scheduling AI that prompts rebook outreach.',
   },
   {
-    title: 'Unlimited virtual try-ons (150 → ∞)',
-    body: 'Show every client their future color — fair-use threshold ~300/month.',
+    title: 'Unlimited virtual try-ons on every tier',
+    body: 'Show every client every possible color — no caps anywhere on the lineup.',
   },
   {
     title: 'Correction workflow UI + client-facing reports',
@@ -64,8 +64,8 @@ const comparisonRows = [
   { feature: 'Pro tier price', versani: '$19.99/mo or $203.89/yr' },
   { feature: 'Premium tier price', versani: '$26.99/mo or $275.29/yr' },
   { feature: 'Client profiles', versani: '300 on Pro / Unlimited on Premium' },
-  { feature: 'Virtual try-ons (Pro)', versani: '50 / month' },
-  { feature: 'Virtual try-ons (Premium)', versani: 'Unlimited (fair-use ~300/mo)' },
+  { feature: 'Virtual try-ons (all individual tiers)', versani: 'Unlimited' },
+  { feature: 'Virtual try-ons (all team tiers)', versani: 'Unlimited per seat' },
   { feature: 'AI preview rendering', versani: 'Bundled with consult' },
   { feature: 'Post-treatment AI scoring', versani: 'Pro: weekly digest · Premium: full insights' },
   { feature: 'Full 90-day performance dashboard', versani: 'Included on Pro and Premium' },
