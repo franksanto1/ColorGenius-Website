@@ -55,8 +55,14 @@ export function SiteNav() {
         </ul>
 
         <div className="flex items-center gap-2">
+          <Link
+            href="/auth"
+            className="hidden md:inline-flex text-sm text-[color:var(--muted-foreground)] hover:text-[color:var(--foreground)] transition-colors duration-200 tracking-wide px-4 py-2"
+          >
+            Sign In
+          </Link>
           <LinkButton
-            href="/#pricing"
+            href="/pricing"
             variant="gold-solid"
             size="sm"
             className="hidden md:inline-flex"
@@ -104,8 +110,17 @@ export function SiteNav() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/auth"
+                onClick={() => setOpen(false)}
+                className="block py-2 text-base text-[color:var(--foreground)]"
+              >
+                Sign In
+              </Link>
+            </li>
             <li className="pt-2">
-              <LinkButton href="/#pricing" variant="gold-solid" size="md" className="w-full">
+              <LinkButton href="/pricing" variant="gold-solid" size="md" className="w-full">
                 Get Started
               </LinkButton>
             </li>
