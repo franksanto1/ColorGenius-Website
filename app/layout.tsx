@@ -1,7 +1,11 @@
 import type { Metadata, Viewport } from 'next'
-import { Cormorant_Garamond, Inter } from 'next/font/google'
+import { Cormorant_Garamond, Outfit, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 
+// Mirror demo app typography stack:
+//   h1/h2 → Cormorant Garamond (light editorial serif)
+//   h3/h4 → Space Grotesk (display sans)
+//   body  → Outfit (warm sans)
 const serif = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600'],
@@ -9,10 +13,17 @@ const serif = Cormorant_Garamond({
   display: 'swap',
 })
 
-const sans = Inter({
+const display = Space_Grotesk({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-sans',
+  variable: '--font-display',
+  display: 'swap',
+})
+
+const body = Outfit({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-body',
   display: 'swap',
 })
 
@@ -124,20 +135,39 @@ const softwareJsonLd = {
     },
     {
       '@type': 'Offer',
+      name: 'Beauty Student',
+      price: '8.99',
+      priceCurrency: 'USD',
+    },
+    {
+      '@type': 'Offer',
+      name: 'Essentials',
+      price: '9.99',
+      priceCurrency: 'USD',
+    },
+    {
+      '@type': 'Offer',
       name: 'Pro',
-      price: '24.99',
+      price: '19.99',
       priceCurrency: 'USD',
     },
     {
       '@type': 'Offer',
       name: 'Premium',
-      price: '39.99',
+      price: '26.99',
       priceCurrency: 'USD',
     },
     {
       '@type': 'Offer',
-      name: 'Salon',
-      description: 'Per-seat pricing for multi-chair salons.',
+      name: 'Team',
+      description: 'Per-seat pricing for multi-chair salons (Essentials / Pro / Premium tiers).',
+      priceCurrency: 'USD',
+    },
+    {
+      '@type': 'Offer',
+      name: 'Beauty School Essentials',
+      price: '8.99',
+      description: 'Per-seat pricing for beauty schools.',
       priceCurrency: 'USD',
     },
   ],
@@ -149,7 +179,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="en" className={`${serif.variable} ${display.variable} ${body.variable}`}>
       <head>
         <script
           type="application/ld+json"

@@ -65,8 +65,14 @@ const config: Config = {
         },
       },
       fontFamily: {
+        // Mirrors demo app — Cormorant Garamond (h1/h2 editorial serif),
+        // Space Grotesk (h3/h4 display sans), Outfit (body warm sans).
         serif: ['var(--font-serif)', 'Cormorant Garamond', 'Times New Roman', 'serif'],
-        sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'Space Grotesk', 'system-ui', 'sans-serif'],
+        body: ['var(--font-body)', 'Outfit', 'system-ui', 'sans-serif'],
+        // `sans` aliased to body so Tailwind's default sans-serif stack
+        // resolves to Outfit (matches app body-foreground typography).
+        sans: ['var(--font-body)', 'Outfit', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'display-xl': ['clamp(3rem, 8vw, 7rem)', { lineHeight: '1', letterSpacing: '0.04em' }],

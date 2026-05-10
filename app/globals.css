@@ -44,6 +44,9 @@
   --gold-light: oklch(0.83 0.10 85);
   --gold-dark: oklch(0.52 0.10 83);
   --gold-subtle: oklch(0.24 0.05 83);
+
+  /* Body text — warm off-white (mirrors app body-foreground token) */
+  --body-foreground: oklch(0.93 0.01 80);
 }
 
 * {
@@ -60,23 +63,63 @@ html {
 
 body {
   background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans, Inter), system-ui, -apple-system, sans-serif;
+  color: var(--body-foreground);
+  font-family: var(--font-body, Outfit), system-ui, -apple-system, sans-serif;
   font-feature-settings: 'ss01', 'cv11';
 }
 
-/* Heading defaults — serif editorial feel for h1/h2 */
-h1, h2 {
+/* ============================================
+   VERSANI TYPOGRAPHIC HIERARCHY
+   Mirrored from demo app (src/index.css:286-331)
+   7 distinct treatments from 3 font families
+   ============================================ */
+
+/* H1 — Page titles: light editorial serif (Cormorant Garamond) */
+h1 {
   font-family: var(--font-serif, 'Cormorant Garamond'), 'Times New Roman', serif;
   font-weight: 300;
-  letter-spacing: 0.02em;
   color: var(--foreground);
+  letter-spacing: 0.04em;
 }
 
-h3, h4, h5, h6 {
-  font-family: var(--font-sans, Inter), system-ui, sans-serif;
+/* H2 — Section headers: medium editorial serif (Cormorant Garamond) */
+h2 {
+  font-family: var(--font-serif, 'Cormorant Garamond'), 'Times New Roman', serif;
   font-weight: 500;
   color: var(--foreground);
+  letter-spacing: 0.02em;
+}
+
+/* H3 — Card titles, subsections: bold display sans (Space Grotesk) */
+h3 {
+  font-family: var(--font-display, 'Space Grotesk'), system-ui, sans-serif;
+  font-weight: 600;
+  color: var(--foreground);
+  letter-spacing: -0.01em;
+}
+
+/* H4 — Detail headers: medium display sans (Space Grotesk) */
+h4 {
+  font-family: var(--font-display, 'Space Grotesk'), system-ui, sans-serif;
+  font-weight: 500;
+  color: var(--foreground);
+  letter-spacing: -0.005em;
+}
+
+/* H5/H6 — Category labels, overlines: warm sans uppercase spaced (Outfit) */
+h5, h6 {
+  font-family: var(--font-body, Outfit), system-ui, sans-serif;
+  font-weight: 500;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+}
+
+/* Body prose — Outfit, warm off-white */
+p, li, dd, td, blockquote {
+  font-family: var(--font-body, Outfit), system-ui, sans-serif;
+  color: var(--body-foreground);
 }
 
 /* Selection */
