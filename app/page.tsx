@@ -27,25 +27,25 @@ const platformFeatures = [
 const segments = [
   {
     title: 'Solo colorists',
-    body: 'Pro tier. 50 full consultations per month plus client-update cap, top-up packs that never expire. Industry benchmarks, Formula A/B memory, and custom templates included.',
+    body: 'Pro tier. 50 Full Consultations per month, 250 Ask & Learn messages, 80 Formula Reformulations, free unlimited Repeat Visits. Top-up packs available, never expire.',
     href: '/pricing',
     cta: 'See Pro tier',
   },
   {
     title: 'Business operators',
-    body: 'Premium tier. 70 full consultations, unlimited virtual try-ons, AI client insights, CSV export, revenue-per-client tracking, branded reports, and the full performance dashboard.',
+    body: 'Premium tier. 70 Full Consultations, 400 Ask & Learn messages, 140 Formula Reformulations, full performance dashboard, AI client insights, branded reports, CSV export.',
     href: '/pricing',
     cta: 'See Premium tier',
   },
   {
     title: 'Multi-chair salons',
-    body: 'Team tier. Per-seat pricing with shared inventory, shared client database, and per-stylist usage tracking. Scales from three seats to fifty.',
+    body: 'Team plans (Essentials / Pro / Premium per seat). Hybrid resource model — AI features per stylist, client profiles pooled across the salon. Dual-buyer top-ups. Scales from three seats to fifty.',
     href: '/pricing',
-    cta: 'See Team plan',
+    cta: 'See Team plans',
   },
   {
     title: 'Beauty schools',
-    body: 'Institutional licensing for accredited programs. Cohort seats, curriculum alignment, and supervised student libraries.',
+    body: 'Institutional licensing for accredited programs. Cohort seats, "Ask, Learn, Apply" mode for unlimited student exploration, curriculum alignment, and supervised student libraries.',
     href: '/schools',
     cta: 'See school program',
   },

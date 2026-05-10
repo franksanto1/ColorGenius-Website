@@ -48,12 +48,18 @@ export function Hero() {
           <VersaniWordmark size="display" priority />
         </motion.div>
 
+        {/* Marketing-exception treatment: bolder display type + tighter tracking
+            for the hero h2. Below-the-fold sections retain default rhythm. */}
         <motion.h2
           {...fade(0.25)}
           id="hero-heading"
-          className="mt-10 md:mt-12 font-serif font-light text-[clamp(2rem,5vw,4rem)] leading-[1.05] tracking-tight max-w-4xl mx-auto text-[color:var(--foreground)]"
+          className="mt-10 md:mt-12 font-serif font-light text-[clamp(2.5rem,6vw,5rem)] leading-[1.02] tracking-[-0.01em] max-w-5xl mx-auto text-[color:var(--foreground)]"
         >
-          AI that respects your craft.
+          AI that{' '}
+          <em className="italic font-normal text-[color:var(--gold)]">
+            respects
+          </em>{' '}
+          your craft.
         </motion.h2>
 
         <motion.p
@@ -69,12 +75,33 @@ export function Hero() {
           {...fade(0.55)}
           className="mt-12 md:mt-14 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <LinkButton href="/#pricing" variant="gold-solid" size="lg">
+          <LinkButton href="/pricing" variant="gold-solid" size="lg">
             Start Free Trial
           </LinkButton>
-          <LinkButton href="/#pricing" variant="gold-outline" size="lg">
+          <LinkButton href="/pricing" variant="gold-outline" size="lg">
             Explore Membership
           </LinkButton>
+        </motion.div>
+
+        {/* Trust strip — premium-SaaS credibility signal */}
+        <motion.div
+          {...fade(0.7)}
+          className="mt-10 md:mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.18em] text-[color:var(--muted-foreground)]"
+        >
+          <span className="flex items-center gap-2">
+            <span className="h-1 w-1 rounded-full bg-[color:var(--gold)]" aria-hidden="true" />
+            Built by master colorists
+          </span>
+          <span className="hidden sm:inline opacity-30">·</span>
+          <span className="flex items-center gap-2">
+            <span className="h-1 w-1 rounded-full bg-[color:var(--gold)]" aria-hidden="true" />
+            7-day free trial · no card
+          </span>
+          <span className="hidden sm:inline opacity-30">·</span>
+          <span className="flex items-center gap-2">
+            <span className="h-1 w-1 rounded-full bg-[color:var(--gold)]" aria-hidden="true" />
+            Cancel anytime
+          </span>
         </motion.div>
 
         {/* Scroll cue */}
