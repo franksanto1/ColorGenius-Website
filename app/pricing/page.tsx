@@ -47,8 +47,8 @@ const upgradeHighlights = [
     body: 'Show every client every possible color — no caps anywhere on the lineup.',
   },
   {
-    title: 'Correction workflow UI + client-facing reports',
-    body: 'Structured multi-step interface for correction cases, plus branded PDFs with your logo.',
+    title: 'CSV data export',
+    body: 'Full portability of your scoring history, formulas, and client patterns. Take everything with you, anytime.',
   },
   {
     title: 'More Ask & Learn messages (200 → 300)',
@@ -71,7 +71,7 @@ const comparisonRows = [
   { feature: 'Full 90-day performance dashboard', versani: 'Included on Pro and Premium' },
   { feature: 'AI client insights', versani: 'Premium-exclusive' },
   { feature: 'Revenue-per-client tracking', versani: 'Premium-exclusive' },
-  { feature: 'Correction workflow UI', versani: 'Premium-exclusive' },
+  { feature: 'Correction workflow UI', versani: 'All tiers (safety = universal)' },
   { feature: 'Personal RAG data ownership', versani: 'Yes' },
   { feature: 'Your actual inventory drives every formula', versani: 'Yes' },
   { feature: 'Voice formula narration', versani: 'Pro & Premium: hands-free Voice Texting' },
@@ -114,7 +114,7 @@ const faqs = [
   },
   {
     q: 'When should I upgrade from Pro to Premium?',
-    a: 'When you consistently hit Pro\u2019s 50-consultation cap, want business operator tools (revenue-per-client tracking, scheduling AI, monthly business review PDFs), need the correction workflow UI, or want AI client insights (individual client pattern analysis). Premium is the tier for colorists running a business, not just doing the craft. Premium also brings 75 consultations baseline, unlimited virtual try-ons, and unlimited client profiles.',
+    a: 'When you consistently hit Pro\u2019s 50-consultation cap, want business operator tools (revenue-per-client tracking, scheduling AI, monthly business review PDFs), or want AI client insights (individual client pattern analysis). Premium is the tier for colorists running a business, not just doing the craft. Premium also brings 75 consultations baseline, unlimited virtual try-ons, and unlimited client profiles.',
   },
   {
     q: 'What about high-volume specialists and correction pros?',

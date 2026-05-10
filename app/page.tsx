@@ -27,13 +27,13 @@ const platformFeatures = [
 const segments = [
   {
     title: 'Solo colorists',
-    body: 'Pro tier. 50 Full Consultations and 200 Ask & Learn messages per month, with unlimited Formula Reformulations and Repeat Visits. 300 client profiles. Top-up packs available, never expire.',
+    body: 'Pro tier. 50 Full Consultations and 200 Ask & Learn messages per month, with unlimited Reformulations and Repeat Visits. 300 client profiles. Includes client-facing branded PDFs (professional reports with your logo). The Correction Workflow UI is included on every tier — safety isn’t a luxury. Top-up packs available, never expire.',
     href: '/pricing',
     cta: 'See Pro tier',
   },
   {
     title: 'Business operators',
-    body: 'Premium tier. 75 Full Consultations and 300 Ask & Learn messages per month, with unlimited Reformulations, Repeat Visits, and client profiles. Full performance dashboard, AI client insights, branded reports, CSV export.',
+    body: 'Premium tier. 75 Full Consultations and 300 Ask & Learn messages per month, with unlimited Reformulations, Repeat Visits, and client profiles. Plus the business intelligence layer: revenue-per-client tracking, returning-client scheduling AI, monthly business review PDFs, AI client insights, CSV export.',
     href: '/pricing',
     cta: 'See Premium tier',
   },

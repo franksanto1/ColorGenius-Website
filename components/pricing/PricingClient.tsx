@@ -78,6 +78,7 @@ const tiers: Tier[] = [
       { label: '100 client profiles', included: 'practice with multiple personas', group: 'capacity' },
       { label: 'Versani Academy Library', included: 'masterclasses + technique walkthroughs' },
       { label: 'Basic 30-day performance dashboard', included: 'self-assessment tool' },
+      { label: 'Correction workflow UI', included: 'safety scaffolding for high-stakes color work — same AI as every tier', group: 'features' },
       { label: 'Top-up packs available', included: 'finals week? add more as needed' },
       { label: 'Full 90-day dashboard', included: false },
       { label: 'At-risk client alerts', included: false },
@@ -167,8 +168,6 @@ const tiers: Tier[] = [
       { label: 'Revenue-per-client tracking', included: 'know your top 10% by lifetime value' },
       { label: 'Returning-client scheduling AI', included: 'AI predicts when clients rebook, prompts outreach' },
       { label: 'Monthly business review PDF', included: 'auto-emailed monthly performance report' },
-      { label: 'Correction workflow UI', included: 'structured multi-step interface for correction cases' },
-      { label: 'Client-facing branded reports', included: 'professional PDFs with your logo' },
     ],
   },
   {
@@ -183,6 +182,7 @@ const tiers: Tier[] = [
     ctaHref: 'mailto:frank@versani.ai?subject=Team%20Essentials%20Versani%20pricing%20inquiry',
     features: [
       { label: 'Essentials-level features per seat', included: '25 FCs · Unlimited Reformulations · Unlimited try-ons · 100 Ask & Learn' },
+      { label: 'Correction workflow UI per seat', included: 'safety scaffolding for high-stakes color work — every seat' },
       { label: '★ Team Dashboard', included: 'team rankings, shared inventory, per-stylist tracking' },
       { label: 'Your salon product lines used in every formula', included: true },
       { label: 'Shared salon inventory across all stylists', included: true },
@@ -208,6 +208,8 @@ const tiers: Tier[] = [
     features: [
       { label: 'Pro-level features per seat', included: '50 FCs · Unlimited Reformulations · Unlimited try-ons · 200 Ask & Learn' },
       { label: '★ Team Dashboard with revenue analytics', included: 'team rankings, revenue-per-stylist, at-risk alerts' },
+      { label: 'Correction workflow UI per seat', included: 'structured multi-step interface for correction cases' },
+      { label: 'Client-facing branded reports per seat', included: 'professional PDFs with your salon logo' },
       { label: 'Voice Texting (STT) team-wide', included: 'hands-free chair-side for every seat' },
       { label: 'Shared salon inventory across all stylists', included: true },
       { label: 'Shared client database (300 × seats)', included: true },
@@ -236,8 +238,6 @@ const tiers: Tier[] = [
       { label: 'Revenue-per-client tracking (team-wide)', included: 'know your top 10% by LTV' },
       { label: 'Returning-client scheduling AI', included: 'rebook predictions across the team' },
       { label: 'Monthly business review PDF', included: 'auto-emailed salon performance report' },
-      { label: 'Correction workflow UI', included: 'structured multi-step for corrections' },
-      { label: 'Client-facing branded reports', included: 'PDFs with your salon logo' },
       { label: 'CSV export for all data', included: 'full portability' },
       { label: 'Voice Texting (STT) team-wide', included: 'hands-free chair-side for every seat' },
       { label: 'Industry benchmarks (anonymized)', included: 'your salon vs top-tier nationally' },

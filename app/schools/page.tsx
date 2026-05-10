@@ -29,7 +29,7 @@ const howItWorks = [
   {
     label: 'School base seat',
     subtitle: '$8.99 per student / month',
-    body: 'Paid by the school. Every enrolled student receives a seat with the same caps as the Beauty Student tier: 20 Practice Cases (Full Consultations) per month, 100 Ask & Learn messages, unlimited Formula Reformulations + Repeat Visits + Virtual Try-Ons, 100 client profiles. Supervised workflows and teacher-reviewable history built in.',
+    body: 'Paid by the school. Every enrolled student receives a seat with the same caps as the Beauty Student tier: 20 Practice Cases (Full Consultations) per month with full Correction Workflow UI safety scaffolding (same AI as every paid tier — safety isn’t a luxury), 100 Ask & Learn messages, unlimited Formula Reformulations + Repeat Visits + Virtual Try-Ons, 100 client profiles. Supervised workflows and teacher-reviewable history built in.',
   },
   {
     label: 'Pro student upgrade',
