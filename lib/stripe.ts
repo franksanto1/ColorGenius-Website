@@ -40,7 +40,7 @@ export type Billing = 'monthly' | 'yearly'
 
 /**
  * Map tier + billing period to Stripe price ID.
- * Pro and Studio both support monthly and yearly billing (2 months free on yearly).
+ * Pro and Premium both support monthly and yearly billing (2 months free on yearly).
  */
 export function getPriceId(tier: Tier, billing: Billing): string | null {
   const map: Record<string, string | undefined> = {

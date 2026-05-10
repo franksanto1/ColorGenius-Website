@@ -51,13 +51,13 @@ export default function SalonBillingPage() {
         />
         <MetricCard
           label="Per-seat rate"
-          value={formatCurrency(39.99)}
+          value={formatCurrency(26.99)}
           sub="Billed monthly"
         />
         <MetricCard
           label="This month"
           value={formatCurrency(profile.mrrContribution)}
-          sub={`${profile.activeSeats} × ${formatCurrency(39.99)}`}
+          sub={`${profile.activeSeats} × ${formatCurrency(26.99)}`}
         />
       </section>
 
@@ -92,7 +92,7 @@ export default function SalonBillingPage() {
         <p className="text-sm text-foreground/80">
           Current seat use is <strong>{profile.activeSeats}</strong> of{' '}
           <strong>{profile.maxSeats}</strong>. Each added seat adds{' '}
-          {formatCurrency(39.99)} to your monthly plan.
+          {formatCurrency(26.99)} to your monthly plan.
         </p>
       </DataCard>
 

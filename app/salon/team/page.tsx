@@ -43,7 +43,7 @@ export default function SalonTeamPage() {
         <select className="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs text-foreground focus:outline-none focus:border-gold/50">
           <option className="bg-background">All tiers</option>
           <option className="bg-background">Pro</option>
-          <option className="bg-background">Studio</option>
+          <option className="bg-background">Premium</option>
         </select>
         <select className="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs text-foreground focus:outline-none focus:border-gold/50">
           <option className="bg-background">Active</option>

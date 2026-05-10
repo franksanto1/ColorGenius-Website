@@ -33,15 +33,15 @@ const segments = [
   },
   {
     title: 'Business operators',
-    body: 'Studio tier. 70 full consultations, unlimited virtual try-ons, AI client insights, CSV export, revenue-per-client tracking, branded reports, and the full performance dashboard.',
+    body: 'Premium tier. 70 full consultations, unlimited virtual try-ons, AI client insights, CSV export, revenue-per-client tracking, branded reports, and the full performance dashboard.',
     href: '/pricing',
-    cta: 'See Studio tier',
+    cta: 'See Premium tier',
   },
   {
     title: 'Multi-chair salons',
-    body: 'Salon tier. Per-seat pricing with shared inventory, shared client database, and per-stylist usage tracking. Scales from three seats to fifty.',
+    body: 'Team tier. Per-seat pricing with shared inventory, shared client database, and per-stylist usage tracking. Scales from three seats to fifty.',
     href: '/pricing',
-    cta: 'See Salon tier',
+    cta: 'See Team plan',
   },
   {
     title: 'Beauty schools',
@@ -66,7 +66,7 @@ const testimonials = [
   },
   {
     quote:
-      'We moved our whole team onto Salon tier and the shared inventory is what sold the owner. No more duplicate stock, no more guesswork.',
+      'We moved our whole team onto Team tier and the shared inventory is what sold the owner. No more duplicate stock, no more guesswork.',
     name: 'Liana R.',
     role: 'Salon director · Brooklyn',
   },
@@ -272,7 +272,7 @@ export default function HomePage() {
                 </em>
               </h2>
               <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto mb-10">
-                Full Studio access for 7 days. Keep everything you create;
+                Full Premium access for 7 days. Keep everything you create;
                 Versani automatically drops to read-only when the trial ends so
                 nothing is lost.
               </p>

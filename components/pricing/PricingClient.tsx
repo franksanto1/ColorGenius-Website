@@ -50,98 +50,115 @@ const tiers: Tier[] = [
     features: [
       { label: 'Your actual product lines used in every formula', included: true },
       { label: '7 days full access', included: 'everything unlocked, no limits' },
-      { label: 'Unlimited Ask Versani throughout', included: true },
+      { label: 'Unlimited Ask & Learn throughout', included: true },
       { label: 'Unlimited clients', included: true },
       { label: 'After day 7', included: 'Upgrade anytime to keep your momentum, or account enters read-only' },
     ],
   },
   {
-    id: 'student',
-    name: 'Student',
-    tagline: 'For beauty school students learning professional color. Affordable, focused on learning.',
-    priceMonthly: 9.99,
-    priceYearly: 89.90,
+    id: 'beauty-student',
+    name: 'Beauty Student',
+    tagline: 'For cosmetology students learning professional color. SheerID-verified, focused on learning.',
+    priceMonthly: 8.99,
+    priceYearly: 91.69,
     annualAvailable: true,
-    ctaLabel: 'Start Student Plan',
+    ctaLabel: 'Start Beauty Student',
     ctaHref: '/auth?mode=student',
     features: [
       { label: 'Your actual product lines used in every formula', included: true },
-      { label: '20 full consultations per month', included: 'learn formulation with photo analysis + AI rendering' },
-      { label: '30 client updates per month', included: 'practice client scenarios' },
-      { label: 'Unlimited virtual try-ons', included: 'learn by visualizing — unlimited practice' },
-      { label: '15 AI final-look renderings per month', included: true },
-      { label: '25 post-treatment AI scores', included: 'critical learning feedback' },
-      { label: '15 voice formula narrations', included: true },
-      { label: '75 Ask Versani messages per month', included: 'ask lots of questions — learning is asking' },
-      { label: 'Basic 30-day performance dashboard', included: 'self-assessment tool' },
-      { label: 'Formula history & reports', included: true },
-      { label: 'Export client reports as PDF', included: 'for assignment submissions' },
-      { label: 'Unlimited client profiles', included: 'practice with multiple personas' },
+      { label: '10 Practice Cases (Full Consultations) per month', included: 'photo analysis + AI rendering + full chair-side flow' },
+      { label: '50 Formula Reformulations per month', included: 'practice tweaks on existing formulas' },
+      { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost' },
+      { label: '50 virtual try-ons per month', included: 'learn by visualizing' },
+      { label: '250 Ask, Learn, Apply messages per month', included: 'ask lots of questions — learning is asking' },
+      { label: '100 client profiles', included: 'practice with multiple personas' },
       { label: 'Versani Academy Library', included: 'masterclasses + technique walkthroughs' },
-      { label: 'Personal RAG data ownership', included: true },
+      { label: 'Basic 30-day performance dashboard', included: 'self-assessment tool' },
       { label: 'Top-up packs available', included: 'finals week? add more as needed' },
       { label: 'Full 90-day dashboard', included: false },
       { label: 'At-risk client alerts', included: false },
       { label: 'Industry benchmarks', included: false },
-      { label: 'Formula A/B memory', included: false },
-      { label: 'Custom formula templates', included: false },
-      { label: 'AI client insights', included: false },
-      { label: 'Revenue-per-client tracking', included: false },
+      { label: 'Voice Texting (STT)', included: false },
+    ],
+  },
+  {
+    id: 'essentials',
+    name: 'Essentials',
+    tagline: 'For part-time stylists, students post-graduation, and inspiration users exploring the full power of Versani.',
+    priceMonthly: 9.99,
+    priceYearly: 101.89,
+    annualAvailable: true,
+    ctaLabel: 'Start Essentials',
+    ctaHref: '/auth?mode=signup',
+    features: [
+      { label: 'Your actual product lines used in every formula', included: true },
+      { label: '15 Full Consultations per month', included: 'photo + creative research + formula generation' },
+      { label: '100 Formula Reformulations per month', included: 'tweak existing formulas' },
+      { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost' },
+      { label: '50 virtual try-ons per month', included: true },
+      { label: '100 Ask & Learn messages per month', included: 'chair-side helper for any color question' },
+      { label: '150 client profiles', included: true },
+      { label: 'Basic 30-day performance dashboard', included: true },
+      { label: 'Versani Academy Library', included: true },
+      { label: 'Formula history & reports', included: true },
+      { label: 'Export client reports as PDF', included: true },
+      { label: 'Top-up packs available', included: '$1.99+, never expire' },
+      { label: 'Voice Texting (STT)', included: false },
+      { label: 'Full 90-day performance dashboard', included: false },
+      { label: 'At-risk client alerts', included: false },
+      { label: 'Industry benchmarks', included: false },
     ],
   },
   {
     id: 'pro',
     name: 'Pro',
-    tagline: 'For professional colorists who want every formula elevated.',
-    priceMonthly: 24.99,
-    priceYearly: 254.90,
+    tagline: 'For full-time stylists. Everything Essentials promises, plus hands-free Voice Texting and the power features that earn it back.',
+    priceMonthly: 19.99,
+    priceYearly: 203.89,
     annualAvailable: true,
     ctaLabel: 'Choose Pro',
     ctaHref: '/auth?mode=signup',
+    featured: true,
     features: [
-      { label: 'Your actual product lines used in every formula', included: true },
-      { label: '50 full consultations per month', included: 'new client or major change — formula + photo analysis + AI rendering' },
-      { label: '120 client updates per month', included: 'quick formula tweaks for returning clients' },
-      { label: '50 virtual try-ons per month', included: 'real-time color previews on your client\u2019s photo' },
-      { label: '40 AI final-look renderings per month', included: 'photorealistic preview of finished color' },
-      { label: '80 post-treatment AI scores', included: 'score every service to feed your dashboard' },
-      { label: '50 voice formula narrations', included: true },
-      { label: '75 Ask Versani messages per month', included: 'top-up packs available ($1.99+, never expire)' },
+      { label: 'Everything in Essentials, plus:', included: true },
+      { label: '50 Full Consultations per month', included: 'new client or major change — full chair-side flow' },
+      { label: '200 Formula Reformulations per month', included: 'quick formula tweaks for returning clients' },
+      { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost' },
+      { label: '150 virtual try-ons per month', included: 'real-time color previews on your client photo' },
+      { label: '250 Ask & Learn messages per month', included: 'top-up packs available ($1.99+, never expire)' },
+      { label: '250 client profiles', included: true },
+      { label: 'Voice Texting (STT) — hands-free at the chair', included: 'speak instead of type, $0.002/FC via Groq' },
       { label: 'Full 90-day performance dashboard', included: 'pattern insights, full history' },
       { label: 'At-risk client alerts', included: true },
       { label: 'Weekly performance digest email', included: true },
-      { label: 'Versani Academy Library', included: true },
       { label: 'Industry benchmarks', included: 'see how your scores stack against top-tier colorists' },
       { label: 'Formula A/B memory', included: 'save formula variations, track performance' },
       { label: 'Custom formula templates', included: 'save signatures for one-tap reuse' },
-      { label: 'Unlimited formula history', included: 'no expiration on your formula records' },
-      { label: 'Export client reports as PDF', included: true },
-      { label: 'Unlimited client profiles', included: true },
+      { label: 'Unlimited formula history', included: true },
       { label: 'AI client insights', included: false },
       { label: 'CSV data export', included: false },
       { label: 'Revenue-per-client tracking', included: false },
     ],
   },
   {
-    id: 'studio',
-    name: 'Studio',
-    tagline: 'For colorists running a business — operator tools, client insights, and revenue intelligence.',
-    priceMonthly: 39.99,
-    priceYearly: 407.90,
+    id: 'premium',
+    name: 'Premium',
+    tagline: 'For busy salons and heavy users. Unlimited try-ons, generous chat headroom, full data portability, and hands-free Voice Texting.',
+    priceMonthly: 26.99,
+    priceYearly: 275.29,
     annualAvailable: true,
-    ctaLabel: 'Choose Studio',
+    ctaLabel: 'Choose Premium',
     ctaHref: '/auth?mode=signup',
-    featured: true,
     features: [
       { label: 'Everything in Pro, plus the business operator tier:', included: true },
-      { label: '70 full consultations per month', included: 'more headroom for busy weeks' },
-      { label: '160 client updates per month', included: 'generous cap for established books' },
-      { label: 'Unlimited virtual try-ons', included: 'fair-use threshold ~100/month' },
-      { label: '60 AI final-look renderings per month', included: true },
-      { label: '140 post-treatment AI scores', included: true },
-      { label: '90 voice formula narrations', included: true },
-      { label: '150 Ask Versani messages per month', included: 'top-up packs available ($1.99+, never expire)' },
-      { label: 'AI client insights', included: 'individual client pattern analysis — "Sarah\u2019s retention improved 34%"' },
+      { label: '70 Full Consultations per month', included: 'more headroom for busy weeks' },
+      { label: '250 Formula Reformulations per month', included: 'generous cap for established books' },
+      { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost' },
+      { label: 'Unlimited virtual try-ons', included: 'fair-use threshold ~300/month' },
+      { label: '400 Ask & Learn messages per month', included: 'top-up packs available ($1.99+, never expire)' },
+      { label: '500 client profiles', included: true },
+      { label: 'Voice Texting (STT) — hands-free at the chair', included: 'speak instead of type, $0.002/FC via Groq' },
+      { label: 'AI client insights', included: 'individual client pattern analysis' },
       { label: 'CSV data export', included: 'full portability of your scoring, formulas, client patterns' },
       { label: 'Revenue-per-client tracking', included: 'know your top 10% by lifetime value' },
       { label: 'Returning-client scheduling AI', included: 'AI predicts when clients rebook, prompts outreach' },
@@ -151,43 +168,66 @@ const tiers: Tier[] = [
     ],
   },
   {
-    id: 'salon-a',
-    name: 'Salon Plan A',
-    tagline: 'Pro-level features per seat + Premium Salon Dashboard. For maintenance-heavy salons.',
-    priceMonthly: 24.99,
-    priceYearly: 254.90,
-    annualAvailable: true,
+    id: 'team-essentials',
+    name: 'Team Essentials',
+    tagline: 'Team Dashboard + shared client database + user assignment + Essentials-level caps per seat. 3-seat minimum.',
+    priceMonthly: 9.99,
+    priceYearly: 119.88,
+    annualAvailable: false,
     priceLabel: 'per seat',
-    ctaLabel: 'Request Salon Pricing',
-    ctaHref: 'mailto:frank@versani.ai?subject=Salon%20Plan%20A%20Versani%20pricing%20inquiry',
+    ctaLabel: 'Request Team Pricing',
+    ctaHref: 'mailto:frank@versani.ai?subject=Team%20Essentials%20Versani%20pricing%20inquiry',
     features: [
-      { label: 'Pro-level features per seat', included: '50 consults \u00b7 120 updates \u00b7 50 try-ons \u00b7 75 Ask Versani' },
-      { label: '\u2605 Premium Salon Dashboard', included: 'team rankings, industry benchmarks, auto-reports' },
-      { label: 'Your salon\u2019s product lines used in every formula', included: true },
+      { label: 'Essentials-level features per seat', included: '15 FCs · 100 Reformulations · 50 try-ons · 100 Ask & Learn' },
+      { label: '★ Team Dashboard', included: 'team rankings, shared inventory, per-stylist tracking' },
+      { label: 'Your salon product lines used in every formula', included: true },
       { label: 'Shared salon inventory across all stylists', included: true },
-      { label: 'Shared AI preview cache across the team', included: 'faster, cheaper over time' },
-      { label: 'Shared client database', included: true },
+      { label: 'Shared client database (200 × seats)', included: true },
       { label: 'Per-stylist usage tracking', included: true },
       { label: 'Role-based permissions', included: true },
       { label: 'Salon owner dashboard', included: 'team performance at a glance' },
-      { label: 'Industry benchmarks (anonymized vs other Versani salons)', included: true },
-      { label: 'Flat per-seat pricing (no volume brackets)', included: 'same price from 1 to 50 seats' },
-      { label: '51+ seats \u2192 Custom tier', included: 'negotiated pricing for multi-location groups' },
+      { label: 'Top-ups: dual-buyer (admin or individual stylist)', included: 'charged to whoever buys; portable' },
+      { label: 'Flat per-seat pricing (no volume brackets)', included: 'same price 3-50 seats' },
+      { label: '51+ seats → Custom tier', included: 'negotiated pricing for multi-location groups' },
     ],
   },
   {
-    id: 'salon-b',
-    name: 'Salon Plan B',
-    tagline: 'Studio-level features per seat + Premium Salon Dashboard. For production salons.',
-    priceMonthly: 39.99,
-    priceYearly: 407.90,
-    annualAvailable: true,
+    id: 'team-pro',
+    name: 'Team Pro',
+    tagline: 'Team Dashboard + revenue-per-stylist tracking + at-risk alerts across the team + Pro-level caps per seat. 3-seat minimum.',
+    priceMonthly: 19.99,
+    priceYearly: 239.88,
+    annualAvailable: false,
     priceLabel: 'per seat',
-    ctaLabel: 'Request Salon Pricing',
-    ctaHref: 'mailto:frank@versani.ai?subject=Salon%20Plan%20B%20Versani%20pricing%20inquiry',
+    ctaLabel: 'Request Team Pricing',
+    ctaHref: 'mailto:frank@versani.ai?subject=Team%20Pro%20Versani%20pricing%20inquiry',
     features: [
-      { label: 'Studio-level features per seat', included: '70 consults \u00b7 160 updates \u00b7 unlimited try-ons \u00b7 150 Ask Versani' },
-      { label: '\u2605 Premium Salon Dashboard', included: 'team rankings, industry benchmarks, auto-reports' },
+      { label: 'Pro-level features per seat', included: '60 FCs · 250 Reformulations · 225 try-ons · 275 Ask & Learn' },
+      { label: '★ Team Dashboard with revenue analytics', included: 'team rankings, revenue-per-stylist, at-risk alerts' },
+      { label: 'Voice Texting (STT) team-wide', included: 'hands-free chair-side for every seat' },
+      { label: 'Shared salon inventory across all stylists', included: true },
+      { label: 'Shared client database (300 × seats)', included: true },
+      { label: 'Per-stylist usage + revenue tracking', included: true },
+      { label: 'Industry benchmarks (anonymized)', included: true },
+      { label: 'Weekly team performance digest', included: true },
+      { label: 'Top-ups: dual-buyer (admin or individual stylist)', included: 'charged to whoever buys; portable' },
+      { label: 'Flat per-seat pricing (no volume brackets)', included: 'same price 3-50 seats' },
+      { label: '51+ seats → Custom tier', included: 'negotiated pricing for multi-location groups' },
+    ],
+  },
+  {
+    id: 'team-premium',
+    name: 'Team Premium',
+    tagline: 'Team Dashboard + multi-location reporting + CSV export team-wide + Voice Texting team-wide + unlimited try-ons + Premium-level caps per seat. 3-seat minimum.',
+    priceMonthly: 26.99,
+    priceYearly: 323.88,
+    annualAvailable: false,
+    priceLabel: 'per seat',
+    ctaLabel: 'Request Team Pricing',
+    ctaHref: 'mailto:frank@versani.ai?subject=Team%20Premium%20Versani%20pricing%20inquiry',
+    features: [
+      { label: 'Premium-level features per seat', included: '80 FCs · 300 Reformulations · unlimited try-ons · 450 Ask & Learn' },
+      { label: '★ Team Dashboard with full business intelligence', included: 'team rankings, revenue-per-stylist, multi-location reporting' },
       { label: 'AI client insights per stylist', included: 'individual client pattern analysis' },
       { label: 'Revenue-per-client tracking (team-wide)', included: 'know your top 10% by LTV' },
       { label: 'Returning-client scheduling AI', included: 'rebook predictions across the team' },
@@ -195,9 +235,10 @@ const tiers: Tier[] = [
       { label: 'Correction workflow UI', included: 'structured multi-step for corrections' },
       { label: 'Client-facing branded reports', included: 'PDFs with your salon logo' },
       { label: 'CSV export for all data', included: 'full portability' },
+      { label: 'Voice Texting (STT) team-wide', included: 'hands-free chair-side for every seat' },
       { label: 'Industry benchmarks (anonymized)', included: 'your salon vs top-tier nationally' },
-      { label: 'Flat per-seat pricing (no volume brackets)', included: 'same price from 1 to 50 seats' },
-      { label: '51+ seats \u2192 Custom tier', included: 'negotiated pricing for multi-location groups' },
+      { label: 'Flat per-seat pricing (no volume brackets)', included: 'same price 3-50 seats' },
+      { label: '51+ seats → Custom tier', included: 'negotiated pricing for multi-location groups' },
     ],
   },
   {
@@ -207,7 +248,7 @@ const tiers: Tier[] = [
     priceMonthly: null,
     priceYearly: null,
     priceLabel: 'By conversation',
-    ctaLabel: "Let\u2019s talk",
+    ctaLabel: "Let's talk",
     ctaHref: 'mailto:frank@versani.ai?subject=Custom%20%2F%20Multi-location%20Versani%20pricing%20inquiry',
     features: [
       { label: 'Custom volume economics', included: 'per-seat rate continues to decrease above 50 seats' },
@@ -221,19 +262,22 @@ const tiers: Tier[] = [
   },
 ]
 
-/* ── Salon per-seat pricing tiers ── */
+/* ── Team per-seat pricing tiers (was Salon Plan A/B; renamed Team Essentials/Pro/Premium 2026-05-07) ── */
 const salonBreakpoints = {
-  optionA: [
-    { min: 1, max: 50, perSeat: 24.99 },
+  teamEssentials: [
+    { min: 3, max: 50, perSeat: 9.99 },
   ],
-  optionB: [
-    { min: 1, max: 50, perSeat: 39.99 },
+  teamPro: [
+    { min: 3, max: 50, perSeat: 19.99 },
+  ],
+  teamPremium: [
+    { min: 3, max: 50, perSeat: 26.99 },
   ],
 } as const
 
 function getSalonPerSeatRate(
   seats: number,
-  option: 'optionA' | 'optionB',
+  option: 'teamEssentials' | 'teamPro' | 'teamPremium',
 ): number {
   const brackets = salonBreakpoints[option]
   const bracket =
@@ -243,7 +287,6 @@ function getSalonPerSeatRate(
 }
 
 const salonExamples = [3, 5, 10, 25]
-
 /* ================================================================
    Root client component
    ================================================================ */
@@ -259,24 +302,24 @@ export const askVersaniPacks = [
     id: 'ask-25',
     size: 25,
     price: 1.99,
-    label: 'Top-Up 25 Ask',
-    description: '25 extra Ask Versani messages. Never expires.',
+    label: 'Top-Up 25 Ask & Learn',
+    description: '25 extra Ask & Learn messages. Never expires.',
     badge: null as string | null,
   },
   {
     id: 'ask-50',
     size: 50,
     price: 2.99,
-    label: 'Top-Up 50 Ask',
-    description: '50 extra Ask Versani messages. Never expires.',
+    label: 'Top-Up 50 Ask & Learn',
+    description: '50 extra Ask & Learn messages. Never expires.',
     badge: 'POPULAR',
   },
   {
     id: 'ask-100',
     size: 100,
     price: 4.99,
-    label: 'Top-Up 100 Ask',
-    description: '100 extra Ask Versani messages. Never expires.',
+    label: 'Top-Up 100 Ask & Learn',
+    description: '100 extra Ask & Learn messages. Never expires.',
     badge: 'BEST VALUE',
   },
 ]
@@ -422,7 +465,7 @@ export function PricingClient() {
                 )}
               {billing === 'yearly' && tier.annualAvailable === false && (
                 <p className="text-xs mt-1 font-medium text-[color:var(--gold)]">
-                  Monthly only · annual billing starts at Studio
+                  Monthly only · annual billing starts at Pro
                 </p>
               )}
             </div>
@@ -553,7 +596,7 @@ export function OveragePacks() {
 /**
  * TopUpPacks — unified mobile-first top-up surface.
  *
- * Shows BOTH Consultation packs AND Ask Versani packs in two clearly
+ * Shows BOTH Consultation packs AND Ask & Learn packs in two clearly
  * labeled sections. No tabs — users see everything at once.
  * Each section uses a compact 2-col (mobile) / 3-col (desktop) tile grid.
  */
@@ -612,15 +655,15 @@ export function TopUpPacks() {
         </div>
       </div>
 
-      {/* Ask Versani packs */}
+      {/* Ask & Learn packs */}
       <div>
         <div className="flex items-baseline justify-between mb-4 md:mb-5">
           <div>
             <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[color:var(--gold)] mb-1">
-              Ask Versani
+              Ask & Learn
             </div>
             <h3 className="font-serif text-xl md:text-2xl tracking-tight text-[color:var(--foreground)]">
-              Extra Ask Versani messages
+              Extra Ask & Learn messages
             </h3>
           </div>
           <span className="hidden md:inline text-xs text-white/45">
@@ -650,10 +693,10 @@ export function TopUpPacks() {
 }
 
 /* ================================================================
-   Ask Versani Packs — always-visible Ask Versani top-up cards
+   Ask & Learn Packs — always-visible Ask & Learn top-up cards
    ================================================================ */
 
-export function AskVersaniPacks() {
+export function AskAndLearnPacks() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {askVersaniPacks.map((pack) => (
@@ -701,53 +744,57 @@ export function AskVersaniPacks() {
    Salon Calculator — standalone client component
    ================================================================ */
 
+type TeamPlanKey = 'teamEssentials' | 'teamPro' | 'teamPremium'
+
 export function SalonCalculator() {
-  const [option, setOption] = useState<'optionA' | 'optionB'>('optionA')
+  const [option, setOption] = useState<TeamPlanKey>('teamPro')
   const [seats, setSeats] = useState<number>(10)
 
-  const clampSeats = (n: number) => Math.max(1, Math.min(50, Math.round(n)))
+  const clampSeats = (n: number) => Math.max(3, Math.min(50, Math.round(n)))
   const perSeat = getSalonPerSeatRate(seats, option)
   const total = seats * perSeat
   const brackets = salonBreakpoints[option]
 
-  const optionLabel =
-    option === 'optionA'
-      ? 'Salon Plan A · Pro-level features per seat'
-      : 'Salon Plan B · Studio-level features per seat'
-  const optionDescription =
-    option === 'optionA'
-      ? '50 consults/seat + Premium Salon Dashboard. For maintenance-heavy salons.'
-      : '70 consults/seat · unlimited try-ons · full Studio experience + Premium Salon Dashboard.'
+  const planMeta: Record<TeamPlanKey, { label: string; description: string; tab: string }> = {
+    teamEssentials: {
+      tab: 'Team Essentials',
+      label: 'Team Essentials · Essentials-level features per seat',
+      description: '15 FCs/seat · 100 Reformulations · 50 try-ons · 100 Ask & Learn + Team Dashboard. For salons starting out.',
+    },
+    teamPro: {
+      tab: 'Team Pro',
+      label: 'Team Pro · Pro-level features per seat',
+      description: '60 FCs/seat · 250 Reformulations · 225 try-ons · Voice Texting team-wide + Team Dashboard. For full-time stylists.',
+    },
+    teamPremium: {
+      tab: 'Team Premium',
+      label: 'Team Premium · Premium-level features per seat',
+      description: '80 FCs/seat · unlimited try-ons · CSV export team-wide + AI client insights + Team Dashboard. For production salons.',
+    },
+  }
+  const optionLabel = planMeta[option].label
+  const optionDescription = planMeta[option].description
 
   return (
     <div className="text-left">
       {/* Option toggle */}
       <div className="flex justify-center mb-6">
-        <div className="inline-flex items-center gap-1 p-1 rounded-full bg-white/[0.04] border border-white/[0.08]">
-          <button
-            type="button"
-            onClick={() => setOption('optionA')}
-            className={cn(
-              'px-5 py-2 rounded-full text-sm font-semibold tracking-wide transition-colors',
-              option === 'optionA'
-                ? 'bg-[color:var(--gold)] text-black'
-                : 'text-white/60 hover:text-white/90',
-            )}
-          >
-            Plan A
-          </button>
-          <button
-            type="button"
-            onClick={() => setOption('optionB')}
-            className={cn(
-              'px-5 py-2 rounded-full text-sm font-semibold tracking-wide transition-colors',
-              option === 'optionB'
-                ? 'bg-[color:var(--gold)] text-black'
-                : 'text-white/60 hover:text-white/90',
-            )}
-          >
-            Plan B
-          </button>
+        <div className="inline-flex items-center gap-1 p-1 rounded-full bg-white/[0.04] border border-white/[0.08] flex-wrap">
+          {(['teamEssentials', 'teamPro', 'teamPremium'] as TeamPlanKey[]).map((key) => (
+            <button
+              key={key}
+              type="button"
+              onClick={() => setOption(key)}
+              className={cn(
+                'px-4 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-colors',
+                option === key
+                  ? 'bg-[color:var(--gold)] text-black'
+                  : 'text-white/60 hover:text-white/90',
+              )}
+            >
+              {planMeta[key].tab}
+            </button>
+          ))}
         </div>
       </div>
 
@@ -972,3 +1019,6 @@ function DotIcon() {
     </div>
   )
 }
+
+// Legacy alias for backwards compatibility (any file still importing the old name)
+export const AskVersaniPacks = AskAndLearnPacks

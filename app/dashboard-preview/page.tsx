@@ -3,7 +3,7 @@ import Link from 'next/link'
 export const metadata = {
   title: 'The Versani Dashboard · Salon & School Intelligence',
   description:
-    'See what makes Versani different. Our Premium Salon Dashboard and Beauty School Dashboard deliver operational intelligence that no salon CRM provides — team benchmarks, client retention, revenue analytics, curriculum insights, board-pass predictions, and more.',
+    'See what makes Versani different. Our Premium Team Dashboard and Beauty School Dashboard deliver operational intelligence that no salon CRM provides — team benchmarks, client retention, revenue analytics, curriculum insights, board-pass predictions, and more.',
 }
 
 export default function DashboardPreviewPage() {
@@ -85,11 +85,11 @@ export default function DashboardPreviewPage() {
       <section className="px-4 pb-24 max-w-5xl mx-auto">
         <div className="text-center mb-10">
           <div className="text-[10px] font-bold uppercase tracking-[0.25em] mb-3 text-[color:var(--gold)]">
-            Premium Salon Dashboard
+            Premium Team Dashboard
           </div>
           <h2 className="font-serif text-3xl md:text-5xl font-light tracking-tight mb-4">
             Included with{' '}
-            <em className="italic font-normal text-[color:var(--gold)]">Salon Plan A & B</em>
+            <em className="italic font-normal text-[color:var(--gold)]">Team Pro & B</em>
           </h2>
           <p className="text-base text-white/60 max-w-2xl mx-auto">
             Seven views that answer the questions salon owners lose sleep over at 3am.
@@ -252,7 +252,7 @@ export default function DashboardPreviewPage() {
               href="/pricing#salon"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-transparent text-[color:var(--gold)] border border-[color:var(--gold)] text-sm font-bold hover:bg-[color:var(--gold)]/10 transition-colors"
             >
-              Salon Plan A & B →
+              Team Pro & B →
             </Link>
           </div>
         </div>

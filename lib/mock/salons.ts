@@ -7,7 +7,7 @@
  */
 
 export type Role = 'owner' | 'manager' | 'stylist'
-export type Tier = 'Pro' | 'Studio'
+export type Tier = 'Pro' | 'Premium'
 export type MemberStatus = 'active' | 'pending' | 'invited' | 'paused'
 
 export interface Stylist {
@@ -65,7 +65,7 @@ export const salonMock = {
     city: 'Westchester, NY',
     activeSeats: 8,
     maxSeats: 8,
-    tier: 'Salon Option B',
+    tier: 'Team Premium',
     joinedAt: '2025-10-15',
     mrrContribution: 319.92,
     nextRenewal: '2026-05-15',
@@ -77,7 +77,7 @@ export const salonMock = {
       id: 's1',
       name: 'Sarah Chen',
       role: 'stylist',
-      tier: 'Studio',
+      tier: 'Premium',
       scoreAvg: 8.7,
       consultationsThisMonth: 47,
       retentionRate: 0.89,
@@ -91,7 +91,7 @@ export const salonMock = {
       id: 's2',
       name: 'Marcus Williams',
       role: 'stylist',
-      tier: 'Studio',
+      tier: 'Premium',
       scoreAvg: 8.4,
       consultationsThisMonth: 42,
       retentionRate: 0.85,
@@ -119,7 +119,7 @@ export const salonMock = {
       id: 's4',
       name: 'Jordan Rivera',
       role: 'manager',
-      tier: 'Studio',
+      tier: 'Premium',
       scoreAvg: 9.1,
       consultationsThisMonth: 38,
       retentionRate: 0.94,
@@ -133,7 +133,7 @@ export const salonMock = {
       id: 's5',
       name: 'Amira Hassan',
       role: 'stylist',
-      tier: 'Studio',
+      tier: 'Premium',
       scoreAvg: 7.8,
       consultationsThisMonth: 28,
       retentionRate: 0.76,
@@ -175,7 +175,7 @@ export const salonMock = {
       id: 's8',
       name: 'Kai Tanaka',
       role: 'stylist',
-      tier: 'Studio',
+      tier: 'Premium',
       scoreAvg: 8.6,
       consultationsThisMonth: 44,
       retentionRate: 0.88,

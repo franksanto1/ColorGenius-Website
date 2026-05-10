@@ -20,14 +20,14 @@ export default function SalonInvitePage() {
       <SectionHero
         eyebrow="Team"
         title="Invite stylists"
-        subtitle="Send an invitation link. Each seat is billed at $39.99/month."
+        subtitle="Send an invitation link. Each seat is billed at $26.99/month."
       />
 
       <PrivacyNotice>
         You have <strong>0 available seats</strong> on {profile.tier}. Adding a
         stylist will prorate an additional seat on your next invoice
         ({formatDate(profile.nextRenewal)}) for{' '}
-        {formatCurrency(39.99)} per stylist.
+        {formatCurrency(26.99)} per stylist.
       </PrivacyNotice>
 
       <InviteForm

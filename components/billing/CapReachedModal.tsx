@@ -7,7 +7,7 @@ import { cn } from '@/lib/cn'
 /* ================================================================
    CapReachedModal
    Surfaces when a subscriber has consumed their monthly allotment
-   for either consultations or Ask Versani messages. Offers top-up
+   for either consultations or Ask & Learn messages. Offers top-up
    packs (no urgency, no "upgrade now" SaaS energy) plus an upgrade
    option. Gold accents, calm factual copy.
    ================================================================ */
@@ -70,32 +70,32 @@ export function CapReachedModal({
   const packs = isAsk ? askVersaniPacks : consultationPacks
   const recommended = packs.find((p) => p.tag === 'recommended') ?? packs[0]
 
-  const unit = isAsk ? 'Ask Versani messages' : 'full consultations'
+  const unit = isAsk ? 'Ask & Learn messages' : 'full consultations'
   const unitShort = isAsk ? 'messages' : 'consultations'
-  const capLabel = isAsk ? 'Ask Versani cap' : 'Monthly cap'
+  const capLabel = isAsk ? 'Ask & Learn cap' : 'Monthly cap'
 
   const title = isAsk
-    ? `You've used your ${total} Ask Versani messages this month`
+    ? `You've used your ${total} Ask & Learn messages this month`
     : "You've reached your monthly consultation cap"
 
   const usageLine = isAsk
-    ? `You've used ${used} of ${total} Ask Versani messages this cycle.`
+    ? `You've used ${used} of ${total} Ask & Learn messages this cycle.`
     : `You've used ${used} of ${total} full consultations this cycle.`
 
   const sideline = isAsk
-    ? 'Consultations and client updates keep working.'
-    : 'Client updates and Ask Versani keep working.'
+    ? 'Consultations and Formula Reformulations keep working.'
+    : 'Formula Reformulations and Ask & Learn keep working.'
 
   const upgradeCopy = isAsk
     ? {
-        title: 'Upgrade to Studio',
-        detail: '150 Ask Versani messages · 70 consults · AI client insights',
-        price: '$39.99/month — prorated from today',
+        title: 'Upgrade to Premium',
+        detail: '150 Ask & Learn messages · 70 consults · AI client insights',
+        price: '$26.99/month — prorated from today',
       }
     : {
-        title: 'Upgrade to Studio',
+        title: 'Upgrade to Premium',
         detail: '70 consultations · AI client insights · CSV export',
-        price: '$39.99/month — prorated from today',
+        price: '$26.99/month — prorated from today',
       }
 
   return (

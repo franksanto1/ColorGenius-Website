@@ -10,7 +10,7 @@ import { salonMock } from '@/lib/mock/salons'
 import { formatCurrency, formatPercent, formatDate } from '@/lib/format'
 
 export const metadata: Metadata = {
-  title: 'Salon Dashboard · Versani',
+  title: 'Team Dashboard · Versani',
   description: 'Team performance and operational snapshot.',
   robots: { index: false, follow: false },
 }

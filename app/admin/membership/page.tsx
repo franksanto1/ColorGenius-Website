@@ -15,7 +15,7 @@ import { CapReachedModal } from '@/components/billing/CapReachedModal'
 // OpenServ's subscription API is live.
 const mockPlan = {
   name: 'Pro',
-  price: 24.99,
+  price: 19.99,
   cadence: 'month',
   nextBilling: 'May 12, 2026',
   consultsUsed: 47,
@@ -48,9 +48,9 @@ const askVersaniTopUpPacks: Array<{
   description: string
   tag: 'popular' | 'best' | null
 }> = [
-  { size: 25, price: 1.99, description: '25 extra Ask Versani messages', tag: null },
-  { size: 50, price: 2.99, description: '50 extra Ask Versani messages', tag: 'popular' },
-  { size: 100, price: 4.99, description: '100 extra Ask Versani messages', tag: 'best' },
+  { size: 25, price: 1.99, description: '25 extra Ask & Learn messages', tag: null },
+  { size: 50, price: 2.99, description: '50 extra Ask & Learn messages', tag: 'popular' },
+  { size: 100, price: 4.99, description: '100 extra Ask & Learn messages', tag: 'best' },
 ]
 
 const billingHistory = [
@@ -92,7 +92,7 @@ export default function MembershipPage() {
   const studioTotalIfUpgraded = 39.99 * 3 // quarter
   const currentProSpendIncludingTopUps =
     mockPlan.price * 3 + mockPlan.topUpSpendThisQuarter
-  const showStudioNudge = mockPlan.capHitCountThisQuarter >= 2
+  const showPremiumNudge = mockPlan.capHitCountThisQuarter >= 2
 
   const consultsRemaining = Math.max(0, mockPlan.consultsTotal - mockPlan.consultsUsed)
   const daysUntilReset = 18
@@ -154,7 +154,7 @@ export default function MembershipPage() {
             total={mockPlan.consultsTotal}
           />
           <UsageRow
-            label="Client updates"
+            label="Formula Reformulations"
             used={mockPlan.updatesUsed}
             total={mockPlan.updatesTotal}
           />
@@ -164,7 +164,7 @@ export default function MembershipPage() {
             total={mockPlan.renderingsTotal}
           />
           <UsageRow
-            label="Ask Versani"
+            label="Ask & Learn"
             used={mockPlan.askVersaniUsed}
             total={mockPlan.askVersaniTotal}
           />
@@ -236,18 +236,18 @@ export default function MembershipPage() {
         </p>
       </div>
 
-      {/* Need More Ask Versani */}
+      {/* Need More Ask & Learn */}
       <div className="mb-8">
         <div className="flex items-baseline justify-between gap-4 mb-4">
           <h2 className="font-serif text-xl md:text-2xl text-foreground">
-            Need more Ask Versani?
+            Need more Ask & Learn?
           </h2>
           <button
             type="button"
             onClick={() => setCapModalOpen('ask-versani')}
             className="text-xs text-gold hover:underline"
           >
-            Preview Ask Versani cap-reached modal
+            Preview Ask & Learn cap-reached modal
           </button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -292,15 +292,15 @@ export default function MembershipPage() {
           ))}
         </div>
         <p className="text-xs text-white/40 mt-4">
-          Ask Versani messages never expire. Use them when you need them.
+          Ask & Learn messages never expire. Use them when you need them.
         </p>
       </div>
 
-      {/* Studio Upgrade nudge (shown conditionally) */}
-      {showStudioNudge && (
+      {/* Premium Upgrade nudge (shown conditionally) */}
+      {showPremiumNudge && (
         <div className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-8 mb-6">
           <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold mb-1.5">
-            Consider Studio
+            Consider Premium
           </div>
           <h2 className="font-serif text-xl md:text-2xl text-foreground mb-3">
             The math has shifted
@@ -309,10 +309,10 @@ export default function MembershipPage() {
             This quarter you&apos;ve added {mockPlan.topUpsPurchasedThisQuarter}{' '}
             packs for $
             {mockPlan.topUpSpendThisQuarter.toFixed(2)} on top of Pro. Moving to
-            Studio would have been about $
+            Premium would have been about $
             {(studioTotalIfUpgraded - currentProSpendIncludingTopUps).toFixed(2)}{' '}
             more over the same period — with 80 consultations baseline and the
-            Studio-exclusive intelligence features.
+            Premium-exclusive intelligence features.
           </p>
           <Link
             href="/pricing"

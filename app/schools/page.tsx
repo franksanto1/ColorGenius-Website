@@ -29,7 +29,7 @@ const howItWorks = [
   {
     label: 'School base seat',
     subtitle: '$8.99 per student / month',
-    body: 'Paid by the school. Every enrolled student receives a seat with classroom-appropriate capacity: 30 full consultations, 80 client updates, and reduced rendering quotas. Supervised workflows and teacher-reviewable history built in.',
+    body: 'Paid by the school. Every enrolled student receives a seat with classroom-appropriate capacity: 30 full consultations, 80 Formula Reformulations, and reduced rendering quotas. Supervised workflows and teacher-reviewable history built in.',
   },
   {
     label: 'Pro student upgrade',
@@ -48,11 +48,11 @@ const studentFeatures = [
     body: 'Classroom-appropriate capacity. Covers a full semester of practical work without burning through tokens on the first week.',
   },
   {
-    label: '80 client updates per month',
+    label: '80 Formula Reformulations per month',
     body: 'For return clients and mannequin iterations. Refreshes never count against the full-consultation cap.',
   },
   {
-    label: 'Voice narration + Ask Versani',
+    label: 'Voice narration + Ask & Learn',
     body: 'Students can hear their formulas read out loud and ask color-theory questions. The AI teaches alongside the instructor, never replaces them.',
   },
   {
@@ -114,14 +114,14 @@ const faqs = [
   },
   {
     q: 'What about instructors? Do they pay separately?',
-    a: 'Instructor accounts are included in the base seat pricing at a 1-to-20 student ratio. Additional instructor seats are $15/month each. Instructors get full Studio-tier capacity for their own work plus classroom administration tools.',
+    a: 'Instructor accounts are included in the base seat pricing at a 1-to-20 student ratio. Additional instructor seats are $15/month each. Instructors get full Premium-tier capacity for their own work plus classroom administration tools.',
   },
   {
     q: 'Is there a minimum school size?',
     a: 'No hard minimum. Schools with under 25 students use the same per-seat pricing. Schools over 150 students move to custom enterprise pricing with dedicated onboarding and SIS integration.',
   },
   {
-    q: 'How is this different from the Salon tier?',
+    q: 'How is this different from the Team tier?',
     a: 'School seats have reduced consultation caps appropriate for supervised learning, built-in review workflows, FERPA-aware data handling, and graduation continuity. Salon seats have full professional capacity and shared client databases. Different jobs, different tools.',
   },
   {
