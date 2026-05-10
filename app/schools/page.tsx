@@ -8,7 +8,7 @@ import { FAQItem } from '@/components/pricing/PricingClient'
 export const metadata: Metadata = {
   title: 'For Schools — Classroom-ready AI for the next generation',
   description:
-    'Versani for beauty schools. Dual-account model: $8.99/student base seat paid by the school, optional $9.99 Pro student upgrade. Seamless graduation continuity.',
+    'Versani for beauty schools. Dual-account model: $8.99/student base seat paid by the school (same caps as Beauty Student tier), optional $9.99 Pro student upgrade. Seamless graduation continuity.',
   alternates: { canonical: '/schools' },
   openGraph: {
     title: 'Versani for Beauty Schools',
@@ -29,7 +29,7 @@ const howItWorks = [
   {
     label: 'School base seat',
     subtitle: '$8.99 per student / month',
-    body: 'Paid by the school. Every enrolled student receives a seat with classroom-appropriate capacity: 30 full consultations, 80 Formula Reformulations, and reduced rendering quotas. Supervised workflows and teacher-reviewable history built in.',
+    body: 'Paid by the school. Every enrolled student receives a seat with the same caps as the Beauty Student tier: 20 Practice Cases (Full Consultations) per month, 100 Ask & Learn messages, unlimited Formula Reformulations + Repeat Visits, 100 client profiles, 50 virtual try-ons. Supervised workflows and teacher-reviewable history built in.',
   },
   {
     label: 'Pro student upgrade',
@@ -44,16 +44,16 @@ const studentFeatures = [
     body: 'Every consultation is reviewable by their instructor. Students can flag work for feedback; teachers can see the reasoning behind each formula.',
   },
   {
-    label: '30 full consultations per month',
-    body: 'Classroom-appropriate capacity. Covers a full semester of practical work without burning through tokens on the first week.',
+    label: '20 Practice Cases (Full Consultations) per month',
+    body: 'Same as the individual Beauty Student tier. Photo analysis, AI rendering, and full chair-side flow on every consultation.',
   },
   {
-    label: '80 Formula Reformulations per month',
-    body: 'For return clients and mannequin iterations. Refreshes never count against the full-consultation cap.',
+    label: 'Unlimited Formula Reformulations',
+    body: 'Tweak existing formulas as needed — naturally bounded by your client roster. Never count against the full-consultation cap.',
   },
   {
-    label: 'Voice narration + Ask & Learn',
-    body: 'Students can hear their formulas read out loud and ask color-theory questions. The AI teaches alongside the instructor, never replaces them.',
+    label: '100 Ask & Learn messages + voice narration',
+    body: 'Same as Beauty Student tier — ask questions, learn the craft, apply what you learn. The AI teaches alongside the instructor, never replaces them.',
   },
   {
     label: 'Personal portfolio from day one',
