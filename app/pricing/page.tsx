@@ -75,7 +75,7 @@ const comparisonRows = [
   { feature: 'Personal RAG data ownership', versani: 'Yes' },
   { feature: 'Your actual inventory drives every formula', versani: 'Yes' },
   { feature: 'Voice formula narration', versani: 'Pro & Premium: hands-free Voice Texting' },
-  { feature: 'Ask & Learn messages / month', versani: '200 Pro / 300 Premium + top-up packs ($1.99+)' },
+  { feature: 'Ask & Learn messages / month', versani: '200 Pro / 300 Premium + top-up packs ($2.99+, plus 300-pack power option)' },
   { feature: 'Multi-seat salon tier (shared DB)', versani: 'Yes' },
 ]
 
@@ -102,7 +102,7 @@ const faqs = [
   },
   {
     q: 'What if I hit my Ask & Learn limit?',
-    a: 'You can add Top-Up 25 ($1.99), Top-Up 50 ($2.99), or Top-Up 100 ($4.99) anytime. Ask & Learn messages never expire \u2014 use them whenever you need them. If you\u2019re consistently hitting your monthly limit, upgrading a tier may be more economical. Pro includes 200/month and Premium 300/month.',
+    a: 'You can add Top-Up 25 ($2.99), Top-Up 50 ($3.99), Top-Up 100 ($5.99), or the power-user Top-Up 300 ($14.99) anytime. Ask & Learn messages never expire \u2014 use them whenever you need them. If you\u2019re consistently hitting your monthly limit, upgrading a tier may be more economical. Pro includes 200/month and Premium 300/month.',
   },
   {
     q: 'Can I switch between tiers anytime?',
@@ -308,6 +308,61 @@ export default function PricingPage() {
                 school pricing
               </Link>
               .
+            </p>
+          </div>
+        </section>
+
+        {/* ★ Always Unlimited callout — brand value bucket above comparison */}
+        <section
+          aria-labelledby="unlimited-heading"
+          className="container pb-16 max-w-5xl"
+        >
+          <div className="rounded-2xl bg-gradient-to-b from-[color:var(--gold)]/[0.10] to-[color:var(--gold)]/[0.02] border-2 border-[color:var(--gold)]/[0.25] p-8 md:p-12">
+            <div className="text-center mb-8">
+              <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--gold)] mb-3 flex items-center justify-center gap-2">
+                <span aria-hidden="true">★</span>
+                The Unlimited Bucket
+                <span aria-hidden="true">★</span>
+              </p>
+              <h2
+                id="unlimited-heading"
+                className="font-serif text-3xl md:text-4xl font-light tracking-tight mb-3"
+              >
+                Always Unlimited{' '}
+                <em className="italic font-normal text-[color:var(--gold)]">
+                  on every tier
+                </em>
+              </h2>
+              <p className="text-sm md:text-base text-white/65 max-w-2xl mx-auto leading-relaxed">
+                Most consultation tools meter everything. Versani caps the heavy AI work and gives you everything else free — naturally bounded by your craft, not artificial limits.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 max-w-2xl mx-auto">
+              {[
+                { label: 'Formula Reformulations', detail: 'Tweak any formula, as many times as needed' },
+                { label: 'Repeat Visits', detail: '"Use last formula" — instant, no AI cost' },
+                { label: 'Performance Photos', detail: 'AI scoring on every after-photo you capture' },
+                { label: 'Virtual Try-Ons', detail: 'Show every client every possible color' },
+                { label: 'Formula history', detail: 'Every consultation, every formula, forever' },
+                { label: 'Repeat client cards', detail: 'No expiration on returning client work' },
+              ].map((item) => (
+                <div key={item.label} className="flex items-start gap-2.5">
+                  <span className="shrink-0 mt-0.5 text-[color:var(--gold)] text-base leading-none" aria-hidden="true">★</span>
+                  <div>
+                    <div className="text-sm font-medium text-[color:var(--foreground)]">
+                      {item.label}
+                    </div>
+                    <div className="text-xs text-white/55 leading-relaxed">
+                      {item.detail}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-center text-[11px] text-white/45 mt-8 italic">
+              We meter Full Consultations + Ask & Learn. Everything else is yours.
             </p>
           </div>
         </section>

@@ -293,6 +293,51 @@ export default function SchoolsPage() {
           </div>
         </section>
 
+        {/* ★ Always Unlimited callout (mirrors pricing page) */}
+        <section
+          aria-labelledby="schools-unlimited-heading"
+          className="container pb-16 max-w-4xl"
+        >
+          <div className="rounded-2xl bg-gradient-to-b from-[color:var(--gold)]/[0.10] to-[color:var(--gold)]/[0.02] border-2 border-[color:var(--gold)]/[0.25] p-8 md:p-10">
+            <div className="text-center mb-6">
+              <p className="text-xs uppercase tracking-[0.24em] text-[color:var(--gold)] mb-3 flex items-center justify-center gap-2">
+                <span aria-hidden="true">★</span>
+                Every Beauty School Seat Includes
+                <span aria-hidden="true">★</span>
+              </p>
+              <h2
+                id="schools-unlimited-heading"
+                className="font-serif text-2xl md:text-3xl font-light tracking-tight"
+              >
+                Always Unlimited{' '}
+                <em className="italic font-normal text-[color:var(--gold)]">
+                  for every student
+                </em>
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 max-w-xl mx-auto">
+              {[
+                'Unlimited Formula Reformulations',
+                'Unlimited Repeat Visits',
+                'Unlimited Performance Photo scoring',
+                'Unlimited Virtual Try-Ons',
+                'Unlimited formula history',
+                'Unlimited Versani Academy access',
+              ].map((label) => (
+                <div key={label} className="flex items-start gap-2.5">
+                  <span className="shrink-0 mt-0.5 text-[color:var(--gold)] text-base leading-none" aria-hidden="true">★</span>
+                  <span className="text-sm text-[color:var(--foreground)]">{label}</span>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-center text-[11px] text-white/45 mt-6 italic">
+              We meter Practice Cases + Ask & Learn. Everything else, students get to explore freely.
+            </p>
+          </div>
+        </section>
+
         {/* Graduation continuity */}
         <section className="container pb-24 md:pb-28 max-w-4xl">
           <Reveal>

@@ -17,10 +17,14 @@ import { cn } from '@/lib/cn'
 
 type Billing = 'monthly' | 'yearly'
 
+type FeatureGroup = 'capacity' | 'unlimited' | 'features'
+
 interface TierFeature {
   label: string
   /** true = check, false = X (not included), string = detail line under label */
   included: boolean | string
+  /** Group: 'capacity' (monthly caps), 'unlimited' (always free/unlimited), 'features' (everything else). Defaults to 'features'. */
+  group?: FeatureGroup
 }
 
 interface Tier {
@@ -50,8 +54,8 @@ const tiers: Tier[] = [
     features: [
       { label: 'Your actual product lines used in every formula', included: true },
       { label: '7 days full access', included: 'everything unlocked, no limits' },
-      { label: 'Unlimited Ask & Learn throughout', included: true },
-      { label: 'Unlimited clients', included: true },
+      { label: 'Unlimited Ask & Learn throughout', included: true, group: 'unlimited' },
+      { label: 'Unlimited clients', included: true, group: 'unlimited' },
       { label: 'After day 7', included: 'Upgrade anytime to keep your momentum, or account enters read-only' },
     ],
   },
@@ -66,12 +70,12 @@ const tiers: Tier[] = [
     ctaHref: '/auth?mode=student',
     features: [
       { label: 'Your actual product lines used in every formula', included: true },
-      { label: '20 Practice Cases (Full Consultations) per month', included: 'photo analysis + AI rendering + full chair-side flow' },
-      { label: 'Unlimited Formula Reformulations', included: 'tweak existing formulas as needed — naturally bounded by your client roster' },
-      { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost' },
-      { label: 'Unlimited virtual try-ons', included: 'show every client every possible color' },
-      { label: '100 Ask & Learn messages per month', included: 'ask questions, learn the craft, apply what you learn' },
-      { label: '100 client profiles', included: 'practice with multiple personas' },
+      { label: '20 Practice Cases (Full Consultations) per month', included: 'photo analysis + AI rendering + full chair-side flow', group: 'capacity' },
+      { label: 'Unlimited Formula Reformulations', included: 'tweak existing formulas as needed — naturally bounded by your client roster', group: 'unlimited' },
+      { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost', group: 'unlimited' },
+      { label: 'Unlimited virtual try-ons', included: 'show every client every possible color', group: 'unlimited' },
+      { label: '100 Ask & Learn messages per month', included: 'ask questions, learn the craft, apply what you learn', group: 'capacity' },
+      { label: '100 client profiles', included: 'practice with multiple personas', group: 'capacity' },
       { label: 'Versani Academy Library', included: 'masterclasses + technique walkthroughs' },
       { label: 'Basic 30-day performance dashboard', included: 'self-assessment tool' },
       { label: 'Top-up packs available', included: 'finals week? add more as needed' },
@@ -93,16 +97,16 @@ const tiers: Tier[] = [
     features: [
       { label: 'Your actual product lines used in every formula', included: true },
       { label: '25 Full Consultations per month', included: 'photo + creative research + formula generation' },
-      { label: 'Unlimited Formula Reformulations', included: 'tweak existing formulas as needed — naturally bounded by your client roster' },
-      { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost' },
-      { label: 'Unlimited virtual try-ons', included: 'show every client every possible color' },
-      { label: '100 Ask & Learn messages per month', included: 'chair-side helper for any color question' },
-      { label: '150 client profiles', included: true },
+      { label: 'Unlimited Formula Reformulations', included: 'tweak existing formulas as needed — naturally bounded by your client roster', group: 'unlimited' },
+      { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost', group: 'unlimited' },
+      { label: 'Unlimited virtual try-ons', included: 'show every client every possible color', group: 'unlimited' },
+      { label: '100 Ask & Learn messages per month', included: 'chair-side helper for any color question', group: 'capacity' },
+      { label: '150 client profiles', included: true, group: 'capacity' },
       { label: 'Basic 30-day performance dashboard', included: true },
       { label: 'Versani Academy Library', included: true },
       { label: 'Formula history & reports', included: true },
       { label: 'Export client reports as PDF', included: true },
-      { label: 'Top-up packs available', included: '$1.99+, never expire' },
+      { label: 'Top-up packs available', included: '$2.99+, never expire' },
       { label: 'Voice Texting (STT)', included: false },
       { label: 'Full 90-day performance dashboard', included: false },
       { label: 'At-risk client alerts', included: false },
@@ -122,11 +126,11 @@ const tiers: Tier[] = [
     features: [
       { label: 'Everything in Essentials, plus:', included: true },
       { label: '50 Full Consultations per month', included: 'new client or major change — full chair-side flow' },
-      { label: 'Unlimited Formula Reformulations', included: 'tweak existing formulas as needed — naturally bounded by your client roster' },
-      { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost' },
-      { label: 'Unlimited virtual try-ons', included: 'show every client every possible color' },
-      { label: '200 Ask & Learn messages per month', included: 'top-up packs available ($1.99+, never expire)' },
-      { label: '300 client profiles', included: true },
+      { label: 'Unlimited Formula Reformulations', included: 'tweak existing formulas as needed — naturally bounded by your client roster', group: 'unlimited' },
+      { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost', group: 'unlimited' },
+      { label: 'Unlimited virtual try-ons', included: 'show every client every possible color', group: 'unlimited' },
+      { label: '200 Ask & Learn messages per month', included: 'top-up packs available ($2.99+, never expire)', group: 'capacity' },
+      { label: '300 client profiles', included: true, group: 'capacity' },
       { label: 'Voice Texting (STT) — hands-free at the chair', included: 'speak instead of type, $0.002/FC via Groq' },
       { label: 'Full 90-day performance dashboard', included: 'pattern insights, full history' },
       { label: 'At-risk client alerts', included: true },
@@ -134,7 +138,7 @@ const tiers: Tier[] = [
       { label: 'Industry benchmarks', included: 'see how your scores stack against top-tier colorists' },
       { label: 'Formula A/B memory', included: 'save formula variations, track performance' },
       { label: 'Custom formula templates', included: 'save signatures for one-tap reuse' },
-      { label: 'Unlimited formula history', included: true },
+      { label: 'Unlimited formula history', included: true, group: 'unlimited' },
       { label: 'AI client insights', included: false },
       { label: 'CSV data export', included: false },
       { label: 'Revenue-per-client tracking', included: false },
@@ -152,11 +156,11 @@ const tiers: Tier[] = [
     features: [
       { label: 'Everything in Pro, plus the business operator tier:', included: true },
       { label: '75 Full Consultations per month', included: 'more headroom for busy weeks' },
-      { label: 'Unlimited Formula Reformulations', included: 'tweak existing formulas as needed — naturally bounded by your client roster' },
-      { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost' },
-      { label: 'Unlimited virtual try-ons', included: 'show every client every possible color' },
-      { label: '300 Ask & Learn messages per month', included: 'top-up packs available ($1.99+, never expire)' },
-      { label: 'Unlimited client profiles', included: 'your full book — no caps for power users' },
+      { label: 'Unlimited Formula Reformulations', included: 'tweak existing formulas as needed — naturally bounded by your client roster', group: 'unlimited' },
+      { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost', group: 'unlimited' },
+      { label: 'Unlimited virtual try-ons', included: 'show every client every possible color', group: 'unlimited' },
+      { label: '300 Ask & Learn messages per month', included: 'top-up packs available ($2.99+, never expire)', group: 'capacity' },
+      { label: 'Unlimited client profiles', included: 'your full book — no caps for power users', group: 'unlimited' },
       { label: 'Voice Texting (STT) — hands-free at the chair', included: 'speak instead of type, $0.002/FC via Groq' },
       { label: 'AI client insights', included: 'individual client pattern analysis' },
       { label: 'CSV data export', included: 'full portability of your scoring, formulas, client patterns' },
@@ -301,7 +305,7 @@ export const askVersaniPacks = [
   {
     id: 'ask-25',
     size: 25,
-    price: 1.99,
+    price: 2.99,
     label: 'Top-Up 25 Ask & Learn',
     description: '25 extra Ask & Learn messages. Never expires.',
     badge: null as string | null,
@@ -309,7 +313,7 @@ export const askVersaniPacks = [
   {
     id: 'ask-50',
     size: 50,
-    price: 2.99,
+    price: 3.99,
     label: 'Top-Up 50 Ask & Learn',
     description: '50 extra Ask & Learn messages. Never expires.',
     badge: 'POPULAR',
@@ -317,9 +321,17 @@ export const askVersaniPacks = [
   {
     id: 'ask-100',
     size: 100,
-    price: 4.99,
+    price: 5.99,
     label: 'Top-Up 100 Ask & Learn',
     description: '100 extra Ask & Learn messages. Never expires.',
+    badge: null as string | null,
+  },
+  {
+    id: 'ask-300',
+    size: 300,
+    price: 14.99,
+    label: 'Top-Up 300 Ask & Learn',
+    description: '300 extra Ask & Learn messages — power-user pack. Never expires.',
     badge: 'BEST VALUE',
   },
 ]
@@ -482,35 +494,78 @@ export function PricingClient() {
               {tier.ctaLabel}
             </Link>
 
-            <ul className="space-y-3 text-sm">
-              {tier.features.map((feature, j) => (
-                <li key={j} className="flex items-start gap-2.5">
-                  {feature.included === false ? (
-                    <XIcon />
-                  ) : (
-                    <CheckIcon />
-                  )}
-                  <span
-                    className={cn(
-                      feature.included === false
-                        ? 'text-white/30 line-through decoration-white/30'
-                        : 'text-white/80',
-                    )}
-                  >
-                    {feature.label}
-                    {typeof feature.included === 'string' && (
-                      <span className="block text-xs text-white/45 mt-0.5 font-normal no-underline">
-                        {feature.included}
-                      </span>
-                    )}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <GroupedFeatureList features={tier.features} />
           </motion.div>
         ))}
       </div>
     </>
+  )
+}
+
+
+/**
+ * GroupedFeatureList — renders a tier's features grouped into 3 sections:
+ *   1. Monthly capacity (capped — your tier limits)
+ *   2. ★ Always Unlimited (the brand value bucket)
+ *   3. Tier features (everything else)
+ *
+ * Group headers show only when at least one feature in the group exists.
+ * Designed to make the unlimited bucket POP visually as a brand differentiator.
+ */
+function GroupedFeatureList({ features }: { features: TierFeature[] }) {
+  const capacity = features.filter((f) => f.group === 'capacity')
+  const unlimited = features.filter((f) => f.group === 'unlimited')
+  const other = features.filter((f) => !f.group || f.group === 'features')
+
+  const renderItem = (feature: TierFeature, j: number) => (
+    <li key={j} className="flex items-start gap-2.5">
+      {feature.included === false ? <XIcon /> : <CheckIcon />}
+      <span
+        className={cn(
+          feature.included === false
+            ? 'text-white/30 line-through decoration-white/30'
+            : 'text-white/80',
+        )}
+      >
+        {feature.label}
+        {typeof feature.included === 'string' && (
+          <span className="block text-xs text-white/45 mt-0.5 font-normal no-underline">
+            {feature.included}
+          </span>
+        )}
+      </span>
+    </li>
+  )
+
+  return (
+    <div className="space-y-5 text-sm">
+      {capacity.length > 0 && (
+        <div>
+          <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/55 mb-2.5">
+            Monthly capacity
+          </div>
+          <ul className="space-y-2.5">{capacity.map(renderItem)}</ul>
+        </div>
+      )}
+
+      {unlimited.length > 0 && (
+        <div className="rounded-xl bg-[color:var(--gold)]/[0.05] border border-[color:var(--gold)]/[0.18] p-3.5 -mx-1">
+          <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[color:var(--gold)] mb-2.5 flex items-center gap-1.5">
+            <span aria-hidden="true">★</span> Always Unlimited
+          </div>
+          <ul className="space-y-2.5">{unlimited.map(renderItem)}</ul>
+        </div>
+      )}
+
+      {other.length > 0 && (
+        <div>
+          <div className="text-[10px] font-semibold uppercase tracking-[0.18em] text-white/55 mb-2.5">
+            Tier features
+          </div>
+          <ul className="space-y-2.5">{other.map(renderItem)}</ul>
+        </div>
+      )}
+    </div>
   )
 }
 

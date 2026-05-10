@@ -40,9 +40,10 @@ const consultationPacks: Pack[] = [
 ]
 
 const askVersaniPacks: Pack[] = [
-  { size: 25, price: 1.99, tag: 'recommended', label: 'Top-Up 25' },
-  { size: 50, price: 2.99, label: 'Top-Up 50' },
-  { size: 100, price: 4.99, tag: 'best', label: 'Top-Up 100' },
+  { size: 25, price: 2.99, tag: 'recommended', label: 'Top-Up 25' },
+  { size: 50, price: 3.99, label: 'Top-Up 50' },
+  { size: 100, price: 5.99, label: 'Top-Up 100' },
+  { size: 300, price: 14.99, tag: 'best', label: 'Top-Up 300 ★ power' },
 ]
 
 export function CapReachedModal({
