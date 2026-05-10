@@ -13,6 +13,7 @@ const navItems = [
   { href: '/admin/users', label: 'Users' },
   { href: '/admin/membership', label: 'Membership' },
   { href: '/admin/revenue', label: 'Revenue' },
+  { href: '/admin/app-stores', label: 'App Stores' },
   { href: '/admin/partners', label: 'Partners' },
   { href: '/admin/ambassadors', label: 'Ambassadors' },
   { href: '/admin/reports', label: 'Reports' },

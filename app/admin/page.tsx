@@ -1,9 +1,18 @@
 import { createClient } from '@/lib/supabase/server'
 
-// Tier pricing for MRR calculation
+// Tier pricing for MRR calculation (locked 2026-05-07)
 const TIER_PRICE: Record<string, number> = {
-  pro: 24.99,
-  studio: 39.99,
+  beauty_student: 8.99,
+  essentials: 9.99,
+  pro: 19.99,
+  premium: 26.99,
+  // Legacy alias — old DB rows may still carry 'studio' as the tier name.
+  // Maps to current Premium price so MRR math stays correct during migration.
+  studio: 26.99,
+  team_essentials: 9.99,
+  team_pro: 19.99,
+  team_premium: 26.99,
+  beauty_school_essentials: 8.99,
 }
 
 async function fetchMetrics() {
