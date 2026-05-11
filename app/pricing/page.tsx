@@ -102,7 +102,7 @@ const faqs = [
   },
   {
     q: 'What if I hit my Ask & Learn limit?',
-    a: 'You can add Top-Up 25 ($2.99), Top-Up 50 ($3.99), Top-Up 100 ($5.99), or the power-user Top-Up 300 ($14.99) anytime. Ask & Learn messages never expire \u2014 use them whenever you need them. If you\u2019re consistently hitting your monthly limit, upgrading a tier may be more economical. Pro includes 200/month and Premium 300/month.',
+    a: 'You can add Top-Up 25 ($2.99), Top-Up 50 ($4.99), Top-Up 100 ($7.99), or the power-user Top-Up 300 ($14.99) anytime. Ask & Learn messages never expire \u2014 use them whenever you need them. If you\u2019re consistently hitting your monthly limit, upgrading a tier may be more economical. Pro includes 200/month and Premium 300/month.',
   },
   {
     q: 'Can I switch between tiers anytime?',

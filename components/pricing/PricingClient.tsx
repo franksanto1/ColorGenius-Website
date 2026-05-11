@@ -313,7 +313,7 @@ export const askVersaniPacks = [
   {
     id: 'ask-50',
     size: 50,
-    price: 3.99,
+    price: 4.99,
     label: 'Top-Up 50 Ask & Learn',
     description: '50 extra Ask & Learn messages. Never expires.',
     badge: 'POPULAR',
@@ -321,7 +321,7 @@ export const askVersaniPacks = [
   {
     id: 'ask-100',
     size: 100,
-    price: 5.99,
+    price: 7.99,
     label: 'Top-Up 100 Ask & Learn',
     description: '100 extra Ask & Learn messages. Never expires.',
     badge: null as string | null,
