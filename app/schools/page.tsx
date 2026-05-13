@@ -53,7 +53,7 @@ const studentFeatures = [
   },
   {
     label: '100 Master sessions + voice narration',
-    body: 'Same as Beauty Student tier — ask questions, learn the craft, apply what you learn. The AI teaches alongside the instructor, never replaces them.',
+    body: 'Same as Beauty Student tier — a master colorist beside you — quick questions or deep dives. The AI teaches alongside the instructor, never replaces them.',
   },
   {
     label: 'Personal portfolio from day one',
