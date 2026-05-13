@@ -37,8 +37,8 @@ export function OfflineReadyBadge({ size = 'md', className = '' }: OfflineReadyB
     <span
       className={`inline-flex items-center ${sizeClasses.container} rounded-full border border-[color:var(--gold)]/60 bg-[color:var(--gold)]/[0.10] font-bold uppercase text-[color:var(--gold)] ${sizeClasses.text} ${className}`}
       role="img"
-      aria-label="Offline ready feature — works without wifi"
-      title="This feature works without wifi. Smart caching keeps the chair-side workflow alive when the salon's network drops. Auto-syncs on reconnect."
+      aria-label="Offline ready feature — works without wifi via smart caching"
+      title="Works without wifi via smart caching. Pro Calculator runs fully offline. Consultation runs the workflow + inventory suggestions offline (AI-generative features like photo analysis and creative research need network when available). Auto-syncs on reconnect."
     >
       <span
         className={`${sizeClasses.dot} rounded-full bg-[color:var(--gold)] inline-block`}
