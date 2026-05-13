@@ -4,11 +4,13 @@ import { SiteFooter } from '@/components/nav/SiteFooter'
 import { Hero } from '@/components/sections/Hero'
 import { LinkButton } from '@/components/ui/Button'
 import { Reveal } from '@/components/ui/Reveal'
+import { OfflineReadyBadge } from '@/components/ui/OfflineReadyBadge'
 
 const platformFeatures = [
   {
     title: 'Adaptive AI consultation',
     body: 'Versani reads the situation — new client, refresh, correction, editorial — and adjusts how loudly it participates. The right amount of AI, at the right moment.',
+    offlineBadge: true,
   },
   {
     title: 'Personal RAG per stylist',
@@ -21,6 +23,11 @@ const platformFeatures = [
   {
     title: 'Industry intelligence',
     body: 'Benchmarks against top-tier colorists, pattern insights across your book, and weekly digest emails. The craft compounds when you can see it.',
+  },
+  {
+    title: 'Works without wifi',
+    body: 'Smart caching keeps the chair-side workflow alive when the salon\'s wifi drops. The Pro Calculator and Consultation gates run fully offline. Auto-syncs the moment you\'re back online.',
+    offlineBadge: true,
   },
 ]
 
@@ -110,9 +117,12 @@ export default function HomePage() {
             {platformFeatures.map((f, i) => (
               <Reveal key={f.title} delay={0.05 * i}>
                 <div className="rounded-2xl p-7 bg-white/[0.04] border border-white/[0.08] h-full">
-                  <h3 className="font-serif text-xl mb-3 text-[color:var(--foreground)]">
-                    {f.title}
-                  </h3>
+                  <div className="flex items-start justify-between gap-3 mb-3 flex-wrap">
+                    <h3 className="font-serif text-xl text-[color:var(--foreground)]">
+                      {f.title}
+                    </h3>
+                    {f.offlineBadge && <OfflineReadyBadge size="sm" />}
+                  </div>
                   <p className="text-sm text-white/65 leading-relaxed">
                     {f.body}
                   </p>
