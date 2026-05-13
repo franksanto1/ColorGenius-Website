@@ -54,7 +54,7 @@ const tiers: Tier[] = [
     features: [
       { label: 'Your actual product lines used in every formula', included: true },
       { label: '7 days full access', included: 'everything unlocked, no limits' },
-      { label: 'Unlimited Ask & Learn throughout', included: true, group: 'unlimited' },
+      { label: 'Unlimited The Master throughout', included: true, group: 'unlimited' },
       { label: 'Unlimited clients', included: true, group: 'unlimited' },
       { label: 'After day 7', included: 'Upgrade anytime to keep your momentum, or account enters read-only' },
     ],
@@ -74,7 +74,7 @@ const tiers: Tier[] = [
       { label: 'Unlimited Formula Reformulations', included: 'tweak existing formulas as needed — naturally bounded by your client roster', group: 'unlimited' },
       { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost', group: 'unlimited' },
       { label: 'Unlimited virtual try-ons', included: 'show every client every possible color', group: 'unlimited' },
-      { label: '100 Ask & Learn messages per month', included: 'ask questions, learn the craft, apply what you learn', group: 'capacity' },
+      { label: '100 Master sessions per month', included: 'ask questions, learn the craft, apply what you learn', group: 'capacity' },
       { label: '100 client profiles', included: 'practice with multiple personas', group: 'capacity' },
       { label: 'Versani Academy Library', included: 'masterclasses + technique walkthroughs' },
       { label: 'Basic 30-day performance dashboard', included: 'self-assessment tool' },
@@ -101,7 +101,7 @@ const tiers: Tier[] = [
       { label: 'Unlimited Formula Reformulations', included: 'tweak existing formulas as needed — naturally bounded by your client roster', group: 'unlimited' },
       { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost', group: 'unlimited' },
       { label: 'Unlimited virtual try-ons', included: 'show every client every possible color', group: 'unlimited' },
-      { label: '100 Ask & Learn messages per month', included: 'chair-side helper for any color question', group: 'capacity' },
+      { label: '100 Master sessions per month', included: 'chair-side helper for any color question', group: 'capacity' },
       { label: '150 client profiles', included: true, group: 'capacity' },
       { label: 'Basic 30-day performance dashboard', included: true },
       { label: 'Versani Academy Library', included: true },
@@ -130,7 +130,7 @@ const tiers: Tier[] = [
       { label: 'Unlimited Formula Reformulations', included: 'tweak existing formulas as needed — naturally bounded by your client roster', group: 'unlimited' },
       { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost', group: 'unlimited' },
       { label: 'Unlimited virtual try-ons', included: 'show every client every possible color', group: 'unlimited' },
-      { label: '200 Ask & Learn messages per month', included: 'top-up packs available ($2.99+, never expire)', group: 'capacity' },
+      { label: '200 Master sessions per month', included: 'top-up packs available ($2.99+, never expire)', group: 'capacity' },
       { label: '300 client profiles', included: true, group: 'capacity' },
       { label: 'Voice Texting (STT) — hands-free at the chair', included: 'speak instead of type, $0.002/FC via Groq' },
       { label: 'Full 90-day performance dashboard', included: 'pattern insights, full history' },
@@ -160,7 +160,7 @@ const tiers: Tier[] = [
       { label: 'Unlimited Formula Reformulations', included: 'tweak existing formulas as needed — naturally bounded by your client roster', group: 'unlimited' },
       { label: 'Repeat Visits — free + unlimited', included: '"use last formula" — no AI cost', group: 'unlimited' },
       { label: 'Unlimited virtual try-ons', included: 'show every client every possible color', group: 'unlimited' },
-      { label: '300 Ask & Learn messages per month', included: 'top-up packs available ($2.99+, never expire)', group: 'capacity' },
+      { label: '300 Master sessions per month', included: 'top-up packs available ($2.99+, never expire)', group: 'capacity' },
       { label: 'Unlimited client profiles', included: 'your full book — no caps for power users', group: 'unlimited' },
       { label: 'Voice Texting (STT) — hands-free at the chair', included: 'speak instead of type, $0.002/FC via Groq' },
       { label: 'AI client insights', included: 'individual client pattern analysis' },
@@ -181,7 +181,7 @@ const tiers: Tier[] = [
     ctaLabel: 'Request Team Pricing',
     ctaHref: 'mailto:frank@versani.ai?subject=Team%20Essentials%20Versani%20pricing%20inquiry',
     features: [
-      { label: 'Essentials-level features per seat', included: '25 FCs · Unlimited Reformulations · Unlimited try-ons · 100 Ask & Learn' },
+      { label: 'Essentials-level features per seat', included: '25 FCs · Unlimited Reformulations · Unlimited try-ons · 100 The Master' },
       { label: 'Correction workflow UI per seat', included: 'safety scaffolding for high-stakes color work — every seat' },
       { label: '★ Team Dashboard', included: 'team rankings, shared inventory, per-stylist tracking' },
       { label: 'Your salon product lines used in every formula', included: true },
@@ -206,7 +206,7 @@ const tiers: Tier[] = [
     ctaLabel: 'Request Team Pricing',
     ctaHref: 'mailto:frank@versani.ai?subject=Team%20Pro%20Versani%20pricing%20inquiry',
     features: [
-      { label: 'Pro-level features per seat', included: '50 FCs · Unlimited Reformulations · Unlimited try-ons · 200 Ask & Learn' },
+      { label: 'Pro-level features per seat', included: '50 FCs · Unlimited Reformulations · Unlimited try-ons · 200 The Master' },
       { label: '★ Team Dashboard with revenue analytics', included: 'team rankings, revenue-per-stylist, at-risk alerts' },
       { label: 'Correction workflow UI per seat', included: 'structured multi-step interface for correction cases' },
       { label: 'Client-facing branded reports per seat', included: 'professional PDFs with your salon logo' },
@@ -232,7 +232,7 @@ const tiers: Tier[] = [
     ctaLabel: 'Request Team Pricing',
     ctaHref: 'mailto:frank@versani.ai?subject=Team%20Premium%20Versani%20pricing%20inquiry',
     features: [
-      { label: 'Premium-level features per seat', included: '75 FCs · Unlimited Reformulations · unlimited try-ons · 300 Ask & Learn · unlimited client profiles' },
+      { label: 'Premium-level features per seat', included: '75 FCs · Unlimited Reformulations · unlimited try-ons · 300 The Master · unlimited client profiles' },
       { label: '★ Team Dashboard with full business intelligence', included: 'team rankings, revenue-per-stylist, multi-location reporting' },
       { label: 'AI client insights per stylist', included: 'individual client pattern analysis' },
       { label: 'Revenue-per-client tracking (team-wide)', included: 'know your top 10% by LTV' },
@@ -306,32 +306,32 @@ export const askVersaniPacks = [
     id: 'ask-25',
     size: 25,
     price: 2.99,
-    label: 'Top-Up 25 Ask & Learn',
-    description: '25 extra Ask & Learn messages. Never expires.',
+    label: 'Top-Up 25 The Master',
+    description: '25 extra Master sessions. Never expires.',
     badge: null as string | null,
   },
   {
     id: 'ask-50',
     size: 50,
     price: 4.99,
-    label: 'Top-Up 50 Ask & Learn',
-    description: '50 extra Ask & Learn messages. Never expires.',
+    label: 'Top-Up 50 The Master',
+    description: '50 extra Master sessions. Never expires.',
     badge: 'POPULAR',
   },
   {
     id: 'ask-100',
     size: 100,
     price: 7.99,
-    label: 'Top-Up 100 Ask & Learn',
-    description: '100 extra Ask & Learn messages. Never expires.',
+    label: 'Top-Up 100 The Master',
+    description: '100 extra Master sessions. Never expires.',
     badge: null as string | null,
   },
   {
     id: 'ask-300',
     size: 300,
     price: 14.99,
-    label: 'Top-Up 300 Ask & Learn',
-    description: '300 extra Ask & Learn messages — power-user pack. Never expires.',
+    label: 'Top-Up 300 The Master',
+    description: '300 extra Master sessions — power-user pack. Never expires.',
     badge: 'BEST VALUE',
   },
 ]
@@ -651,7 +651,7 @@ export function OveragePacks() {
 /**
  * TopUpPacks — unified mobile-first top-up surface.
  *
- * Shows BOTH Consultation packs AND Ask & Learn packs in two clearly
+ * Shows BOTH Consultation packs AND The Master packs in two clearly
  * labeled sections. No tabs — users see everything at once.
  * Each section uses a compact 2-col (mobile) / 3-col (desktop) tile grid.
  */
@@ -710,15 +710,15 @@ export function TopUpPacks() {
         </div>
       </div>
 
-      {/* Ask & Learn packs */}
+      {/* The Master packs */}
       <div>
         <div className="flex items-baseline justify-between mb-4 md:mb-5">
           <div>
             <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[color:var(--gold)] mb-1">
-              Ask & Learn
+              The Master
             </div>
             <h3 className="font-serif text-xl md:text-2xl tracking-tight text-[color:var(--foreground)]">
-              Extra Ask & Learn messages
+              Extra The Master messages
             </h3>
           </div>
           <span className="hidden md:inline text-xs text-white/45">
@@ -748,7 +748,7 @@ export function TopUpPacks() {
 }
 
 /* ================================================================
-   Ask & Learn Packs — always-visible Ask & Learn top-up cards
+   The Master Packs — always-visible The Master top-up cards
    ================================================================ */
 
 export function AskAndLearnPacks() {
@@ -814,12 +814,12 @@ export function SalonCalculator() {
     teamEssentials: {
       tab: 'Team Essentials',
       label: 'Team Essentials · Essentials-level features per seat',
-      description: '25 FCs/seat · Unlimited Reformulations · Unlimited try-ons · 100 Ask & Learn + Team Dashboard. For salons starting out.',
+      description: '25 FCs/seat · Unlimited Reformulations · Unlimited try-ons · 100 The Master + Team Dashboard. For salons starting out.',
     },
     teamPro: {
       tab: 'Team Pro',
       label: 'Team Pro · Pro-level features per seat',
-      description: '50 FCs/seat · Unlimited Reformulations · Unlimited try-ons · 200 Ask & Learn · Voice Texting team-wide + Team Dashboard. For full-time stylists.',
+      description: '50 FCs/seat · Unlimited Reformulations · Unlimited try-ons · 200 The Master · Voice Texting team-wide + Team Dashboard. For full-time stylists.',
     },
     teamPremium: {
       tab: 'Team Premium',

@@ -7,7 +7,7 @@ import { cn } from '@/lib/cn'
 /* ================================================================
    CapReachedModal
    Surfaces when a subscriber has consumed their monthly allotment
-   for either consultations or Ask & Learn messages. Offers top-up
+   for either consultations or The Master messages. Offers top-up
    packs (no urgency, no "upgrade now" SaaS energy) plus an upgrade
    option. Gold accents, calm factual copy.
    ================================================================ */
@@ -71,26 +71,26 @@ export function CapReachedModal({
   const packs = isAsk ? askVersaniPacks : consultationPacks
   const recommended = packs.find((p) => p.tag === 'recommended') ?? packs[0]
 
-  const unit = isAsk ? 'Ask & Learn messages' : 'full consultations'
+  const unit = isAsk ? 'The Master messages' : 'full consultations'
   const unitShort = isAsk ? 'messages' : 'consultations'
-  const capLabel = isAsk ? 'Ask & Learn cap' : 'Monthly cap'
+  const capLabel = isAsk ? 'The Master cap' : 'Monthly cap'
 
   const title = isAsk
-    ? `You've used your ${total} Ask & Learn messages this month`
+    ? `You've used your ${total} The Master messages this month`
     : "You've reached your monthly consultation cap"
 
   const usageLine = isAsk
-    ? `You've used ${used} of ${total} Ask & Learn messages this cycle.`
+    ? `You've used ${used} of ${total} The Master messages this cycle.`
     : `You've used ${used} of ${total} full consultations this cycle.`
 
   const sideline = isAsk
     ? 'Consultations, unlimited Reformulations, and unlimited Repeat Visits keep working.'
-    : 'Unlimited Reformulations, unlimited Repeat Visits, and Ask & Learn keep working.'
+    : 'Unlimited Reformulations, unlimited Repeat Visits, and The Master keep working.'
 
   const upgradeCopy = isAsk
     ? {
         title: 'Upgrade to Premium',
-        detail: '300 Ask & Learn messages · 75 consults · unlimited client profiles · AI client insights',
+        detail: '300 Master sessions · 75 consults · unlimited client profiles · AI client insights',
         price: '$26.99/month — prorated from today',
       }
     : {

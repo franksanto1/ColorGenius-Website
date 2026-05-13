@@ -239,7 +239,7 @@ export default function StylistDashboardPage() {
                   </div>
                 </div>
                 <span className="text-[10px] uppercase tracking-[0.18em] text-gold/80 shrink-0">
-                  {a.type === 'ask-learn' ? 'Ask & Learn' : a.type}
+                  {a.type === 'ask-learn' ? 'The Master' : a.type}
                 </span>
               </li>
             ))}

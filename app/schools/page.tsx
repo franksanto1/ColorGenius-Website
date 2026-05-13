@@ -29,7 +29,7 @@ const howItWorks = [
   {
     label: 'School base seat',
     subtitle: '$8.99 per student / month',
-    body: 'Paid by the school. Every enrolled student receives a seat with the same caps as the Beauty Student tier: 20 Practice Cases (Full Consultations) per month with full Correction Workflow UI safety scaffolding (same AI as every paid tier — safety isn’t a luxury), 100 Ask & Learn messages, unlimited Formula Reformulations + Repeat Visits + Virtual Try-Ons, 100 client profiles. Supervised workflows and teacher-reviewable history built in.',
+    body: 'Paid by the school. Every enrolled student receives a seat with the same caps as the Beauty Student tier: 20 Practice Cases (Full Consultations) per month with full Correction Workflow UI safety scaffolding (same AI as every paid tier — safety isn’t a luxury), 100 Master sessions, unlimited Formula Reformulations + Repeat Visits + Virtual Try-Ons, 100 client profiles. Supervised workflows and teacher-reviewable history built in.',
   },
   {
     label: 'Pro student upgrade',
@@ -52,7 +52,7 @@ const studentFeatures = [
     body: 'Tweak existing formulas as needed — naturally bounded by your client roster. Never count against the full-consultation cap.',
   },
   {
-    label: '100 Ask & Learn messages + voice narration',
+    label: '100 Master sessions + voice narration',
     body: 'Same as Beauty Student tier — ask questions, learn the craft, apply what you learn. The AI teaches alongside the instructor, never replaces them.',
   },
   {
@@ -333,7 +333,7 @@ export default function SchoolsPage() {
             </div>
 
             <p className="text-center text-[11px] text-white/45 mt-6 italic">
-              We meter Practice Cases + Ask & Learn. Everything else, students get to explore freely.
+              We meter Practice Cases + The Master. Everything else, students get to explore freely.
             </p>
           </div>
         </section>

@@ -48,9 +48,9 @@ const askVersaniTopUpPacks: Array<{
   description: string
   tag: 'popular' | 'best' | null
 }> = [
-  { size: 25, price: 1.99, description: '25 extra Ask & Learn messages', tag: null },
-  { size: 50, price: 2.99, description: '50 extra Ask & Learn messages', tag: 'popular' },
-  { size: 100, price: 4.99, description: '100 extra Ask & Learn messages', tag: 'best' },
+  { size: 25, price: 1.99, description: '25 extra Master sessions', tag: null },
+  { size: 50, price: 2.99, description: '50 extra Master sessions', tag: 'popular' },
+  { size: 100, price: 4.99, description: '100 extra Master sessions', tag: 'best' },
 ]
 
 const billingHistory = [
@@ -164,7 +164,7 @@ export default function MembershipPage() {
             total={mockPlan.renderingsTotal}
           />
           <UsageRow
-            label="Ask & Learn"
+            label="The Master"
             used={mockPlan.askVersaniUsed}
             total={mockPlan.askVersaniTotal}
           />
@@ -236,18 +236,18 @@ export default function MembershipPage() {
         </p>
       </div>
 
-      {/* Need More Ask & Learn */}
+      {/* Need More The Master */}
       <div className="mb-8">
         <div className="flex items-baseline justify-between gap-4 mb-4">
           <h2 className="font-serif text-xl md:text-2xl text-foreground">
-            Need more Ask & Learn?
+            Need more The Master?
           </h2>
           <button
             type="button"
             onClick={() => setCapModalOpen('ask-versani')}
             className="text-xs text-gold hover:underline"
           >
-            Preview Ask & Learn cap-reached modal
+            Preview The Master cap-reached modal
           </button>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -292,7 +292,7 @@ export default function MembershipPage() {
           ))}
         </div>
         <p className="text-xs text-white/40 mt-4">
-          Ask & Learn messages never expire. Use them when you need them.
+          The Master messages never expire. Use them when you need them.
         </p>
       </div>
 
