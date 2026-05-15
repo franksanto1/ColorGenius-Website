@@ -718,7 +718,7 @@ export function TopUpPacks() {
               The Master
             </div>
             <h3 className="font-serif text-xl md:text-2xl tracking-tight text-[color:var(--foreground)]">
-              Extra The Master messages
+              Extra Master sessions
             </h3>
           </div>
           <span className="hidden md:inline text-xs text-white/45">
@@ -734,7 +734,7 @@ export function TopUpPacks() {
               price={pack.price}
               description={pack.description}
               badge={pack.badge}
-              unit="messages"
+              unit="sessions"
             />
           ))}
         </div>

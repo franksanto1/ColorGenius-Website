@@ -51,7 +51,7 @@ const upgradeHighlights = [
     body: 'Full portability of your scoring history, formulas, and client patterns. Take everything with you, anytime.',
   },
   {
-    title: 'More The Master messages (200 → 300)',
+    title: 'More The Master sessions (200 → 300)',
     body: 'Conversational AI for the chair-side questions that come up across busy weeks. Plus full insights from post-treatment scoring on Premium.',
   },
 ]
@@ -75,7 +75,7 @@ const comparisonRows = [
   { feature: 'Personal RAG data ownership', versani: 'Yes' },
   { feature: 'Your actual inventory drives every formula', versani: 'Yes' },
   { feature: 'Voice formula narration', versani: 'Pro & Premium: hands-free Voice Texting' },
-  { feature: 'The Master messages / month', versani: '200 Pro / 300 Premium + top-up packs ($2.99+, plus 300-pack power option)' },
+  { feature: 'The Master sessions / month', versani: '200 Pro / 300 Premium + top-up packs ($2.99+, plus 300-pack power option)' },
   { feature: 'Multi-seat salon tier (shared DB)', versani: 'Yes' },
 ]
 
@@ -102,7 +102,7 @@ const faqs = [
   },
   {
     q: 'What if I hit my The Master limit?',
-    a: 'You can add Top-Up 25 ($2.99), Top-Up 50 ($4.99), Top-Up 100 ($7.99), or the power-user Top-Up 300 ($14.99) anytime. The Master messages never expire \u2014 use them whenever you need them. If you\u2019re consistently hitting your monthly limit, upgrading a tier may be more economical. Pro includes 200/month and Premium 300/month.',
+    a: 'You can add Top-Up 25 ($2.99), Top-Up 50 ($4.99), Top-Up 100 ($7.99), or the power-user Top-Up 300 ($14.99) anytime. The Master sessions never expire \u2014 use them whenever you need them. If you\u2019re consistently hitting your monthly limit, upgrading a tier may be more economical. Pro includes 200/month and Premium 300/month.',
   },
   {
     q: 'Can I switch between tiers anytime?',
@@ -188,7 +188,7 @@ export default function PricingPage() {
               </em>
             </h2>
             <p className="text-sm text-white/55 mt-3 max-w-lg mx-auto">
-              Add consultations or The Master messages instantly. Nothing
+              Add consultations or The Master sessions instantly. Nothing
               expires.
             </p>
           </div>
@@ -242,7 +242,7 @@ export default function PricingPage() {
 
           <p className="text-xs text-white/40 text-center mt-10 italic">
             Not ready for Premium yet? Grab a top-up pack whenever you need extra
-            capacity &mdash; consults and The Master messages never expire.
+            capacity &mdash; consults and The Master sessions never expire.
           </p>
         </section>
 

@@ -7,7 +7,7 @@ import { cn } from '@/lib/cn'
 /* ================================================================
    CapReachedModal
    Surfaces when a subscriber has consumed their monthly allotment
-   for either consultations or The Master messages. Offers top-up
+   for either consultations or The Master sessions. Offers top-up
    packs (no urgency, no "upgrade now" SaaS energy) plus an upgrade
    option. Gold accents, calm factual copy.
    ================================================================ */
@@ -71,16 +71,16 @@ export function CapReachedModal({
   const packs = isAsk ? askVersaniPacks : consultationPacks
   const recommended = packs.find((p) => p.tag === 'recommended') ?? packs[0]
 
-  const unit = isAsk ? 'The Master messages' : 'full consultations'
-  const unitShort = isAsk ? 'messages' : 'consultations'
+  const unit = isAsk ? 'The Master sessions' : 'full consultations'
+  const unitShort = isAsk ? 'sessions' : 'consultations'
   const capLabel = isAsk ? 'The Master cap' : 'Monthly cap'
 
   const title = isAsk
-    ? `You've used your ${total} The Master messages this month`
+    ? `You've used your ${total} The Master sessions this month`
     : "You've reached your monthly consultation cap"
 
   const usageLine = isAsk
-    ? `You've used ${used} of ${total} The Master messages this cycle.`
+    ? `You've used ${used} of ${total} The Master sessions this cycle.`
     : `You've used ${used} of ${total} full consultations this cycle.`
 
   const sideline = isAsk

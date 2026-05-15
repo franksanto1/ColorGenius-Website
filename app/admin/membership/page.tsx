@@ -292,7 +292,7 @@ export default function MembershipPage() {
           ))}
         </div>
         <p className="text-xs text-white/40 mt-4">
-          The Master messages never expire. Use them when you need them.
+          The Master sessions never expire. Use them when you need them.
         </p>
       </div>
 

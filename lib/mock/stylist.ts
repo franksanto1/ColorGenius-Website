@@ -90,10 +90,10 @@ export const stylistMock: IndustryAccount = {
       resets: '2026-06-01',
     },
     {
-      label: 'Ask & Learn',
+      label: 'The Master',
       used: 168,
-      cap: 250,
-      unit: 'messages',
+      cap: 200,
+      unit: 'sessions',
       resets: '2026-06-01',
     },
     {
@@ -161,7 +161,7 @@ export const stylistMock: IndustryAccount = {
       id: 'a-2',
       timestamp: '2026-05-09T11:15:00',
       type: 'ask-learn',
-      summary: 'Ask & Learn: "Glaze formulation for warm-tone refresh on level 8"',
+      summary: 'The Master: "Glaze formulation for warm-tone refresh on level 8"',
     },
     {
       id: 'a-3',
